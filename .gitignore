@@ -1,0 +1,23 @@
+# stuff
+*.log
+
+# debian packaging
+debian/thunar-custom-actions
+debian/*.substvars
+debian/*.log
+debian/*-build-stamp
+debian/files
+*.debhelper
+
+# temporary files
+*.tmp
+*.temp
+
+# autoconf stuff
+*.cache/
+*.scan
+config.status
+
+# instantiated template files
+Makefile
+

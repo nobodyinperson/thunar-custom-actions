@@ -1,0 +1,171 @@
+#!/usr/bin/make -f
+
+############################################################
+### get all the ./configure arguments into this Makefile ###
+############################################################
+
+# install architecture-independent files in PREFIX [/usr/local]
+prefix:=@prefix@
+# install architecture-dependent files in EPREFIX [PREFIX]
+exec_prefix:=@exec_prefix@
+# user executables [EPREFIX/bin]
+bindir:=@bindir@
+# system admin executables [EPREFIX/sbin]
+sbindir:=@sbindir@
+# program executables [EPREFIX/libexec]
+libexecdir:=@libexecdir@
+# read-only single-machine data [PREFIX/etc]
+sysconfdir:=@sysconfdir@
+# modifiable architecture-independent data [PREFIX/com]
+sharedstatedir:=@sharedstatedir@
+# modifiable single-machine data [PREFIX/var]
+localstatedir:=@localstatedir@
+# modifiable per-process data [LOCALSTATEDIR/run]
+runstatedir:=@runstatedir@
+# object code libraries [EPREFIX/lib]
+libdir:=@libdir@
+# C header files [PREFIX/include]
+includedir:=@includedir@
+# C header files for non-gcc [/usr/include]
+oldincludedir:=@oldincludedir@
+# read-only arch.-independent data root [PREFIX/share]
+datarootdir:=@datarootdir@
+# read-only architecture-independent data [DATAROOTDIR]
+datadir:=@datadir@
+# info documentation [DATAROOTDIR/info]
+infodir:=@infodir@
+# locale-dependent data [DATAROOTDIR/locale]
+localedir:=@localedir@
+# man documentation [DATAROOTDIR/man]
+mandir:=@mandir@
+# documentation root [DATAROOTDIR/doc/thunar-custom-actions]
+docdir:=@docdir@
+# html documentation [DOCDIR]
+htmldir:=@htmldir@
+# dvi documentation [DOCDIR]
+dvidir:=@dvidir@
+# pdf documentation [DOCDIR]
+pdfdir:=@pdfdir@
+# ps documentation [DOCDIR]
+psdir:=@psdir@
+
+PACKAGE_VERSION := @PACKAGE_VERSION@
+PACKAGE_NAME    := @PACKAGE_NAME@
+PACKAGE_STRING  := @PACKAGE_STRING@
+
+configure_dirs = bindir sbindir libexecdir sysconfdir sharedstatedir \
+	localstatedir runstatedir libdir includedir oldincludedir datarootdir \
+	datadir infodir localedir mandir docdir htmldir dvidir pdfdir psdir
+configure_vars = $(configure_dirs) PACKAGE_VERSION PACKAGE_STRING PACKAGE_NAME \
+	PACKAGE_URL
+
+$(foreach configure_dir,$(configure_dirs),\
+	$(eval $(configure_dir) := $(abspath $(DESTDIR)/$($(configure_dir)))))
+# $(foreach configure_dir,$(configure_dirs),\
+# 	$(info $(configure_dir) := $($(configure_dir))))
+
+#############################
+### The local directories ###
+#############################
+
+local_mandir = man
+local_bindir = bin
+local_datarootdir = share
+local_libdir = lib
+
+local_dirs = $(local_mandir) $(local_bindir) $(local_datarootdir)
+
+installed_files_file = installed_files.tmp
+
+# all markdown manpages
+MDMANPAGES = $(shell find $(local_mandir) -type f -iname '*.1.md')
+# corresponding groff manpages
+GFMANPAGES = $(MDMANPAGES:.1.md=.1)
+
+# pandoc options for manpage creation
+PANDOCOPTS = -f markdown -t man --standalone
+
+IN_FILES = $(shell find $(local_dirs) -type f -iname '*.in')
+IN_FILES_INSTANTIATED = $(IN_FILES:.in=)
+
+CONFIGURE_AC = configure.ac
+
+# get information from changelog
+DEBIAN_CHANGELOG = debian/changelog
+DEBIAN_CHANGELOG_VERSION = $(shell perl -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*$$/$$1/g){print;exit}' $(DEBIAN_CHANGELOG))
+
+# default target
+.PHONY: all
+all: $(IN_FILES_INSTANTIATED) $(CONFIGURE_AC)
+
+
+# create rule to install a FILE into the TARGET_DIRECTORY
+# FILE can be a relative path from here
+# $(call install_rule,FILE,TARGET_DIRECTORY)
+define install_rule
+$$(eval _target = $$(abspath $$(addprefix $(2)/,$$(shell echo $(1) | perl -pe 's|^[^/]*/+||g'))))
+$$(_target): $(1) | $$(dir $$(_target))
+	cp -L --preserve=all $$< $$@
+	@echo $$@ >> $(installed_files_file)
+$$(eval install_target_dirs = $$(install_target_dirs) $$(dir $$(_target)))
+$$(eval install_targets = $$(install_targets) $$(_target))
+endef
+
+find_opts = -not -type d -not -iname '*.in'
+
+# define the local content that is to install
+local_datarootdir_toinstall = $(shell find $(local_datarootdir) $(find_opts))
+local_mandir_toinstall = $(GFMANPAGES)
+local_bindir_toinstall = $(shell find $(local_bindir) $(find_opts))
+
+# set up install rules for all configure directories
+$(foreach configure_dir,$(configure_dirs),\
+	$(foreach file,$(local_$(configure_dir)_toinstall),\
+		$(eval $(call install_rule,$(file),$($(configure_dir))))))
+
+# build the manpages
+# manpages:
+%.1: %.1.md $(DEBIAN_CHANGELOG)
+	pandoc $(PANDOCOPTS) -Vfooter='Version $(SIMBUTOVERSION)' -Vdate='$(SIMBUTODATE)' -o $@ $<
+
+$(sort $(install_target_dirs)): % :
+	mkdir -p $@
+	@echo $@ >> $(installed_files_file)
+
+$(CONFIGURE_AC): $(DEBIAN_CHANGELOG)
+	perl -pi -e 's#^(\s*AC_INIT\([^,]*,\s*\[)([.0-9_a-zA-Z-]+)(\]\s*,.*\))#$${1}$(DEBIAN_CHANGELOG_VERSION)$${3}#g' $@
+
+# substitute variables in a file
+$(IN_FILES_INSTANTIATED): % : %.in Makefile
+	perl -pe '$(foreach var,$(configure_vars),s#[@]$(var)[@]#$($(var))#g;)' < $< > $@
+
+.PHONY: bin_executable
+bin_executable: $(local_bindir_toinstall)
+	for file in $^;do chmod +x $$file;done
+
+.PHONY: install
+install: bin_executable $(sort $(install_targets)) 
+	-@sort -u $(installed_files_file) -o $(installed_files_file)
+	
+# remove a file/folder without asking
+# $(call remove,PATH)
+# This is only to display a newline after the command
+define remove
+rm -rf $(1)
+
+endef
+
+.PHONY: uninstall
+uninstall:
+	$(foreach file,$(sort $(install_targets) $(shell cat $(installed_files_file))),$(call remove,$(file)))
+	rm -f $(installed_files_file)
+	@echo WARNING: There might still be some empty folders left. This should not be a problem.
+	
+.PHONY: clean
+clean:
+	rm -rf $(addprefix $(DEBIAN)/,files *.substvars *.debhelper $(PACKAGE_NAME) debhelper-build-stamp *.debhelper.log)
+	rm -f $(IN_FILES_INSTANTIATED)
+	rm -f $(installed_files_file)
+
+
+	
