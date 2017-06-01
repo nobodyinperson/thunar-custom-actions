@@ -588,6 +588,8 @@ ac_subst_vars='LTLIBOBJS
 LIBOBJS
 python3_bin
 pandoc_bin
+HOMEDjIR
+HOMEDIR
 target_alias
 host_alias
 build_alias
@@ -633,7 +635,8 @@ enable_option_checking
 '
       ac_precious_vars='build_alias
 host_alias
-target_alias'
+target_alias
+HOMEDIR'
 
 
 # Initialize some variables set by options.
@@ -1251,6 +1254,12 @@ if test -n "$ac_init_help"; then
    esac
   cat <<\_ACEOF
 
+Some influential environment variables:
+  HOMEDIR     path to folder containing home directories
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
 Report bugs to <nobodyinperson@gmx.de>.
 _ACEOF
 ac_status=$?
@@ -1725,6 +1734,9 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 # then outputs the replacement expansion.  We do not care
 # about autoupdate's warning because that contains
 # information on what to do *after* running autoupdate.
+
+
+
 
 
 

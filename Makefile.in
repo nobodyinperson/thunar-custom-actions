@@ -48,6 +48,13 @@ dvidir:=@dvidir@
 pdfdir:=@pdfdir@
 # ps documentation [DOCDIR]
 psdir:=@psdir@
+# directory containing home directories
+ifeq (@HOMEDIR@,)
+homedir:=$(prefix)/home
+else
+homedir:=@HOMEDIR@
+endif
+$(info $(homedir))
 
 PACKAGE_VERSION := @PACKAGE_VERSION@
 PACKAGE_NAME    := @PACKAGE_NAME@

@@ -6,6 +6,9 @@ AC_INIT([thunar-custom-actions], [0.0.1], [nobodyinperson@gmx.de])
 
 m4_include([m4/ax_python_module.m4])
 
+AC_ARG_VAR([HOMEDIR],[path to folder containing home directories])
+AC_SUBST([HOMEDIR])
+
 # Checks for programs.
 AC_CHECK_PROG([pandoc_bin],[pandoc],[yes],[no])
 test "$pandoc_bin" != "yes" && AC_MSG_ERROR([no pandoc installation found])
