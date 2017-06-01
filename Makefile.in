@@ -71,7 +71,6 @@ $(foreach configure_dir,$(configure_dirs),\
 local_mandir = man
 local_bindir = bin
 local_datarootdir = share
-local_libdir = lib
 
 local_dirs = $(local_mandir) $(local_bindir) $(local_datarootdir)
 
@@ -96,7 +95,7 @@ DEBIAN_CHANGELOG_VERSION = $(shell perl -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*
 
 # default target
 .PHONY: all
-all: $(IN_FILES_INSTANTIATED) $(CONFIGURE_AC)
+all: $(IN_FILES_INSTANTIATED) $(CONFIGURE_AC) $(GFMANPAGES)
 
 
 # create rule to install a FILE into the TARGET_DIRECTORY
@@ -126,7 +125,7 @@ $(foreach configure_dir,$(configure_dirs),\
 # build the manpages
 # manpages:
 %.1: %.1.md $(DEBIAN_CHANGELOG)
-	pandoc $(PANDOCOPTS) -Vfooter='Version $(SIMBUTOVERSION)' -Vdate='$(SIMBUTODATE)' -o $@ $<
+	pandoc $(PANDOCOPTS) -Vfooter='Version $(PACKAGE_VERSION)' -o $@ $<
 
 $(sort $(install_target_dirs)): % :
 	mkdir -p $@
@@ -144,6 +143,7 @@ bin_executable: $(local_bindir_toinstall)
 	for file in $^;do chmod +x $$file;done
 
 .PHONY: install
+.PHONY: $(install_targets)
 install: bin_executable $(sort $(install_targets)) 
 	-@sort -u $(installed_files_file) -o $(installed_files_file)
 	
@@ -165,6 +165,7 @@ uninstall:
 clean:
 	rm -rf $(addprefix $(DEBIAN)/,files *.substvars *.debhelper $(PACKAGE_NAME) debhelper-build-stamp *.debhelper.log)
 	rm -f $(IN_FILES_INSTANTIATED)
+	rm -f $(GFMANPAGES)
 	rm -f $(installed_files_file)
 
 

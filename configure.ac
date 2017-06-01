@@ -10,6 +10,10 @@ m4_include([m4/ax_python_module.m4])
 AC_CHECK_PROG([pandoc_bin],[pandoc],[yes],[no])
 test "$pandoc_bin" != "yes" && AC_MSG_ERROR([no pandoc installation found])
 
+# Checks for programs.
+AC_CHECK_PROG([python3_bin],[python3],[yes],[no])
+test "$python3_bin" != "yes" && AC_MSG_ERROR([no python3 installation found])
+
 # Check for Python modules
 AX_PYTHON_MODULE(lxml,fatal,python3)
 
