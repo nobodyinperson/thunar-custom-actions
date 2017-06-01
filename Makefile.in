@@ -54,7 +54,6 @@ homedir:=$(prefix)/home
 else
 homedir:=@HOMEDIR@
 endif
-$(info $(homedir))
 
 PACKAGE_VERSION := @PACKAGE_VERSION@
 PACKAGE_NAME    := @PACKAGE_NAME@
@@ -162,8 +161,12 @@ rm -rf $(1)
 
 endef
 
+.PHONY: reset
+reset:
+	$(BINDIR)/uca-apply remove
+
 .PHONY: uninstall
-uninstall:
+uninstall: reset
 	$(foreach file,$(sort $(install_targets) $(shell cat $(installed_files_file))),$(call remove,$(file)))
 	rm -f $(installed_files_file)
 	@echo WARNING: There might still be some empty folders left. This should not be a problem.

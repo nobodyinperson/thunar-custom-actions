@@ -10,6 +10,9 @@ AC_ARG_VAR([HOMEDIR],[path to folder containing home directories])
 AC_SUBST([HOMEDIR])
 
 # Checks for programs.
+AC_CHECK_PROG([make_bin],[make],[yes],[no])
+test "$make_bin" != "yes" && AC_MSG_ERROR([no make found])
+
 AC_CHECK_PROG([pandoc_bin],[pandoc],[yes],[no])
 test "$pandoc_bin" != "yes" && AC_MSG_ERROR([no pandoc installation found])
 
@@ -21,5 +24,5 @@ test "$python3_bin" != "yes" && AC_MSG_ERROR([no python3 installation found])
 AX_PYTHON_MODULE(lxml,fatal,python3)
 
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile bin/uca-apply])
 AC_OUTPUT
