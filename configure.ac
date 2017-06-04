@@ -6,8 +6,11 @@ AC_INIT([thunar-custom-actions], [0.0.1], [nobodyinperson@gmx.de])
 
 m4_include([m4/ax_python_module.m4])
 
-AC_ARG_VAR([HOMEDIR],[path to folder containing home directories])
-AC_SUBST([HOMEDIR])
+AC_ARG_VAR([PASSWDFILE],[path to passwd file [SYSCONFDIR/passwd]]) 
+AC_SUBST([PASSWDFILE])
+AC_ARG_VAR([UCAFILE],[relative path from homedir to Thunar uca.xml file
+[.config/Thunar/uca.xml]]) 
+AC_SUBST([UCAFILE])
 
 # Checks for programs.
 AC_CHECK_PROG([make_bin],[make],[yes],[no])

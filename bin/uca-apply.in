@@ -44,20 +44,51 @@ dvidir:=@dvidir@
 pdfdir:=@pdfdir@
 # ps documentation [DOCDIR]
 psdir:=@psdir@
-# directory containing home directories
-ifeq (@HOMEDIR@,)
-homedir:=$(prefix)/home
+# passwd file
+ifeq (@PASSWDFILE@,)
+passwdfile:=$(sysconfdir)/passwd
 else
-homedir:=@HOMEDIR@
+passwdfile:=@PASSWDFILE@
+endif
+# uca file path
+ifeq (@UCAFILE@,)
+ucafile:=.config/Thunar/uca.xml
+else
+ucafile:=@UCAFILE@
 endif
 
+PACKAGE_VERSION := @PACKAGE_VERSION@
+PACKAGE_NAME    := @PACKAGE_NAME@
+PACKAGE_STRING  := @PACKAGE_STRING@
 
-.PHONY: update
+ifeq ($(shell test -e $(passwdfile) && echo "yes" || echo "no"),no)
+$(error passwd-file "$(passwdfile)" does not exist)
+endif
+
+system_uca_files = $(wildcard $(datarootdir)/$(PACKAGE_NAME)/system-uca/*.xml)
+
+users = $(shell perl -F: -e 'print "$$F[0]\n" if ($$F[2]>=1000 and $$F[2] <= 9999)' < $(passwdfile))
+homedirs = $(shell perl -F: -e 'print "$$F[5]\n" if ($$F[2]>=1000 and $$F[2] <= 9999)' < $(passwdfile))
+
+
+.PHONY: update remove
+
+manip_cmd = cd && $(bindir)/uca-manip -a $(1) -f $(ucafile) -o $(ucafile) $(system_uca_files)
+# function to create shell commands to merge the system uca into own uca.xml
+# $(call root_manip_cmd,USER)
+define root_manip_cmd
 update:
-	# TODO: Find all home directories, then all .config/Thunar/uca.xml files and
-	# merge the thunar-custom-actions file into them
-
-.PHONY: remove
+	su -c "$(call manip_cmd,merge)" - $(1)
 remove:
-	# TODO: Find all home directories, then all .config/Thunar/uca.xml files and
-	# remove the thunar-custom-actions file from them
+	su -c "$(call manip_cmd,remove)" - $(1)
+endef
+
+ifeq ($(USER),root)
+$(foreach user,$(users),$(eval $(call root_manip_cmd,$(user))))
+else
+update:
+	$(call manip_cmd,merge)
+remove:
+	$(call manip_cmd,remove)
+endif
+

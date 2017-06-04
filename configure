@@ -589,7 +589,8 @@ LIBOBJS
 python3_bin
 pandoc_bin
 make_bin
-HOMEDIR
+UCAFILE
+PASSWDFILE
 target_alias
 host_alias
 build_alias
@@ -636,7 +637,8 @@ enable_option_checking
       ac_precious_vars='build_alias
 host_alias
 target_alias
-HOMEDIR'
+PASSWDFILE
+UCAFILE'
 
 
 # Initialize some variables set by options.
@@ -1255,7 +1257,9 @@ if test -n "$ac_init_help"; then
   cat <<\_ACEOF
 
 Some influential environment variables:
-  HOMEDIR     path to folder containing home directories
+  PASSWDFILE  path to passwd file [SYSCONFDIR/passwd]
+  UCAFILE     relative path from homedir to Thunar uca.xml file
+              [.config/Thunar/uca.xml]
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -1734,6 +1738,8 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 # then outputs the replacement expansion.  We do not care
 # about autoupdate's warning because that contains
 # information on what to do *after* running autoupdate.
+
+
 
 
 

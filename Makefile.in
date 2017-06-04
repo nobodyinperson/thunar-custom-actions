@@ -48,12 +48,6 @@ dvidir:=@dvidir@
 pdfdir:=@pdfdir@
 # ps documentation [DOCDIR]
 psdir:=@psdir@
-# directory containing home directories
-ifeq (@HOMEDIR@,)
-homedir:=$(prefix)/home
-else
-homedir:=@HOMEDIR@
-endif
 
 PACKAGE_VERSION := @PACKAGE_VERSION@
 PACKAGE_NAME    := @PACKAGE_NAME@
@@ -163,7 +157,7 @@ endef
 
 .PHONY: reset
 reset:
-	$(BINDIR)/uca-apply remove
+	# $(BINDIR)/uca-apply remove
 
 .PHONY: uninstall
 uninstall: reset

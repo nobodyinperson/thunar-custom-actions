@@ -113,7 +113,7 @@ for ucafile in args.files: # loop over all files
         base_action = corresponding_action( 
             actions = base_root.xpath(SINGLE_ACTIONS_XPATH), 
             action = other_action)
-        if base_action:
+        if not base_action is None:
             logging.debug("The action {} is present in the base tree".format(
                 other_action))
             if args.action == "merge":
