@@ -1,3 +1,13 @@
+thunar-custom-actions (0.0.3) unstable; urgency=medium
+
+  * on installation from the graphical update manager as normal user, v0.0.2
+    merges the system-wide uca into the root folder / which is of course
+    bogus. This is an attempt to fix this.
+  * the resize actions had the same icon, patterns and file types, thus only
+    one was merged... Luckily, there is a similar icon view-restore-symbolic
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Tue, 06 Jun 2017 18:24:57 +0200
+
 thunar-custom-actions (0.0.2) unstable; urgency=medium
 
   * add some image-related custom actions

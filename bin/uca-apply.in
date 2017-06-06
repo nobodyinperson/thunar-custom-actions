@@ -85,9 +85,10 @@ remove::
 	su -c "$(call manip_cmd,remove)" - $(1)
 endef
 
-ifeq ($(USER),root)
+$(info This is user $(USER).)
+ifeq ($(filter $(USER),$(users)),) # this user is not a human user (e.g. root)
 $(foreach user,$(users),$(eval $(call root_manip_cmd,$(user))))
-else
+else # human user
 update::
 	@echo "Merging system-wide Thunar custom actions into your configuration"
 	$(call manip_cmd,merge)
