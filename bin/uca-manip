@@ -40,7 +40,7 @@ ACTIONS_XPATH = "/actions"
 SINGLE_ACTIONS_XPATH = "//action"
 ACTION_ELEMENTS_NO_TRANSLATION_XPATH = "*[not(@xml:lang) and not(@lang)]"
 UNIQUE_IDS_XPATH = "//action/unique-id"
-COMMAND_IDS_XPATH = "//action/command"
+COMPARE_IGNORE_XPATH = "//action/command|//action/description|//action/name"
 EMPTY_UCA_XML_STRING = "<actions></actions>"
 
 def actions_equal(action1, action2):
@@ -75,11 +75,11 @@ def corresponding_action(action,actions):
         lxml.etree.Element : The found corresponding element or None
     """
     action_copy= copy.deepcopy( action )
-    for tag in action_copy.xpath(COMMAND_IDS_XPATH):
+    for tag in action_copy.xpath(COMPARE_IGNORE_XPATH):
         tag.getparent().remove(tag)
     for act in actions:
         act_copy = copy.deepcopy( act )
-        for tag in act_copy.xpath(COMMAND_IDS_XPATH):
+        for tag in act_copy.xpath(COMPARE_IGNORE_XPATH):
             tag.getparent().remove(tag)
         # remove all commands 
         if actions_equal( act_copy, action_copy ):

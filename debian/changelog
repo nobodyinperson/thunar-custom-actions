@@ -1,8 +1,14 @@
-thunar-custom-actions (0.0.2) UNRELEASED; urgency=medium
+thunar-custom-actions (0.0.2) unstable; urgency=medium
 
   * add some image-related custom actions
+  * use M4 to pre-process the system-uca xml files for easy maintenance
+  * add English translation
+  * add progressbar with zenity for multiple-file-selections
+  * It is very important to back up own custom actions as they might be
+    deleted on an update or manual "uca-apply remove" if the icon, the
+    patterns and the file types match exactly.
 
- -- Yann Büchau <nobodyinperson@gmx.de>  Tue, 06 Jun 2017 11:41:56 +0200
+ -- Yann Büchau <nobodyinperson@gmx.de>  Tue, 06 Jun 2017 17:42:07 +0200
 
 thunar-custom-actions (0.0.1) unstable; urgency=medium
 

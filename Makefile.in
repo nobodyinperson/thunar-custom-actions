@@ -121,7 +121,7 @@ endef
 find_opts = -not -type d -not -iname '*.in'
 
 # define the local content that is to install
-local_datarootdir_toinstall = $(shell find $(local_datarootdir) $(find_opts))
+local_datarootdir_toinstall = $(shell find $(local_datarootdir) $(find_opts) -not -iname '*.m4')
 local_mandir_toinstall = $(GFMANPAGES)
 local_bindir_toinstall = $(shell find $(local_bindir) $(find_opts))
 
