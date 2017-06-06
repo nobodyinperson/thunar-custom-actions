@@ -157,7 +157,7 @@ endef
 
 .PHONY: reset
 reset:
-	# $(BINDIR)/uca-apply remove
+	$(bindir)/uca-apply remove
 
 .PHONY: uninstall
 uninstall: reset

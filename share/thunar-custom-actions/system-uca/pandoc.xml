@@ -3,7 +3,6 @@
 <action>
 	<icon>text-html</icon>
 	<name>zu HTML konvertieren</name>
-	<unique-id>1466510837711949-1</unique-id>
 	<command>zsh -c &apos;for file in &quot;%F&quot;;do f=%F;markdown $f &gt; $f:r.html;done&apos;</command>
 	<description>ausgewählte Markdown-Dokumente zu HTML konvertieren</description>
 	<patterns>*.md</patterns>

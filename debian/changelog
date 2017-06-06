@@ -1,5 +1,5 @@
-thunar-custom-actions (0.0.1) UNRELEASED; urgency=medium
+thunar-custom-actions (0.0.1) unstable; urgency=medium
 
   * Initial release.
 
- -- Yann Büchau <nobodyinperson@gmx.de>  Fri, 26 May 2017 13:29:11 +0200
+ -- Yann Büchau <nobodyinperson@gmx.de>  Tue, 06 Jun 2017 11:24:26 +0200

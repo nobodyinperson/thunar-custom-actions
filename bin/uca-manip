@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import argparse
 import sys
+import os
+import copy
 import textwrap
 import logging
+from io import StringIO
 
 # external modules
 from lxml import etree
@@ -34,9 +37,11 @@ else:
 
 EQUAL_TAGS = ["icon","patterns","command","description"]
 ACTIONS_XPATH = "/actions"
-SINGLE_ACTIONS_XPATH = "/actions/action"
+SINGLE_ACTIONS_XPATH = "//action"
 ACTION_ELEMENTS_NO_TRANSLATION_XPATH = "*[not(@xml:lang) and not(@lang)]"
-UNIQUE_IDS_XPATH = "/actions/action/unique-id"
+UNIQUE_IDS_XPATH = "//action/unique-id"
+COMMAND_IDS_XPATH = "//action/command"
+EMPTY_UCA_XML_STRING = "<actions></actions>"
 
 def actions_equal(action1, action2):
     """ 
@@ -69,18 +74,33 @@ def corresponding_action(action,actions):
     Returns:
         lxml.etree.Element : The found corresponding element or None
     """
+    action_copy= copy.deepcopy( action )
+    for tag in action_copy.xpath(COMMAND_IDS_XPATH):
+        tag.getparent().remove(tag)
     for act in actions:
-        if actions_equal( act, action ):
+        act_copy = copy.deepcopy( act )
+        for tag in act_copy.xpath(COMMAND_IDS_XPATH):
+            tag.getparent().remove(tag)
+        # remove all commands 
+        if actions_equal( act_copy, action_copy ):
             return act
+
+recovering_parser = etree.XMLParser( recover = True )
 
 # open base file
 if args.file == "-":
     base_file = sys.stdin
     logging.debug("reading base file from STDIN...")
 else:
-    base_file = open(args.file,"r")
-    logging.debug("reading base file from '{}'...".format(args.file))
-base_tree = etree.parse( base_file ) # read XML
+    try:
+        logging.debug("opening base file '{}'...".format(args.file))
+        base_file = open(args.file,"r")
+    except FileNotFoundError:
+        logging.debug("file '{}' does not exist. Using empty" "default".format(
+            args.file))
+        base_file = StringIO( EMPTY_UCA_XML_STRING )
+
+base_tree = etree.parse( base_file, recovering_parser ) # read XML
 base_root = base_tree.getroot() # XML root
 logging.debug("There are {} actions in the base file".format(
     len(base_root.xpath(SINGLE_ACTIONS_XPATH))))
@@ -90,10 +110,15 @@ for ucafile in args.files: # loop over all files
         input_file = sys.stdin
         logging.debug("reading another file from STDIN...")
     else:
-        input_file = open(ucafile,"r")
-        logging.debug("reading another file from '{}'...".format(ucafile))
-    other_tree = etree.parse( input_file ) # read XML
-    other_root = other_tree.getroot() # XML root
+        try:
+            logging.debug("reading another file from '{}'...".format(ucafile))
+            input_file = open(ucafile,"r")
+        except FileNotFoundError:
+            logging.debug("file '{}' does not exist. Using empty" 
+                "default".format(ucafile))
+            input_file = StringIO( EMPTY_UCA_XML_STRING )
+        other_tree = etree.parse( input_file, recovering_parser ) # read XML
+        other_root = other_tree.getroot() # XML root
     logging.debug("parsed the XML")
 
     # remove all unique ids
@@ -140,7 +165,11 @@ for ucafile in args.files: # loop over all files
 if args.output == "-":
     output_file = sys.stdout
 else:
+    directory = os.path.dirname( args.output ) 
+    if not os.path.exists( directory ):
+        os.makedirs( directory )
     output_file = open(args.output,"w")
+
 
 # write XML
 xml_string = etree.tostring( base_root, pretty_print = True, 
