@@ -16,6 +16,12 @@ AC_SUBST([UCAFILE])
 AC_CHECK_PROG([make_bin],[make],[yes],[no])
 test "$make_bin" != "yes" && AC_MSG_ERROR([no make found])
 
+AC_CHECK_PROG([convert_bin],[convert],[yes],[no])
+test "$convert_bin" != "yes" && AC_MSG_ERROR([no convert/ImageMagick found])
+
+AC_CHECK_PROG([m4_bin],[m4],[yes],[no])
+test "$m4_bin" != "yes" && AC_MSG_ERROR([no m4 found])
+
 AC_CHECK_PROG([pandoc_bin],[pandoc],[yes],[no])
 test "$pandoc_bin" != "yes" && AC_MSG_ERROR([no pandoc installation found])
 

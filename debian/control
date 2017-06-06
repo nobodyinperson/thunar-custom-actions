@@ -11,7 +11,7 @@ Vcs-Git: https://github.com/nobodyinperson/thunar-custom-actions.git
 Package: thunar-custom-actions
 Architecture: all
 Depends: ${misc:Depends}, thunar, python3, python3-lxml, make, imagemagick,
-    pandoc
+    pandoc, m4, zenity
 Conflicts: thunar-custom-actions
 Replaces: thunar-custom-actions
 Description: system-wide thunar custom actions

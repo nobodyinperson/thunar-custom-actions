@@ -81,6 +81,12 @@ MDMANPAGES = $(shell find $(local_mandir) -type f -iname '*.1.md')
 # corresponding groff manpages
 GFMANPAGES = $(MDMANPAGES:.1.md=.1)
 
+local_system_uca_dir = $(local_datarootdir)/$(PACKAGE_NAME)/system-uca
+UCA_XML_FILES_M4 = $(wildcard $(local_system_uca_dir)/*.xml.m4 )
+UCA_XML_FILES = $(UCA_XML_FILES_M4:.m4=)
+# m4
+M4_INCL = m4
+
 # pandoc options for manpage creation
 PANDOCOPTS = -f markdown -t man --standalone
 
@@ -95,8 +101,10 @@ DEBIAN_CHANGELOG_VERSION = $(shell perl -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*
 
 # default target
 .PHONY: all
-all: $(IN_FILES_INSTANTIATED) $(CONFIGURE_AC) $(GFMANPAGES)
+all: $(IN_FILES_INSTANTIATED) $(UCA_XML_FILES) $(CONFIGURE_AC) $(GFMANPAGES)
 
+%: %.m4 $(wildcard $(M4_INCL)/*.m4)
+	m4 -I $(M4_INCL) $< > $@
 
 # create rule to install a FILE into the TARGET_DIRECTORY
 # FILE can be a relative path from here
@@ -169,6 +177,7 @@ uninstall: reset
 clean:
 	rm -rf $(addprefix $(DEBIAN)/,files *.substvars *.debhelper $(PACKAGE_NAME) debhelper-build-stamp *.debhelper.log)
 	rm -f $(IN_FILES_INSTANTIATED)
+	rm -f $(UCA_XML_FILES)
 	rm -f $(GFMANPAGES)
 	rm -f $(installed_files_file)
 

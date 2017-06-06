@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Image manipulation Thunar custom actions
+-->
 <actions>
 <action>
 	<icon>edit-redo</icon>
 	<name>im Uhrzeigersinn drehen</name>
-	<command>for file in %F;do filetmp=$(dirname $file)/.$(basename ${file}).tmp;convert -rotate 90 $file $filetmp;cp $filetmp $file;rm $filetmp;done</command>
+	<command>set -e;AMOUNT=$(for file in %F;do echo $file;done | wc -l);NR=0;for file in %F;do  NR=$(echo "$NR+1" | bc); echo "#"$(basename "$file"); echo $(echo "$NR*100/$AMOUNT" | bc); filetmp=$(dirname "$file")/.$(basename "$file").tmp; convert -rotate 90 $file $filetmp 2>/dev/null >/dev/null; cp "$filetmp" "$file"; rm "$filetmp";done |zenity --progress --auto-close;</command>
 	<description>Markierte Bilder im Uhrzeigersinn drehen</description>
 	<patterns>*</patterns>
 	<image-files/>
@@ -11,7 +14,7 @@
 <action>
 	<icon>edit-undo</icon>
 	<name>gegen den Uhrzeigersinn drehen</name>
-	<command>for file in %F;do filetmp=$(dirname $file)/.$(basename ${file}).tmp;convert -rotate 270 $file $filetmp;cp $filetmp $file;rm $filetmp;done</command>
+	<command>set -e;AMOUNT=$(for file in %F;do echo $file;done | wc -l);NR=0;for file in %F;do  NR=$(echo "$NR+1" | bc); echo "#"$(basename "$file"); echo $(echo "$NR*100/$AMOUNT" | bc); filetmp=$(dirname "$file")/.$(basename "$file").tmp; convert -rotate 270 $file $filetmp 2>/dev/null >/dev/null; cp "$filetmp" "$file"; rm "$filetmp";done |zenity --progress --auto-close;</command>
 	<description>Markierte Bilder werden gegen den Uhrzeigersinn gedreht</description>
 	<patterns>*</patterns>
 	<image-files/>
@@ -19,7 +22,7 @@
 <action>
 	<icon>applications-graphics-symbolic</icon>
 	<name>in Graustufen umwandeln</name>
-	<command>for file in %F;do filetmp=$(dirname $file)/.$(basename ${file}).tmp;convert $file -set colorspace Gray -separate -average $filetmp;cp $filetmp $file;rm $filetmp;done</command>
+	<command>set -e;AMOUNT=$(for file in %F;do echo $file;done | wc -l);NR=0;for file in %F;do  NR=$(echo "$NR+1" | bc); echo "#"$(basename "$file"); echo $(echo "$NR*100/$AMOUNT" | bc); filetmp=$(dirname "$file")/.$(basename "$file").tmp; convert $file -set colorspace Gray -separate -average $filetmp 2>/dev/null >/dev/null; cp "$filetmp" "$file"; rm "$filetmp";done |zenity --progress --auto-close;</command>
 	<description>arithmetische Mittelung aller Farbkanäle</description>
 	<patterns>*</patterns>
 	<startup-notify/>
@@ -28,7 +31,7 @@
 <action>
 	<icon>image-missing</icon>
 	<name>Transparenz entfernen</name>
-	<command>for file in %F;do filetmp=$(dirname $file)/.$(basename ${file}).tmp;convert $file -alpha off $filetmp;cp $filetmp $file;rm $filetmp;done</command>
+	<command>set -e;AMOUNT=$(for file in %F;do echo $file;done | wc -l);NR=0;for file in %F;do  NR=$(echo "$NR+1" | bc); echo "#"$(basename "$file"); echo $(echo "$NR*100/$AMOUNT" | bc); filetmp=$(dirname "$file")/.$(basename "$file").tmp; convert $file -alpha off $filetmp 2>/dev/null >/dev/null; cp "$filetmp" "$file"; rm "$filetmp";done |zenity --progress --auto-close;</command>
 	<description>Bei den ausgewählten Bildern wird der Alphakanal entfernt.</description>
 	<patterns>*</patterns>
 	<image-files/>
@@ -36,7 +39,7 @@
 <action>
 	<icon>window-restore-symbolic</icon>
 	<name>Auflösung halbieren</name>
-	<command>for file in %F;do filetmp=$(dirname $file)/.$(basename ${file}).tmp;convert $file -resize 50%% $filetmp;cp $filetmp $file;rm $filetmp;done</command>
+	<command>set -e;AMOUNT=$(for file in %F;do echo $file;done | wc -l);NR=0;for file in %F;do  NR=$(echo "$NR+1" | bc); echo "#"$(basename "$file"); echo $(echo "$NR*100/$AMOUNT" | bc); filetmp=$(dirname "$file")/.$(basename "$file").tmp; convert $file -resize 50%% $filetmp 2>/dev/null >/dev/null; cp "$filetmp" "$file"; rm "$filetmp";done |zenity --progress --auto-close;</command>
 	<description>Breite und Höhe der Bilder werden halbiert.</description>
 	<patterns>*</patterns>
 	<image-files/>
@@ -44,7 +47,7 @@
 <action>
 	<icon>window-restore-symbolic</icon>
 	<name>Auflösung auf 75% reduzieren</name>
-	<command>for file in %F;do filetmp=$(dirname $file)/.$(basename ${file}).tmp;convert $file -resize 75%% $filetmp;cp $filetmp $file;rm $filetmp;done</command>
+	<command>set -e;AMOUNT=$(for file in %F;do echo $file;done | wc -l);NR=0;for file in %F;do  NR=$(echo "$NR+1" | bc); echo "#"$(basename "$file"); echo $(echo "$NR*100/$AMOUNT" | bc); filetmp=$(dirname "$file")/.$(basename "$file").tmp; convert $file -resize 75%% $filetmp 2>/dev/null >/dev/null; cp "$filetmp" "$file"; rm "$filetmp";done |zenity --progress --auto-close;</command>
 	<description>Breite und Höhe der Bilder werden auf 75% reduziert.</description>
 	<patterns>*</patterns>
 	<image-files/>
