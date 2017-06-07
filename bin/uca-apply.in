@@ -74,6 +74,13 @@ homedirs = $(shell perl -F: -e 'print "$$F[5]\n" if ($$F[2]>=1000 and $$F[2] <= 
 .PHONY: update remove
 .PHONY: update-all remove-all
 
+update::
+	@echo "# Merging system-wide Thunar custom actions into your configuration"
+	$(call manip_cmd,merge)
+remove::
+	@echo "# Removing system-wide Thunar custom actions from your configuration"
+	$(call manip_cmd,remove)
+
 manip_cmd = cd && $(bindir)/uca-manip -a $(1) -f $(ucafile) -o $(ucafile) $(system_uca_files)
 
 # $(call root_manip_cmd,USER)
@@ -88,9 +95,3 @@ endef
 
 $(foreach user,$(users),$(eval $(call root_manip_cmd,$(user))))
 
-update::
-	@echo "# Merging system-wide Thunar custom actions into your configuration"
-	$(call manip_cmd,merge)
-remove::
-	@echo "# Removing system-wide Thunar custom actions from your configuration"
-	$(call manip_cmd,remove)

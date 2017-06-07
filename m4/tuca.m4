@@ -23,5 +23,11 @@ for TUCA_FILE in TUCA_ALL_FILES;do dnl
  cp "$TUCA_TEMP" "$TUCA_FILE";dnl
  rm "$TUCA_TEMP";dnl
 done |dnl
-zenity --progress --auto-close;dnl
+zenity --progress --auto-kill --auto-close;dnl
+)dnl
+dnl
+define(TUCA_WAIT,dnl
+set -e;dnl
+$1 |dnl
+zenity --progress --auto-kill --auto-close --pulsate;dnl
 )dnl

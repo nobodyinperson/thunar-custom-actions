@@ -1,3 +1,13 @@
+thunar-custom-actions (0.0.5) unstable; urgency=medium
+
+  * add images to A4 PDF custom action
+  * fix another merging bug (now if the actions is already present, delete it,
+    then re-add it)
+  * let uca-apply without arguments do "update" for the user, not for all
+    users
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 11:40:54 +0200
+
 thunar-custom-actions (0.0.4) unstable; urgency=medium
 
   * another attempt to fix the installation bugs

@@ -40,7 +40,10 @@ ACTIONS_XPATH = "/actions"
 SINGLE_ACTIONS_XPATH = "//action"
 ACTION_ELEMENTS_NO_TRANSLATION_XPATH = "*[not(@xml:lang) and not(@lang)]"
 UNIQUE_IDS_XPATH = "//action/unique-id"
-COMPARE_IGNORE_XPATH = "//action/command|//action/description|//action/name"
+COMMAND_XPATH = "//action/command"
+DESCRIPTION_XPATH = "//action/description"
+NAME_XPATH = "//action/name"
+COMPARE_IGNORE_XPATH = "|".join([COMMAND_XPATH,DESCRIPTION_XPATH,NAME_XPATH])
 EMPTY_UCA_XML_STRING = "<actions></actions>"
 
 def actions_equal(action1, action2):
@@ -142,7 +145,11 @@ for ucafile in args.files: # loop over all files
             logging.debug("The action {} is present in the base tree".format(
                 other_action))
             if args.action == "merge":
-                logging.debug("No reason to merge anything.")
+                logging.debug("No reason to merge anything, but merging anyway!")
+                logging.debug("removing this action first from the base tree")
+                base_action.getparent().remove(base_action)
+                logging.debug("adding the new action content to the base tree")
+                base_root.xpath(ACTIONS_XPATH)[0].append(other_action)
             elif args.action == "remove":
                 # remove this action from the base file
                 logging.debug("removing this action from the base tree")
