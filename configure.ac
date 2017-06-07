@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([thunar-custom-actions], [0.0.7], [nobodyinperson@gmx.de])
+AC_INIT([thunar-custom-actions], [0.0.8], [nobodyinperson@gmx.de])
 
 m4_include([m4/ax_python_module.m4])
 
@@ -18,6 +18,15 @@ test "$make_bin" != "yes" && AC_MSG_ERROR([no make found])
 
 AC_CHECK_PROG([convert_bin],[convert],[yes],[no])
 test "$convert_bin" != "yes" && AC_MSG_ERROR([no convert/ImageMagick found])
+
+AC_CHECK_PROG([gpg2_bin],[gpg2],[yes],[no])
+test "$gpg2_bin" != "yes" && AC_MSG_ERROR([no gpg2 found])
+
+AC_CHECK_PROG([zenity_bin],[zenity],[yes],[no])
+test "$zenity_bin" != "yes" && AC_MSG_ERROR([no zenity found])
+
+AC_CHECK_PROG([bc_bin],[bc],[yes],[no])
+test "$bc_bin" != "yes" && AC_MSG_ERROR([no bc found])
 
 AC_CHECK_PROG([gs_bin],[gs],[yes],[no])
 test "$gs_bin" != "yes" && AC_MSG_ERROR([no gs/ghostscript found])

@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.8) unstable; urgency=medium
+
+  * add GPG en/decryption actions
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 15:40:36 +0200
+
 thunar-custom-actions (0.0.7) unstable; urgency=medium
 
   * add PDF concatenation action

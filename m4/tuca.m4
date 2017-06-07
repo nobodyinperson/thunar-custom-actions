@@ -1,7 +1,9 @@
 define(TUCA_FILE_VAR,file)dnl
 define(TUCA_TEMP_VAR,filetmp)dnl
+define(TUCA_OUT_VAR,fileout)dnl
 define(TUCA_FILE,"$TUCA_FILE_VAR")dnl
 define(TUCA_TEMP,"$TUCA_TEMP_VAR")dnl
+define(TUCA_OUT,"$TUCA_OUT_VAR")dnl
 dnl
 define(TUCA_ALL_FILES,%F)dnl
 define(TUCA_ALL_FILE_FOLDERS,%D)dnl
@@ -22,8 +24,10 @@ for TUCA_FILE_VAR in TUCA_ALL_FILES;do dnl
  echo $(echo "$NR*100/$AMOUNT" | bc);dnl
  TUCA_TEMP_VAR=$(dirname TUCA_FILE)/.$(basename TUCA_FILE).tmp;dnl
  $1 2>/dev/null >/dev/null;dnl
- cp TUCA_TEMP TUCA_FILE;dnl
+ if test -z TUCA_OUT;then TUCA_OUT_VAR=TUCA_FILE;fi;dnl
+ cp TUCA_TEMP TUCA_OUT;dnl
  rm TUCA_TEMP;dnl
+ unset TUCA_OUT_VAR;dnl
 done |dnl
 zenity --progress --auto-kill --auto-close;dnl
 )dnl
