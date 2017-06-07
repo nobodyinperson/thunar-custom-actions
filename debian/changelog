@@ -1,8 +1,11 @@
-thunar-custom-actions (0.0.6) UNRELEASED; urgency=medium
+thunar-custom-actions (0.0.6) unstable; urgency=medium
 
   * fix actions for filenames with spaces
+  * fix another merging bug: comparison now only ignores name and description,
+    BUT the command is taken into account. This should widely prevent the
+    already present user custom actions from being mistakenly removed.
 
- -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 11:59:19 +0200
+ -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 13:11:01 +0200
 
 thunar-custom-actions (0.0.5) unstable; urgency=medium
 

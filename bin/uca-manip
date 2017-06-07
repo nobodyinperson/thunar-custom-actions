@@ -2,6 +2,7 @@
 import argparse
 import sys
 import os
+import re
 import copy
 import textwrap
 import logging
@@ -43,7 +44,7 @@ UNIQUE_IDS_XPATH = "//action/unique-id"
 COMMAND_XPATH = "//action/command"
 DESCRIPTION_XPATH = "//action/description"
 NAME_XPATH = "//action/name"
-COMPARE_IGNORE_XPATH = "|".join([COMMAND_XPATH,DESCRIPTION_XPATH,NAME_XPATH])
+COMPARE_IGNORE_XPATH = "|".join([DESCRIPTION_XPATH,NAME_XPATH])
 EMPTY_UCA_XML_STRING = "<actions></actions>"
 
 def actions_equal(action1, action2):
@@ -58,7 +59,10 @@ def actions_equal(action1, action2):
         bool : True if the actions are considered equal, False otherwise.
     """
     def tostring(action):
-        return etree.tostring( action, encoding = str )
+        tostr = etree.tostring( action, encoding = str, method = "text", 
+            pretty_print = True)
+        string = re.sub(string=tostr,pattern="\s*",repl="")
+        return string
     string1 = tostring( action1 )
     string2 = tostring( action2 )
     logging.debug("tostring(action1):\n{}".format(string1))
@@ -80,15 +84,37 @@ def corresponding_action(action,actions):
     action_copy= copy.deepcopy( action )
     for tag in action_copy.xpath(COMPARE_IGNORE_XPATH):
         tag.getparent().remove(tag)
+    command = action_copy.xpath(COMMAND_XPATH) # get the command
+    try: # remove all non-characters
+        cmd = command[0]
+        cmd.text = re.sub(string=cmd.text, pattern="\W+",repl="")
+    except (IndexError):
+        pass
     for act in actions:
         act_copy = copy.deepcopy( act )
+        # remove all ignored tags
         for tag in act_copy.xpath(COMPARE_IGNORE_XPATH):
             tag.getparent().remove(tag)
-        # remove all commands 
+        command = act_copy.xpath(COMMAND_XPATH) # get the command
+        try: # remove all non-characters
+            cmd = command[0]
+            cmd.text = re.sub(string=cmd.text, pattern="\W+",repl="")
+        except (IndexError):
+            pass
+            
+        # if this action is equal to the action of interest, this is it!
         if actions_equal( act_copy, action_copy ):
             return act
 
 recovering_parser = etree.XMLParser( recover = True )
+
+def parse_xml(fh):
+    string = fh.read() # read content
+    logging.debug("input string before:\n{}".format(string))
+    string = re.sub( string = string, pattern = "^\s*<\?xml[^>]*?\?>\s*",repl="")
+    logging.debug("input string after:\n{}".format(string))
+    res = etree.parse( StringIO(string) , recovering_parser )
+    return res
 
 # open base file
 if args.file == "-":
@@ -103,7 +129,7 @@ else:
             args.file))
         base_file = StringIO( EMPTY_UCA_XML_STRING )
 
-base_tree = etree.parse( base_file, recovering_parser ) # read XML
+base_tree = parse_xml( base_file ) # read XML
 base_root = base_tree.getroot() # XML root
 logging.debug("There are {} actions in the base file".format(
     len(base_root.xpath(SINGLE_ACTIONS_XPATH))))
@@ -120,7 +146,7 @@ for ucafile in args.files: # loop over all files
             logging.debug("file '{}' does not exist. Using empty" 
                 "default".format(ucafile))
             input_file = StringIO( EMPTY_UCA_XML_STRING )
-        other_tree = etree.parse( input_file, recovering_parser ) # read XML
+        other_tree = parse_xml( input_file )
         other_root = other_tree.getroot() # XML root
     logging.debug("parsed the XML")
 

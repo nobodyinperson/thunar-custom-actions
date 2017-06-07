@@ -56,7 +56,7 @@ include(tuca.m4)dnl
 	<image-files/>
 </action>
 <action>
-	<icon>view-restore-symbolic</icon>
+	<icon>window-restore-symbolic</icon>
 	<name xml:lang="de">auf 75% Größe skalieren</name>
 	<name xml:lang="en">resize to 75% width</name>
 	<command>TUCA_LOOP(convert TUCA_FILE -resize 75%% TUCA_TEMP)</command>
