@@ -41,7 +41,7 @@ dpkg -i thunar-custom-actions-*.deb
 If you use my [apt repository](http://apt.nobodyinperson.de), installation is even easier:
 
 ```bash
-sudo apt update && sudo apt install thunar-custom-actions
+sudo apt-get update && sudo apt-get install thunar-custom-actions
 ```
 
 Also, you will get automatic updates when using my repository.
@@ -53,6 +53,7 @@ You can also install `thunar-custom-actions` by hand. You may want to do that if
 ```bash
 # clone the repository
 git clone https://github.com/nobodyinperson/thunar-custom-actions
+cd thunar-custom-actions
 ./configure --prefix=$HOME/.local PASSWDFILE=/etc/passwd
 make
 make install
@@ -82,7 +83,7 @@ To upgrade to the latest development version:
 uca-apply remove
 make uninstall
 git pull
-./configure --prefix=$HOME/.local
+./configure --prefix=$HOME/.local PASSWDFILE=/etc/passwd
 make
 make install
 uca-apply update
