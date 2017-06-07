@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.4) unstable; urgency=medium
+
+  * another attempt to fix the installation bugs
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 09:26:12 +0200
+
 thunar-custom-actions (0.0.3) unstable; urgency=medium
 
   * on installation from the graphical update manager as normal user, v0.0.2

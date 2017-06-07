@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([thunar-custom-actions], [0.0.3], [nobodyinperson@gmx.de])
+AC_INIT([thunar-custom-actions], [0.0.4], [nobodyinperson@gmx.de])
 
 m4_include([m4/ax_python_module.m4])
 
