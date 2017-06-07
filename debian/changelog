@@ -1,3 +1,10 @@
+thunar-custom-actions (0.0.7) unstable; urgency=medium
+
+  * add PDF concatenation action
+  * add PDF file size shrinker
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 14:07:47 +0200
+
 thunar-custom-actions (0.0.6) unstable; urgency=medium
 
   * fix actions for filenames with spaces
