@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.6) UNRELEASED; urgency=medium
+
+  * fix actions for filenames with spaces
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 07 Jun 2017 11:59:19 +0200
+
 thunar-custom-actions (0.0.5) unstable; urgency=medium
 
   * add images to A4 PDF custom action
