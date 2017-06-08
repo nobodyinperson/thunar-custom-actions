@@ -94,6 +94,7 @@ IN_FILES = $(shell find $(local_dirs) -type f -iname '*.in')
 IN_FILES_INSTANTIATED = $(IN_FILES:.in=)
 
 CONFIGURE_AC = configure.ac
+CONFIGURE = configure
 
 # get information from changelog
 DEBIAN_CHANGELOG = debian/changelog
@@ -101,7 +102,7 @@ DEBIAN_CHANGELOG_VERSION = $(shell perl -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*
 
 # default target
 .PHONY: all
-all: $(IN_FILES_INSTANTIATED) $(UCA_XML_FILES) $(CONFIGURE_AC) $(GFMANPAGES)
+all: $(IN_FILES_INSTANTIATED) $(UCA_XML_FILES) $(CONFIGURE) $(CONFIGURE_AC) $(GFMANPAGES)
 
 %: %.m4 $(wildcard $(M4_INCL)/*.m4)
 	m4 -I $(M4_INCL) $< > $@
@@ -138,6 +139,9 @@ $(foreach configure_dir,$(configure_dirs),\
 $(sort $(install_target_dirs)): % :
 	mkdir -p $@
 	@echo $@ >> $(installed_files_file)
+
+$(CONFIGURE): $(CONFIGURE_AC)
+	-autoconf
 
 $(CONFIGURE_AC): $(DEBIAN_CHANGELOG)
 	perl -pi -e 's#^(\s*AC_INIT\([^,]*,\s*\[)([.0-9_a-zA-Z-]+)(\]\s*,.*\))#$${1}$(DEBIAN_CHANGELOG_VERSION)$${3}#g' $@

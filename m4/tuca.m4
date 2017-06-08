@@ -13,9 +13,7 @@ define(TUCA_FIRST_FILE,%f)dnl
 define(TUCA_FIRST_FILE_FOLDER,%d)dnl
 define(TUCA_FIRST_FILENAME,%n)dnl
 dnl
-dnl
 define(TUCA_LOOP,dnl
-set -e;dnl
 AMOUNT=$(for TUCA_FILE_VAR in TUCA_ALL_FILES;do echo TUCA_FILE;done | wc -l);dnl
 NR=0;dnl
 for TUCA_FILE_VAR in TUCA_ALL_FILES;do dnl
@@ -35,5 +33,5 @@ dnl
 define(TUCA_WAIT,dnl
 set -e;dnl
 $1 |dnl
-zenity --progress --auto-kill --auto-close --pulsate;dnl
+zenity --progress --auto-kill --auto-close --pulsate dnl
 )dnl

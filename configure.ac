@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([thunar-custom-actions], [0.0.8], [nobodyinperson@gmx.de])
+AC_INIT([thunar-custom-actions], [0.0.9], [nobodyinperson@gmx.de])
 
 m4_include([m4/ax_python_module.m4])
 
@@ -16,8 +16,17 @@ AC_SUBST([UCAFILE])
 AC_CHECK_PROG([make_bin],[make],[yes],[no])
 test "$make_bin" != "yes" && AC_MSG_ERROR([no make found])
 
+AC_CHECK_PROG([xdg_open_bin],[xdg-open],[yes],[no])
+test "$xdg_open_bin" != "yes" && AC_MSG_ERROR([no xdg-open found])
+
+AC_CHECK_PROG([xargs_bin],[xargs],[yes],[no])
+test "$xargs_bin" != "yes" && AC_MSG_ERROR([no xargs found])
+
 AC_CHECK_PROG([convert_bin],[convert],[yes],[no])
 test "$convert_bin" != "yes" && AC_MSG_ERROR([no convert/ImageMagick found])
+
+AC_CHECK_PROG([perl_bin],[perl],[yes],[no])
+test "$perl_bin" != "yes" && AC_MSG_ERROR([no Perl found])
 
 AC_CHECK_PROG([gpg2_bin],[gpg2],[yes],[no])
 test "$gpg2_bin" != "yes" && AC_MSG_ERROR([no gpg2 found])
