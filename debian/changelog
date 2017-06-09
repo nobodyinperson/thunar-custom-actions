@@ -1,6 +1,7 @@
 thunar-custom-actions (0.0.10) UNRELEASED; urgency=medium
 
-  * improve transparency filling
+  * improve transparency filling action
+  * improve shrinkinking action (now ask for shrinking percentage)
 
  -- Yann Büchau <nobodyinperson@gmx.de>  Fri, 09 Jun 2017 09:46:08 +0200
 

@@ -47,21 +47,11 @@ include(tuca.m4)dnl
 </action>
 <action>
 	<icon>window-restore-symbolic</icon>
-	<name xml:lang="de">auf halbe Größe skalieren</name>
-	<name xml:lang="en">resize to 50% width</name>
-	<command>TUCA_LOOP(convert TUCA_FILE -resize 50%% TUCA_TEMP)</command>
-	<description xml:lang="de">Breite und Höhe der ausgewählten Bilder werden halbiert.</description>
-	<description xml:lang="en">Width and height of the selected images are halved.</description>
-	<patterns>*</patterns>
-	<image-files/>
-</action>
-<action>
-	<icon>window-restore-symbolic</icon>
-	<name xml:lang="de">auf 75% Größe skalieren</name>
-	<name xml:lang="en">resize to 75% width</name>
-	<command>TUCA_LOOP(convert TUCA_FILE -resize 75%% TUCA_TEMP)</command>
-	<description xml:lang="de">Breite und Höhe der ausgewählten Bilder werden auf 75% verringert.</description>
-	<description xml:lang="en">Width and height of the selected images are shrinked to 75%.</description>
+	<name xml:lang="de">Bilder verkleinern</name>
+	<name xml:lang="en">shrink images</name>
+	<command>SCALE=$(zenity --text="%%" --scale --value=50 --min-value=1 --max-value=99) || exit;TUCA_LOOP(convert TUCA_FILE -resize ${SCALE}%% TUCA_TEMP)</command>
+	<description xml:lang="de">Die ausgewählten Bilder werden auf einen gewählten Prozentsatz der ursprünglichen Größe skaliert.</description>
+	<description xml:lang="en">The selected images are scaled to a given percentage of the original size.</description>
 	<patterns>*</patterns>
 	<image-files/>
 </action>
