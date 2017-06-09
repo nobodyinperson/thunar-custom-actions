@@ -6,7 +6,21 @@ Unfortunately, Thunar is not very flexible when it comes to the storing location
 
 To have the same Thunar custom actions across your machines, you may synchronize the `uca.xml` file e.g. with Dropbox or [Syncthing](https://syncthing.net/). But still, I always find myself copy-pasting when I want to _share_ my custom actions with other people.
 
-This is an attempt to realize system-wide Thunar custom actions that can easily be updated.
+This is an attempt to realize **system-wide Thunar custom actions** that can easily be **updated and maintained**.
+
+## How does it work?
+
+At its heart, `thunar-custom-actions` is actually just the script (Makefile) `bin/uca-apply` that instructs the Python script `bin/uca-manip` to **merge** or **remove** the custom actions provided by `thunar-custom-actions` (the files `share/thunar-custom-actions/system-uca/*.xml`) into [the|each] user's Thunar configuration `~/.config/Thunar/uca.xml`.
+
+The [Debian package](#debian-package) takes care of the actions provided by `thunar-custom-actions` automatically:
+
+- **adding** them to the users' configurations on **package installation**
+- **removing** them from the users' configurations on **package removal**
+- **removing** the old, then **adding** the new actions on **package update**
+
+The [manual installation](#manual-install) requires the user to do this himself.
+
+The action merging/removal process is designed to **NOT touch the actions that were there before**! It *should* leave them totally untouched. So you *should* be safe to just try `thunar-custom-actions` and if you don't like it, uninstall it again without causing any damage to your configuration. But as always, you are encouraged to **backup your `~/.config/Thunar/uca.xml` file** before using `thunar-custom-actions` if you care about your already-defined custom actions.
 
 ## What can it do?
 
@@ -21,8 +35,9 @@ There are currently actions for:
 - **de/encrypting** arbitrary files with GPG
 - **finding big elements** in a folder
 - **creating symbolic links** to files
-
+ 
 Everything with a beautiful **progress bar** realized with `zenity`.
+Of course, I tried to make everything work regardless of ugly characters (e.g. whitespace) in the filename.
 
 ![thunar-custom-actions-v0 0 8-ss1](https://user-images.githubusercontent.com/19148271/26882399-95e61d6a-4b9a-11e7-8ab3-de5eb34b3fb9.png)
 
@@ -32,6 +47,7 @@ Everything with a beautiful **progress bar** realized with `zenity`.
 
 I am testing `thunar-custom-actions` regularly on several different machines running **Xubuntu 16.04 LTS**. But as soon as you got it installed properly, it should work regardless of the system used. If you encounter any problems installing or using `thunar-custom-actions`, feel free to open a [new Issue here on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/issues/new) and describe your problem.
 
+<a name="debian-package"></a>
 ### Debian package
 
 `thunar-custom-actions` is best installed via the Debian package obtainable at the [releases page](https://github.com/nobodyinperson/thunar-custom-actions/releases). Download the `*.deb`-package and install it like so:
@@ -50,6 +66,7 @@ sudo apt-get update && sudo apt-get install thunar-custom-actions
 
 Also, you will get automatic updates when using my repository.
 
+<a name="manual-install"></a>
 ### By hand
 
 You can also install `thunar-custom-actions` by hand. You may want to do that if you don't have root privileges on your machine, or you are using a distribution that does not utilise the `.deb` software package format.
