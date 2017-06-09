@@ -36,12 +36,12 @@ include(tuca.m4)dnl
 	<image-files/>
 </action>
 <action>
-	<icon>image-missing</icon>
-	<name xml:lang="de">Transparenz entfernen</name>
-	<name xml:lang="en">remove transparency</name>
-	<command>TUCA_LOOP(convert TUCA_FILE -alpha off TUCA_TEMP)</command>
-	<description xml:lang="de">Bei den ausgewählten Bildern wird der Alphakanal entfernt.</description>
-	<description xml:lang="en">The alpha channel is removed from the selected images.</description>
+	<icon>color-fill</icon>
+	<name xml:lang="de">Transparenz füllen</name>
+	<name xml:lang="en">fill transparency</name>
+	<command>COLOR=$(TUCA_COLOR_SELECTION()) || exit;TUCA_LOOP(convert TUCA_FILE -background "$COLOR" -alpha remove TUCA_TEMP)</command>
+	<description xml:lang="de">Bei den ausgewählten Bildern werden transparente Bereiche mit der ausgewählten Farbe gefüllt.</description>
+	<description xml:lang="en">The alpha channel in the selected images is filled with the selected color.</description>
 	<patterns>*</patterns>
 	<image-files/>
 </action>

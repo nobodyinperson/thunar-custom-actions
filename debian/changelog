@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.10) UNRELEASED; urgency=medium
+
+  * improve transparency filling
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Fri, 09 Jun 2017 09:46:08 +0200
+
 thunar-custom-actions (0.0.9) unstable; urgency=medium
 
   * add symbolic link creation
