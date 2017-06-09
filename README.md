@@ -15,10 +15,12 @@ There are currently actions for:
 - **rotating** images
 - **shrinking** images
 - **grayscaling** images
-- **removing alpha channel** from images
+- **filling transparent areas** in images with a given color
 - **converting** images to an A4 multi-page **PDF** document
 - **shrinking** PDF file sizes
 - **de/encrypting** arbitrary files with GPG
+- **finding big elements** in a folder
+- **creating symbolic links** to files
 
 Everything with a beautiful **progress bar** realized with `zenity`.
 
@@ -27,6 +29,8 @@ Everything with a beautiful **progress bar** realized with `zenity`.
 ![thunar-custom-actions-v0 0 8-ss2](https://user-images.githubusercontent.com/19148271/26882400-967bb906-4b9a-11e7-999c-0142a802dd22.png)
 
 ## Installation
+
+I am testing `thunar-custom-actions` regularly on several different machines running **Xubuntu 16.04 LTS**. But as soon as you got it installed properly, it should work regardless of the system used. If you encounter any problems installing or using `thunar-custom-actions`, feel free to open a [new Issue here on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/issues/new) and describe your problem.
 
 ### Debian package
 
@@ -46,9 +50,9 @@ sudo apt-get update && sudo apt-get install thunar-custom-actions
 
 Also, you will get automatic updates when using my repository.
 
-### by hand
+### By hand
 
-You can also install `thunar-custom-actions` by hand. You may want to do that if you don't have root privileges on your machine:
+You can also install `thunar-custom-actions` by hand. You may want to do that if you don't have root privileges on your machine, or you are using a distribution that does not utilise the `.deb` software package format.
 
 ```bash
 # clone the repository
@@ -71,13 +75,13 @@ If you don't want them anymore, run:
 uca-apply remove
 ```
 
-To uninstall `thunar-custom-actions`:
+To uninstall `thunar-custom-actions`, run from the git repository root:
 
 ```bash
 make uninstall
 ```
 
-To upgrade to the latest development version:
+To upgrade to the latest development version, run from the repository root:
 
 ```bash
 uca-apply remove
@@ -91,4 +95,4 @@ uca-apply update
 
 ## Contribute
 
-If you would like to add translations or your own custom actions, take a look at the files under `share/thunar-custom-actions/system-uca`, add your changes there and then file a Pull Request.
+If you would like to add translations or your own custom actions, take a look at the files under `share/thunar-custom-actions/system-uca`, add your changes there and then file a Pull Request. Alternatively, if you don't know how to do that or don't understand my system, you may also open a [new Issue here on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/issues/new).
