@@ -1,9 +1,5 @@
 #!/usr/bin/make -f
 
-# install architecture-independent files in PREFIX [/usr/local]
-prefix:=@prefix@
-# install architecture-dependent files in EPREFIX [PREFIX]
-exec_prefix:=@exec_prefix@
 # user executables [EPREFIX/bin]
 bindir:=@bindir@
 # system admin executables [EPREFIX/sbin]
@@ -43,7 +39,7 @@ dvidir:=@dvidir@
 # pdf documentation [DOCDIR]
 pdfdir:=@pdfdir@
 # ps documentation [DOCDIR]
-psdir:=${docdir}
+psdir:=@docdir@
 
 # programs
 make_bin:=@make_bin@

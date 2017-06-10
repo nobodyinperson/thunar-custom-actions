@@ -39,10 +39,15 @@ REQUIRE_PROG([gs],[gs_bin],[ghostscript])
 REQUIRE_PROG([m4],[m4_bin],[m4sugar])
 REQUIRE_PROG([pandoc],[pandoc_bin],[program])
 REQUIRE_PROG([python3],[python3_bin],[program])
+REQUIRE_PROG([gettext],[gettext_bin],[localisation program])
+REQUIRE_PROG([gettext.sh],[gettextsh_bin],[gettext for shell])
+REQUIRE_PROG([xgettext],[xgettext_bin],[program])
+REQUIRE_PROG([msgfmt],[msgfmt_bin],[program])
+REQUIRE_PROG([msgmerge],[msgmerge_bin],[program])
 
 # Check for Python modules
 AX_PYTHON_MODULE(lxml,fatal,python3)
 
 
-AC_CONFIG_FILES([Makefile bin/uca-apply m4/tuca.m4])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

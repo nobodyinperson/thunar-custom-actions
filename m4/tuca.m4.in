@@ -1,7 +1,7 @@
 dnl
 changequote(`<~', `~>')dnl
 dnl
-dnl paths from ./configure
+dnl programs from ./configure
 define(<~TUCA_ZENITY~>,<~@zenity_bin@~>)dnl
 define(<~TUCA_CONVERT~>,<~@convert_bin@~>)dnl
 define(<~TUCA_MAKE~>,<~@make_bin@~>)dnl
@@ -16,13 +16,22 @@ define(<~TUCA_GS~>,<~@gs_bin@~>)dnl
 define(<~TUCA_M4~>,<~@m4_bin@~>)dnl
 define(<~TUCA_PANDOC~>,<~@pandoc_bin@~>)dnl
 define(<~TUCA_PYTHON3~>,<~@python3_bin@~>)dnl
+define(<~TUCA_GETTEXT~>,<~@gettext_bin@~>)dnl
+define(<~TUCA_GETTEXTSH~>,<~@gettextsh_bin@~>)dnl
+dnl metadata from ./configure
+define(<~TUCA_PACKAGE_NAME~>,<~@PACKAGE_NAME@~>)dnl
+dnl paths from ./configure
+define(<~TUCA_LOCALEDIR~>,<~@localedir@~>)dnl
+define(<~TUCA_DATAROOTDIR~>,<~@datarootdir@~>)dnl
 dnl
 define(<~TUCA_FILE_VAR~>,<~file~>)dnl
 define(<~TUCA_TEMP_VAR~>,<~filetmp~>)dnl
+define(<~TUCA_FILE_BASE_VAR~>,<~filebase~>)dnl
 define(<~TUCA_OUT_VAR~>,<~fileout~>)dnl
-define(<~TUCA_FILE~>,<~"$TUCA_FILE_VAR"~>)dnl
-define(<~TUCA_TEMP~>,<~"$TUCA_TEMP_VAR"~>)dnl
-define(<~TUCA_OUT~>,<~"$TUCA_OUT_VAR"~>)dnl
+define(<~TUCA_FILE~>,<~"$TUCA_FILE_VAR()"~>)dnl
+define(<~TUCA_FILE_BASE~>,<~"$TUCA_FILE_BASE_VAR()"~>)dnl
+define(<~TUCA_TEMP~>,<~"$TUCA_TEMP_VAR()"~>)dnl
+define(<~TUCA_OUT~>,<~"$TUCA_OUT_VAR()"~>)dnl
 dnl
 define(<~TUCA_ALL_FILES~>,<~%F~>)dnl
 define(<~TUCA_ALL_FILE_FOLDERS~>,<~%D~>)dnl
@@ -32,6 +41,16 @@ define(<~TUCA_FIRST_FILE~>,<~%f~>)dnl
 define(<~TUCA_FIRST_FILE_FOLDER~>,<~%d~>)dnl
 define(<~TUCA_FIRST_FILENAME~>,<~%n~>)dnl
 dnl
+dnl
+dnl TUCA_INIT()
+dnl - initialise gettext
+define(<~TUCA_INIT~>,<~dnl
+set -e;dnl
+export TEXTDOMAIN='TUCA_PACKAGE_NAME()';dnl
+export TEXTDOMAINDIR='TUCA_LOCALEDIR()';dnl
+. TUCA_GETTEXTSH()<~~>dnl
+~>)dnl
+dnl
 dnl TUCA_COLOR_SELECTION([html])
 dnl $1 = html returns hex color in HTML-style
 define(<~TUCA_COLOR_SELECTION~>,<~dnl
@@ -39,12 +58,17 @@ TUCA_ZENITY() --color-selection<~~>dnl
 ifelse($1,html,<~| TUCA_PERL() -ne '@tmp=m/\D+(\d+)\D+(\d+)\D+(\d+)/ or @tmp=(255,255,255);printf "<~#~>%%02X%%02X%%02X",@tmp'~>)<~~>dnl
 ~>)dnl
 dnl
+dnl
+define(<~TUCA_LOOP_PB_TEXT~>,<~dnl
+echo "<~<~#~>~>"$1<~~>dnl
+~>)dnl
+dnl
 define(<~TUCA_LOOP~>,<~dnl
 AMOUNT=$(for TUCA_FILE_VAR() in TUCA_ALL_FILES();do echo TUCA_FILE();done | wc -l);dnl
 NR=0;dnl
 for TUCA_FILE_VAR() in TUCA_ALL_FILES();do dnl
+ TUCA_FILE_BASE_VAR()="$(basename TUCA_FILE())";dnl
  NR=$(echo "$NR+1" | TUCA_BC());dnl
- echo "<~#~>"$(basename TUCA_FILE());dnl
  TUCA_TEMP_VAR()="$(dirname TUCA_FILE())/.$(basename TUCA_FILE()).tmp";dnl
  dnl echo $1 | logger;dnl
  $1 2>/dev/null >/dev/null;dnl
@@ -60,5 +84,5 @@ dnl
 define(<~TUCA_WAIT~>,<~dnl
 set -e;dnl
 $1 |dnl
-TUCA_ZENITY() --progress --auto-kill --auto-close --pulsate<~~>dnl
+TUCA_ZENITY() --text="$2" --progress --auto-kill --auto-close --pulsate<~~>dnl
 ~>)dnl

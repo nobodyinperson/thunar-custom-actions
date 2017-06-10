@@ -10,6 +10,8 @@ debian/files
 *.debhelper
 
 # temporary files
+tmp*
+temp*
 *.tmp
 *.temp
 
@@ -17,6 +19,10 @@ debian/files
 *.cache/
 *.scan
 config.status
+
+# gettext
+*.mo
+*.pot
 
 # instantiated template files
 Makefile

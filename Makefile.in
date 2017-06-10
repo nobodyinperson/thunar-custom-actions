@@ -51,11 +51,11 @@ psdir:=@psdir@
 
 # binaries
 make_bin:=@make_bin@
-find_bin:=@find_bin@
 xdg_open_bin:=@xdg_open_bin@
 convert_bin:=@convert_bin@
 su_bin:=@su_bin@
 xargs_bin:=@xargs_bin@
+find_bin:=@find_bin@
 perl_bin:=@perl_bin@
 gpg2_bin:=@gpg2_bin@
 zenity_bin:=@zenity_bin@
@@ -64,6 +64,11 @@ gs_bin:=@gs_bin@
 m4_bin:=@m4_bin@
 pandoc_bin:=@pandoc_bin@
 python3_bin:=@python3_bin@
+gettext_bin:=@gettext_bin@
+gettextsh_bin:=@gettextsh_bin@
+xgettext_bin:=@xgettext_bin@
+msgfmt_bin:=@msgfmt_bin@
+msgmerge_bin:=@msgmerge_bin@
 
 PACKAGE_VERSION := @PACKAGE_VERSION@
 PACKAGE_NAME    := @PACKAGE_NAME@
@@ -72,8 +77,28 @@ PACKAGE_STRING  := @PACKAGE_STRING@
 configure_dirs = bindir sbindir libexecdir sysconfdir sharedstatedir \
 	localstatedir runstatedir libdir includedir oldincludedir datarootdir \
 	datadir infodir localedir mandir docdir htmldir dvidir pdfdir psdir
-configure_vars = $(configure_dirs) PACKAGE_VERSION PACKAGE_STRING PACKAGE_NAME \
-	PACKAGE_URL
+configure_vars = $(configure_dirs) \
+	PACKAGE_VERSION PACKAGE_STRING PACKAGE_NAME PACKAGE_URL \
+	PASSWDFILE UCAFILE \
+	make_bin \
+	xdg_open_bin \
+	convert_bin \
+	su_bin \
+	xargs_bin \
+	find_bin \
+	perl_bin \
+	gpg2_bin \
+	zenity_bin \
+	bc_bin \
+	gs_bin \
+	m4_bin \
+	pandoc_bin \
+	python3_bin \
+	gettext_bin \
+	gettextsh_bin \
+	xgettext_bin \
+	msgfmt_bin \
+	msgmerge_bin
 
 $(foreach configure_dir,$(configure_dirs),\
 	$(eval $(configure_dir) := $(abspath $(DESTDIR)/$($(configure_dir)))))
@@ -87,8 +112,10 @@ $(foreach configure_dir,$(configure_dirs),\
 local_mandir = man
 local_bindir = bin
 local_datarootdir = share
+local_localedir = locale
 
-local_dirs = $(local_mandir) $(local_bindir) $(local_datarootdir)
+local_dirs = $(local_mandir) $(local_bindir) $(local_datarootdir) \
+	$(local_localedir)
 
 installed_files_file = installed_files.tmp
 
@@ -102,12 +129,12 @@ UCA_XML_FILES_M4 = $(wildcard $(local_system_uca_dir)/*.xml.m4 )
 UCA_XML_FILES = $(UCA_XML_FILES_M4:.m4=)
 # m4
 M4_INCL = m4
+tuca_include_m4 = $(M4_INCL)/tuca.m4
 
 # pandoc options for manpage creation
 PANDOCOPTS = -f markdown -t man --standalone
 
-# no need to to do further replacement elsewhere
-# IN_FILES = $(shell $(find_bin) $(local_dirs) -type f -iname '*.in')
+IN_FILES = $(shell $(find_bin) $(local_dirs) $(M4_INCL) -type f -iname '*.in')
 IN_FILES_INSTANTIATED = $(IN_FILES:.in=)
 
 CONFIGURE_AC = configure.ac
@@ -117,11 +144,20 @@ CONFIGURE = configure
 DEBIAN_CHANGELOG = debian/changelog
 DEBIAN_CHANGELOG_VERSION = $(shell $(perl_bin) -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*$$/$$1/g){print;exit}' $(DEBIAN_CHANGELOG))
 
+only_uca_cmd_file = $(local_localedir)/tmp_only_uca_commands.sh
+# all pofiles
+POFILES = $(shell find $(local_localedir) -type f -iname '*.po')
+# the corresponding mofiles
+MOFILES = $(POFILES:.po=.mo)
+# temporary pot-file template
+POTFILE = $(local_localedir)/$(PACKAGE_NAME).pot
+
 # default target
 .PHONY: all
-all: $(IN_FILES_INSTANTIATED) $(UCA_XML_FILES) $(CONFIGURE) $(CONFIGURE_AC) $(GFMANPAGES)
+all: $(MOFILES) $(IN_FILES_INSTANTIATED) $(UCA_XML_FILES) $(CONFIGURE) \
+	$(CONFIGURE_AC) $(GFMANPAGES)
 
-%: %.m4 $(wildcard $(M4_INCL)/*.m4)
+%: %.m4 $(tuca_include_m4) $(wildcard $(M4_INCL)/*.m4)
 	$(m4_bin) -I $(M4_INCL) $< > $@
 
 # create rule to install a FILE into the TARGET_DIRECTORY
@@ -141,6 +177,7 @@ find_opts = -not -type d -not -iname '*.in'
 # define the local content that is to install
 local_datarootdir_toinstall = $(shell $(find_bin) $(local_datarootdir) $(find_opts) -not -iname '*.m4')
 local_mandir_toinstall = $(GFMANPAGES)
+local_localedir_toinstall = $(MOFILES)
 local_bindir_toinstall = $(shell $(find_bin) $(local_bindir) $(find_opts))
 
 # set up install rules for all configure directories
@@ -166,6 +203,23 @@ $(CONFIGURE_AC): $(DEBIAN_CHANGELOG)
 # substitute variables in a file
 $(IN_FILES_INSTANTIATED): % : %.in Makefile
 	$(perl_bin) -pe '$(foreach var,$(configure_vars),s#[@]$(var)[@]#$($(var))#g;)' < $< > $@
+
+### translations ###
+$(only_uca_cmd_file): $(UCA_XML_FILES) | $(patsubst %/,%,$(dir $(only_uca_cmd_file)))
+	cat $^ | $(perl_bin) -ne 'print if s#<command[^>]*>\s*(.*?)\s*</command>#$$1#g' > $@
+
+# create the pot-file with all translatable strings from the srcfiles
+$(POTFILE): $(only_uca_cmd_file)
+	$(xgettext_bin) -L Shell -o $@ $^
+
+# update the translated catalog
+%.po: $(POTFILE)
+	VERSION_CONTROL=off $(msgmerge_bin) -U --backup=off $@ $<
+	touch $@ # make sure timestamp was updated
+
+# compile the translations
+%.mo: %.po
+	$(msgfmt_bin) -o $@ $<
 
 .PHONY: bin_executable
 bin_executable: $(local_bindir_toinstall)
@@ -201,6 +255,7 @@ clean:
 	rm -f $(UCA_XML_FILES)
 	rm -f $(GFMANPAGES)
 	rm -f $(installed_files_file)
+	rm -f $(only_uca_cmd_file)
 
 
 	

@@ -586,6 +586,11 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+msgmerge_bin
+msgfmt_bin
+xgettext_bin
+gettextsh_bin
+gettext_bin
 python3_bin
 pandoc_bin
 m4_bin
@@ -663,7 +668,12 @@ bc_bin
 gs_bin
 m4_bin
 pandoc_bin
-python3_bin'
+python3_bin
+gettext_bin
+gettextsh_bin
+xgettext_bin
+msgfmt_bin
+msgmerge_bin'
 
 
 # Initialize some variables set by options.
@@ -1300,6 +1310,14 @@ Some influential environment variables:
   m4_bin      path to m4
   pandoc_bin  path to pandoc
   python3_bin path to python3
+  gettext_bin path to gettext
+  gettextsh_bin
+              path to gettext.sh
+  xgettext_bin
+              path to xgettext
+  msgfmt_bin  path to msgfmt
+  msgmerge_bin
+              path to msgmerge
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -2413,6 +2431,226 @@ test -n "$python3_bin" || as_fn_error $? "no python3 (program) found" "$LINENO" 
 
 
 
+# Extract the first word of "gettext", so it can be a program name with args.
+set dummy gettext; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_gettext_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $gettext_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_gettext_bin="$gettext_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_gettext_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+gettext_bin=$ac_cv_path_gettext_bin
+if test -n "$gettext_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $gettext_bin" >&5
+$as_echo "$gettext_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$gettext_bin" || as_fn_error $? "no gettext (localisation program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "gettext.sh", so it can be a program name with args.
+set dummy gettext.sh; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_gettextsh_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $gettextsh_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_gettextsh_bin="$gettextsh_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_gettextsh_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+gettextsh_bin=$ac_cv_path_gettextsh_bin
+if test -n "$gettextsh_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $gettextsh_bin" >&5
+$as_echo "$gettextsh_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$gettextsh_bin" || as_fn_error $? "no gettext.sh (gettext for shell) found" "$LINENO" 5
+
+
+
+# Extract the first word of "xgettext", so it can be a program name with args.
+set dummy xgettext; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_xgettext_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $xgettext_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_xgettext_bin="$xgettext_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_xgettext_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+xgettext_bin=$ac_cv_path_xgettext_bin
+if test -n "$xgettext_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xgettext_bin" >&5
+$as_echo "$xgettext_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$xgettext_bin" || as_fn_error $? "no xgettext (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "msgfmt", so it can be a program name with args.
+set dummy msgfmt; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_msgfmt_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $msgfmt_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_msgfmt_bin="$msgfmt_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_msgfmt_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+msgfmt_bin=$ac_cv_path_msgfmt_bin
+if test -n "$msgfmt_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $msgfmt_bin" >&5
+$as_echo "$msgfmt_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$msgfmt_bin" || as_fn_error $? "no msgfmt (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "msgmerge", so it can be a program name with args.
+set dummy msgmerge; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_msgmerge_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $msgmerge_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_msgmerge_bin="$msgmerge_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_msgmerge_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+msgmerge_bin=$ac_cv_path_msgmerge_bin
+if test -n "$msgmerge_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $msgmerge_bin" >&5
+$as_echo "$msgmerge_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$msgmerge_bin" || as_fn_error $? "no msgmerge (program) found" "$LINENO" 5
+
+
+
 # Check for Python modules
 
     if test -z $PYTHON;
@@ -2447,7 +2685,7 @@ $as_echo "no" >&6; }
 
 
 
-ac_config_files="$ac_config_files Makefile bin/uca-apply m4/tuca.m4"
+ac_config_files="$ac_config_files Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3155,8 +3393,6 @@ for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
-    "bin/uca-apply") CONFIG_FILES="$CONFIG_FILES bin/uca-apply" ;;
-    "m4/tuca.m4") CONFIG_FILES="$CONFIG_FILES m4/tuca.m4" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

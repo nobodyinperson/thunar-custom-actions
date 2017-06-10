@@ -1,0 +1,658 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-10 15:20+0200\n"
+"PO-Revision-Date: 2017-06-10 15:27+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
+msgid "Password?"
+msgstr "Passwort?"
+
+#: locale/tmp_only_uca_commands.sh:1
+#, sh-format
+msgid "encrypting... $filebase"
+msgstr "verschlüssele... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:2
+#, sh-format
+msgid "decrypting... $filebase"
+msgstr "entschlüssele... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:2
+#, sh-format
+msgid "Wrong Password for $filebase?"
+msgstr "Falsches Passwort für $filebase?"
+
+#: locale/tmp_only_uca_commands.sh:3
+#, sh-format
+msgid "rotating clockwise... $filebase"
+msgstr "drehe im Uhrzeigersinn... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:4
+#, sh-format
+msgid "rotating anti-clockwise... $filebase"
+msgstr "drehe gegen den Uhrzeigersinn... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:5
+#, sh-format
+msgid "converting to grayscale... $filebase"
+msgstr "konvertiere zu Graustufen... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:6
+#, sh-format
+msgid "filling transparency with $COLOR... $filebase"
+msgstr "fülle Transparenz mit $COLOR... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:7
+#, sh-format
+msgid "scale to $SCALE percent... $filebase"
+msgstr "skaliere auf $SCALE%... $filebase"
+
+#: locale/tmp_only_uca_commands.sh:8
+#, sh-format
+msgid "Select link location"
+msgstr "Ort der Verknüpfung auswählen"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "determining file sizes..."
+msgstr "ermittle Dateigrößen..."
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "size"
+msgstr "Größe"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "name"
+msgstr "Name"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "big elements"
+msgstr "große Elemente"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "elements sorted by size"
+msgstr "Elemente nach Größe sortiert"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "converting to PDF..."
+msgstr "konvertiere zu PDF..."
+
+#: locale/tmp_only_uca_commands.sh:11
+#, sh-format
+msgid "concatenating PDFs..."
+msgstr "füge PDFs zusammen..."
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "optimizing PDF... $filebase"
+msgstr "optimiere PDF... $filebase"
+
+#~ msgid "Simbuto - a simple graphical budgeting tool"
+#~ msgstr "Simbuto - ein einfaches Werkzeug zur Kostenplanung"
+
+#~ msgid "the budget file to open"
+#~ msgstr "die zu öffnende Budget-Datei"
+
+#~ msgid "show help message and exit"
+#~ msgstr "Hilfe anzeigen und beenden"
+
+#~ msgid "verbose output"
+#~ msgstr "mehr Ausgabe"
+
+#~ msgid "even more verbose output"
+#~ msgstr "noch mehr Ausgabe"
+
+#~ msgid "show version info and exit"
+#~ msgstr "Versionsinfo anzeigen und beenden"
+
+#~ msgid "Simbuto"
+#~ msgstr "Simbuto"
+
+#~ msgid "This is simbuto version {}"
+#~ msgstr "Das ist simbuto Version {}"
+
+#~ msgid "command-line: {}"
+#~ msgstr "Kommandozeilenargumente: {}"
+
+#~ msgid "parsed arguments: {}"
+#~ msgstr "geparste Argumente: {}"
+
+#~ msgid "simbuto is still in early development phase..."
+#~ msgstr "simbuto befindet sich noch in der frühen Entwicklungsphase..."
+
+#~ msgid "specified file to open via command line: {}"
+#~ msgstr "über Kommandozeile spezifizierte zu öffnende Datei: {}"
+
+#~ msgid "no file specified to open via command line"
+#~ msgstr "über die Kommandozeile wurde keine zu öffnende Datei angegeben"
+
+#~ msgid "Signal '{}' added"
+#~ msgstr "Signal '{}' hinzugefügt"
+
+#~ msgid "Signal '{}' unregistered"
+#~ msgstr "Signal '{}' entfernt"
+
+#~ msgid "All signals unregistered"
+#~ msgstr "Alle Signale entfernt"
+
+#~ msgid "Attempt to connect action '{}' to unregistered signal '{}'."
+#~ msgstr "Versuch, die Aktion '{}' zu unregistriertem Signal '{}' zu verbinden."
+
+#~ msgid "Connected action '{}' to signal '{}'"
+#~ msgstr "Verbinde die Aktion '{}' zum Signal '{}'"
+
+#~ msgid "Disconnected action '{}' from signal '{}'"
+#~ msgstr "Aktion '{}' vom Signal '{}' getrennt"
+
+#~ msgid "Attempt to disconnect action '{}' from unregistered signal '{}'"
+#~ msgstr "Versuch, Aktion '{}' von unregistriertem Signal '{}' zu trennen"
+
+#~ msgid "Signal '{}' emitted with data '{}'"
+#~ msgstr "Signal '{}' wurde mit Daten '{}' emittiert"
+
+#~ msgid "Calling action '{}' with data '{}'"
+#~ msgstr "Führe Aktion '{}' mit Daten '{}' aus"
+
+#~ msgid "Attempt to emit unregistered signal '{}'"
+#~ msgstr "Versuch, unregistriertes Signal '{}' zu emittieren"
+
+#~ msgid "The current buffer is empty and no file is specified. No saving necessary."
+#~ msgstr "Der Editor ist leer und keine Datei wurde angegeben. Speichern ist nicht notwendig."
+
+#~ msgid "Nonexistant or no file specified. Saving necessary!"
+#~ msgstr "Nichtexistente oder gar keine Datei angegeben. Speichern ist notwendig!"
+
+#~ msgid "md5sum of file '{}' is '{}'"
+#~ msgstr "md5-Summe der Datei '{}' is '{}'"
+
+#~ msgid "md5sum of editor content is '{}'"
+#~ msgstr "md5-Summe des Editorinhalts ist '{}'"
+
+#~ msgid "The current budget would need saving."
+#~ msgstr "Das aktuelle Budget müsste gespeichert werden."
+
+#~ msgid "The current budget doesn't need saving."
+#~ msgstr "Das aktuelle Budget muss nicht gespeichert werden."
+
+#~ msgid "New Budget"
+#~ msgstr "Neues Budget"
+
+#~ msgid "New"
+#~ msgstr "Neu"
+
+#~ msgid "Create a new budget"
+#~ msgstr "Ein neues Budget erstellen"
+
+#~ msgid "Open Budget"
+#~ msgstr "Öffne Budget"
+
+#~ msgid "Open"
+#~ msgstr "Öffnen"
+
+#~ msgid "Open an existing budget file"
+#~ msgstr "Eine existierende Budget-Datei öffnen"
+
+#~ msgid "Save Budget"
+#~ msgstr "Budget speichern"
+
+#~ msgid "Save"
+#~ msgstr "Speichern"
+
+#~ msgid "Save this budget"
+#~ msgstr "Dieses Budget speichern"
+
+#~ msgid "Save As"
+#~ msgstr "Speichern unter"
+
+#~ msgid "Save this budget to another file"
+#~ msgstr "Dieses Budget anderswo speichern"
+
+#~ msgid "Refresh Graph"
+#~ msgstr "Graph aktualisieren"
+
+#~ msgid "Refresh"
+#~ msgstr "Aktualisieren"
+
+#~ msgid "Refresh the budget graph"
+#~ msgstr "den Budget-Graph aktualisieren"
+
+#~ msgid "Quit"
+#~ msgstr "Beenden"
+
+#~ msgid "Quit Simbuto"
+#~ msgstr "Simbuto beenden"
+
+#~ msgid "About"
+#~ msgstr "Über"
+
+#~ msgid "Display information on Simbuto"
+#~ msgstr "Informationen über Simbuto anzeigen"
+
+#~ msgid "Date Reset"
+#~ msgstr "Datum zurücksetzen"
+
+#~ msgid "Reset the selected date region"
+#~ msgstr "Setze den ausgewählten Datumsbereich zurück"
+
+#~ msgid "Simbuto budget files"
+#~ msgstr "Simbuto Budget-Dateien"
+
+#~ msgid "_File"
+#~ msgstr "_Datei"
+
+#~ msgid "_Help"
+#~ msgstr "_Hilfe"
+
+#~ msgid "_Budget"
+#~ msgstr "_Budget"
+
+#~ msgid "Budget editor"
+#~ msgstr "Budget Editor"
+
+#~ msgid "Current assets:"
+#~ msgstr "Aktueller Haushalt:"
+
+#~ msgid "Comfort editor coming soon!"
+#~ msgstr "Der Komfort-Editor kommt bald!"
+
+#~ msgid "Comfort"
+#~ msgstr "Komfort"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Budget graph"
+#~ msgstr "Budget Graph"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistik"
+
+#~ msgid "display ensemble"
+#~ msgstr "Ensemble anzeigen"
+
+#~ msgid "[slower] Based on the given day and amount tolerances, run an ensemble and display the 10% and 90% quantiles as darker shadow."
+#~ msgstr "[langsamer] Auf Grundlage der Tages- und Betragstoleranzen wird ein Ensemble gerechnet und das 10%- und 90%-Quantil als dunkerer Schatten angezeigt."
+
+#~ msgid "end date"
+#~ msgstr "Enddatum"
+
+#~ msgid "This is not a valid amount!"
+#~ msgstr "Dies ist kein korrekter Betrag!"
+
+#~ msgid "Your current total assets"
+#~ msgstr "Der aktuelle gesamte Haushalt:"
+
+#~ msgid "unsaved budget"
+#~ msgstr "ungespeichertes Budget"
+
+#~ msgid "emptying editor"
+#~ msgstr "leere den Budget-Editor"
+
+#~ msgid "Simbuto - a simple budgeting tool"
+#~ msgstr "Simbuto - ein einfaches Werkzeug zur Kostenplanung"
+
+#~ msgid "unnamed-budget"
+#~ msgstr "unbenanntes-Budget"
+
+#~ msgid "updating graph..."
+#~ msgstr "aktualisiere Graph..."
+
+#~ msgid "The graph file was obviously sucessfully updated."
+#~ msgstr "Die Graph-Bildatei wurde erfolgreich aktualisiert."
+
+#~ msgid "Graph updated"
+#~ msgstr "Graph aktualisiert"
+
+#~ msgid "There was a problem updating the graph."
+#~ msgstr "Es gab ein Problem beim Aktualisieren des Graphen."
+
+#~ msgid "[WARNING] There was a problem updating the graph. Please check the input!"
+#~ msgstr "[WARNUNG] Es gab ein Problem beim Aktualisieren des Graphen. Bitte Eingabe überprüfen!"
+
+#~ msgid "The gui is not running. Refusing to update the graph now! Remembering this for gui start."
+#~ msgstr "Die Gui läuft nicht. Verzichte auf Graphaktualisierung! Wird aber für den Gui-Start gemerkt!"
+
+#~ msgid "Date region was changed."
+#~ msgstr "Datumsbereich wurde geändert."
+
+#~ msgid "start date is now {}"
+#~ msgstr "Startdatum ist jetzt {}"
+
+#~ msgid "end date is now {}"
+#~ msgstr "Enddatum ist jetzt {}"
+
+#~ msgid "End date before start date selected."
+#~ msgstr "Enddatum vor Startdatum ausgewählt"
+
+#~ msgid "You selected an end date in the past. The graph will not updated."
+#~ msgstr "Es wurde ein Enddatum in der Vergangenheit ausgewählt. Der Graph wird nicht aktualisiert."
+
+#~ msgid "Please choose a file"
+#~ msgstr "Bitte eine Datei auswählen"
+
+#~ msgid "File '{}' selected"
+#~ msgstr "Datei '{}' ausgewählt"
+
+#~ msgid "File selection cancelled"
+#~ msgstr "Dateiauswahl abgebrochen"
+
+#~ msgid "File selection dialog was closed"
+#~ msgstr "Dateiauswahldialog wurde geschlossen"
+
+#~ msgid "Please select a saving destination"
+#~ msgstr "Bitte einen Speicherort auswählen"
+
+#~ msgid "This feature is currently not implemented."
+#~ msgstr "Diese Funktionalität ist momentan noch nicht implementiert."
+
+#~ msgid "Do you want to save your current budget?"
+#~ msgstr "Das aktuelle Budget speichern?"
+
+#~ msgid "The user wants to save the budget to file."
+#~ msgstr "Der Benutzer möchte das aktuelle Budget speichern."
+
+#~ msgid "The user does NOT want to save the budget."
+#~ msgstr "Das Benutzer möchte das aktuelle Budget NICHT speichern."
+
+#~ msgid "a simple budgeting tool"
+#~ msgstr "ein einfaches Werkzeug zur Kostenplanung"
+
+#~ msgid "Saving the current budget to the file '{}'..."
+#~ msgstr "Speichere das aktuelle Budget in die Datei '{}'..."
+
+#~ msgid "Budget saved to '{}'"
+#~ msgstr "Budget wurde nach '{}' gespeichert"
+
+#~ msgid "Budget could NOT be saved to '{}'!"
+#~ msgstr "Budget Konnte NICHT nach '{}' gespeichert werden!"
+
+#~ msgid "[WARNING] Budget could not be saved to '{}'!"
+#~ msgstr "[WARNUNG] Budget konnte NICHT nach '{}' gespeichert werden!"
+
+#~ msgid "read file '{}' into editor...."
+#~ msgstr "lese Datei '{}' in den Editor ein..."
+
+#~ msgid "editor was filled with contents of file '{}'"
+#~ msgstr "Der Editor wurde mit den Inhalten der Datei '{}' gefüllt"
+
+#~ msgid "Reading from file '{}' didn't work!"
+#~ msgstr "Lesen von der Datei '{}' hat nicht funktioniert!"
+
+#~ msgid "Starting GLib main loop..."
+#~ msgstr "starte GLib Hautpschleife..."
+
+#~ msgid "GLib main loop ended."
+#~ msgstr "GLib Hauptschleife beendet."
+
+#~ msgid "Received quitting signal."
+#~ msgstr "Anhaltesignal erhalten."
+
+#~ msgid "Read {} characters from file '{}'"
+#~ msgstr "Lese {} Zeichen von Datei '{}'"
+
+#~ msgid "Saving {} characters to file '{}'..."
+#~ msgstr "Speichere {} Zeichen in die Datei '{}'..."
+
+#~ msgid "Saved {} characters to file '{}'"
+#~ msgstr "{} Zeichen wurden in die Datei '{}' gespeichert"
+
+#~ msgid "Saving {} characters to file '{}' didn't work!"
+#~ msgstr "Speichern von {} Zeichen in die Datei '{}' hat nicht funktioniert!"
+
+#~ msgid "Calculating md5sum of file '{}' didn't work!"
+#~ msgstr "Berechnen der md5-Summe für die Datei '{}' hat nicht funktioniert!"
+
+#~ msgid "R could not read from text"
+#~ msgstr "R konnte den Text nicht einlesen."
+
+#~ msgid "Yeah, the amount gets a pretty format, but the system is not yet perfect. Place the cursor after the comma and then type to add numbers after the comma..."
+#~ msgstr "Ja, der Betrag wird automatisch schön formatiert, aber so richtig perfekt ist die Eingabe noch nicht. Zum Eingeben von Nachkommastellen, den Cursor bitte hinter das Komma platzieren..."
+
+#~ msgid "To prevent recursion I won't react to this."
+#~ msgstr "Um Rekursion zu verhindern, wird nicht darauf reagiert."
+
+#~ msgid "Somehow a date was selected from an unknown calendar. This should not have happened."
+#~ msgstr "Irgendwie wurde ein Datum von einem unbekannten Kalender ausgewählt. Das hätte nicht passieren sollen."
+
+#~ msgid "Date range"
+#~ msgstr "Datumsbereich"
+
+#~ msgid "start date"
+#~ msgstr "Startdatum"
+
+#~ msgid "Setting end date to one year after start date"
+#~ msgstr "Setze Enddatum auf ein Jahr vor dem Startdatum"
+
+#~ msgid "Setting start date to one month before end date"
+#~ msgstr "Setze Startdatum auf einen Monat vor dem Enddatum"
+
+#~ msgid "making sure there is a ~/.simbuto folder"
+#~ msgstr "stelle sicher, dass es den Ordner ~/.simbuto gibt"
+
+#~ msgid "contents of file '{}' were read."
+#~ msgstr "Inhalte der Datei '{}' wurden gelesen."
+
+#~ msgid "Welcome to Simbuto!"
+#~ msgstr "Willkommen bei Simbuto!"
+
+#~ msgid "gpio-dbus is already running. Aborting."
+#~ msgstr "gpio-dbus läuft bereits. Abbruch."
+
+#~ msgid "Device file '{}' does not exist."
+#~ msgstr "Gerätedatei '{}' existiert nicht."
+
+#~ msgid "Checksum error"
+#~ msgstr "Prüfsummenfehler"
+
+#~ msgid "(never mind if {}"
+#~ msgstr "(egal, wenn '{}'"
+
+#~ msgid "is the correct gpio-dbus device node...)"
+#~ msgstr "die korrekte gpio-dbus Gerätedatei ist...)"
+
+#~ msgid "opening co2 device file '{}'"
+#~ msgstr "öffne co2-Gerätedatei '{}'"
+
+#~ msgid "device '{}' does not exist."
+#~ msgstr "Gerätedatei '{}' existiert nicht."
+
+#~ msgid "closing co2 device file '{}'"
+#~ msgstr "schließe co2-Gerätedatei '{}'"
+
+#~ msgid "Trying to reconnect..."
+#~ msgstr "Versuche Neuverbindung..."
+
+#~ msgid "Could not reconnect. Aborting."
+#~ msgstr "Konnte nicht wiederverbinden. Abbruch."
+
+#~ msgid "received stop signal {},"
+#~ msgstr "Anhaltesignal {} erhalten,"
+
+#~ msgid "will terminate soon..."
+#~ msgstr "werde bald anhalten..."
+
+#~ msgid "Service running..."
+#~ msgstr "Service läuft..."
+
+#~ msgid "Service stopped"
+#~ msgstr "Service beendet"
+
+#~ msgid "received request to start logging on device {}"
+#~ msgstr "Anweisung erhalten, Daten von Gerät {} zu loggen"
+
+#~ msgid "There is already a logging thread for device {}."
+#~ msgstr "Es läuft bereits ein Datenaufzeichnungsthread für Gerät {}."
+
+#~ msgid "This is odd... I better do nothing."
+#~ msgstr "Das ist seltsam... Ich tue besser nichts."
+
+#~ msgid "starting logging thread for device {}"
+#~ msgstr "starte Datenaufzeichnungs-Thread auf Gerät {}"
+
+#~ msgid "Something went wrong with device file '{}'."
+#~ msgstr "Etwas hat mit Gerätedatei '{}' nicht funktioniert."
+
+#~ msgid "running"
+#~ msgstr "aktiv"
+
+#~ msgid "stopped"
+#~ msgstr "inaktiv"
+
+#~ msgid "stopping gpio-dbus..."
+#~ msgstr "stoppe gpio-dbus..."
+
+#~ msgid "stopped gpio-dbus"
+#~ msgstr "gpio-dbus angehalten"
+
+#~ msgid "idle"
+#~ msgstr "untätig"
+
+#~ msgid "Request to stop logging on device {} - will terminate soon..."
+#~ msgstr "Anfrage, die Datenaufzeichnung auf Gerät {} zu beenden - werde bald anhalten..."
+
+#~ msgid "Shutting down logging thread of device {}"
+#~ msgstr "Fahre Datenaufzeichnungs-Thread auf Gerät {} herunter"
+
+#~ msgid "logging thread for device {} was shut down properly."
+#~ msgstr "Datenaufzeichnungsthread für Gerät {} wurde ordentlich heruntergefahren."
+
+#~ msgid "Starting data logging on device {}"
+#~ msgstr "Beginne Datenaufzeichnung auf Gerät {}"
+
+#~ msgid "creating data directory"
+#~ msgstr "erstelle Datenordner"
+
+#~ msgid "created data directory"
+#~ msgstr "Datenordner erstellt"
+
+#~ msgid "device warmup"
+#~ msgstr "Geräteaufwärmung"
+
+#~ msgid "giving the device another {} seconds of warmup time..."
+#~ msgstr "warte noch {} Sekunden, bis das Gerät bereit ist..."
+
+#~ msgid "opened {} for data logging."
+#~ msgstr "Datei {} zur Datenaufzeichnung geöffnet."
+
+#~ msgid "writing header to file"
+#~ msgstr "Schreibe Kopfzeile in Aufzeichnungsdatei"
+
+#~ msgid "reading from device"
+#~ msgstr "lese vom Gerät"
+
+#~ msgid "postprocessing raw data"
+#~ msgstr "Nachbearbeitung der Rohdaten"
+
+#~ msgid "writing data to file"
+#~ msgstr "schreibe Daten in Aufzeichnungsdatei"
+
+#~ msgid "stopped logging."
+#~ msgstr "Datenaufzeichnung beendet."
+
+#~ msgid "closed data logging file '{}'"
+#~ msgstr "Datenaufzeichnungsdatei '{}' geschlossen"
+
+#~ msgid "Stopped data logging on device {}"
+#~ msgstr "beende Datenaufzeichnung auf Gerät {}"
+
+#~ msgid "gpio-dbus is already running"
+#~ msgstr "gpio-dbus läuft bereits"
+
+#~ msgid "gpio-dbus is not running"
+#~ msgstr "gpio-dbus läuft nicht"
+
+#~ msgid "trying to start gpio-dbus via systemd's dbus interface..."
+#~ msgstr "versuche, gpio-dbus über das DBus Interface von systemd zu starten..."
+
+#~ msgid "instructed systemd via dbus to start gpio-dbus."
+#~ msgstr "systemd wurde über dbus angewiesen, gpio-dbus zu starten."
+
+#~ msgid "gpio-dbus was successfully started via systemd's dbus interface."
+#~ msgstr "gpio-dbus erfolgreich über das DBus-Interface von systemd gestartet."
+
+#~ msgid "gpio-dbus startup took too long via systemd, didn't work."
+#~ msgstr "gpio-dbus über systemd zu starten, hat zu lange gedauert, nicht funktioniert."
+
+#~ msgid "starting gpio-dbus via systemd's dbus interface didn't work."
+#~ msgstr "gpio-dbus über das DBus Interface von systemd zu starten, hat nicht funktioniert."
+
+#~ msgid "starting gpio-dbus via 'at now'..."
+#~ msgstr "starte gpio-dbus über 'at now'..."
+
+#~ msgid "gpio-dbus successfully started via 'at now'."
+#~ msgstr "gpio-dbus erfolgreich über 'at now' gestartet."
+
+#~ msgid "gpio-dbus startup took too long via 'at now', didn't work."
+#~ msgstr "gpio-dbus über 'at now' zu starten, hat zu lange gedauert, nicht funktioniert."
+
+#~ msgid "no DEVNAME environment variable given. Nothing more to do."
+#~ msgstr "keine DEVNAME Umgebungsvariable. Nichts mehr zu tun."
+
+#~ msgid "DEVNAME environment variable: {}"
+#~ msgstr "DEVNAME Umgebungsvariable: {}"
+
+#~ msgid "DEVNAME environment variable '{}' is a non-existant file.  Aborting."
+#~ msgstr "DEVNAME Umgebungsvariable '{}' ist keine existierende Datei. Abbruch."
+
+#, fuzzy
+#~ msgid "getting monitored_devices..."
+#~ msgstr "stoppe gpio-dbus..."
+
+#~ msgid "gpio-dbus was started by {}"
+#~ msgstr "gpio-dbus wurde von {} gestartet"
+
+#~ msgid "gpio-dbus was started by hand"
+#~ msgstr "gpio-dbus wurde von Hand gestartet"
+
+#~ msgid "setting up device '{}'"
+#~ msgstr "Konfiguriere Gerät '{}'"
+
+#, fuzzy
+#~ msgid "reading from device {}..."
+#~ msgstr "Konnte nicht von Gerätedatei '{}' lesen"
+
+#, fuzzy
+#~ msgid "read {} from device {}"
+#~ msgstr "Konnte nicht von Gerätedatei '{}' lesen"
+
+#, fuzzy
+#~ msgid "setting up csv writer"
+#~ msgstr "Konfiguriere Gerät '{}'"
+
+#~ msgid "started gpio-dbus via systemd's dbus interface."
+#~ msgstr "gpio-dbus wurde über das DBus Interface von systemd gestartet."
+
+#~ msgid "gpio-dbus started via 'at now'."
+#~ msgstr "gpio-dbus wurde über 'at now' gestartet."
+
+#~ msgid "Starting GTK main loop..."
+#~ msgstr "Starte GTK Hauptschleife..."
+
+#~ msgid "GTK main loop ended."
+#~ msgstr "GTK Hauptschleife beendet."
+
+#~ msgid "gpio-dbus started!"
+#~ msgstr "gpio-dbus wurde gestartet!"
