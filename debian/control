@@ -2,7 +2,7 @@ Source: thunar-custom-actions
 Section: utils
 Priority: extra
 Maintainer: Yann Büchau <nobodyinperson@gmx.de>
-Build-Depends: debhelper (>= 8.0.0), pandoc, m4, bc
+Build-Depends: debhelper (>= 8.0.0), pandoc, m4
 Standards-Version: 3.9.2
 Homepage: https://github.com/nobodyinperson/thunar-custom-actions
 Vcs-Browser: https://github.com/nobodyinperson/thunar-custom-actions
