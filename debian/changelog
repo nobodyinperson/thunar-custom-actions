@@ -1,8 +1,11 @@
-thunar-custom-actions (0.0.11) UNRELEASED; urgency=medium
+thunar-custom-actions (0.0.11) unstable; urgency=medium
 
   * add dependency on su in configure
+  * use gettext for l10n
+  * improve output messages
+  * add full German translation
 
- -- Yann Büchau <nobodyinperson@gmx.de>  Fri, 09 Jun 2017 14:36:51 +0200
+ -- Yann Büchau <nobodyinperson@gmx.de>  Sat, 10 Jun 2017 15:57:57 +0200
 
 thunar-custom-actions (0.0.10) unstable; urgency=medium
 
