@@ -2,20 +2,20 @@ dnl
 changequote(`<~', `~>')dnl
 dnl
 dnl paths from ./configure
-define(<~TUCA_ZENITY~>,<~/usr/bin/zenity~>)dnl
-define(<~TUCA_CONVERT~>,<~/usr/bin/convert~>)dnl
-define(<~TUCA_MAKE~>,<~/usr/bin/make~>)dnl
-define(<~TUCA_XDG_OPEN~>,<~/usr/bin/xdg-open~>)dnl
-define(<~TUCA_SU~>,<~/bin/su~>)dnl
-define(<~TUCA_XARGS~>,<~/usr/bin/xargs~>)dnl
-define(<~TUCA_PERL~>,<~/usr/bin/perl~>)dnl
-define(<~TUCA_GPG2~>,<~/usr/bin/gpg2~>)dnl
-define(<~TUCA_ZENITY~>,<~/usr/bin/zenity~>)dnl
-define(<~TUCA_BC~>,<~/usr/bin/bc~>)dnl
-define(<~TUCA_GS~>,<~/usr/bin/gs~>)dnl
-define(<~TUCA_M4~>,<~/usr/bin/m4~>)dnl
-define(<~TUCA_PANDOC~>,<~/usr/bin/pandoc~>)dnl
-define(<~TUCA_PYTHON3~>,<~/usr/bin/python3~>)dnl
+define(<~TUCA_ZENITY~>,<~@zenity_bin@~>)dnl
+define(<~TUCA_CONVERT~>,<~@convert_bin@~>)dnl
+define(<~TUCA_MAKE~>,<~@make_bin@~>)dnl
+define(<~TUCA_XDG_OPEN~>,<~@xdg_open_bin@~>)dnl
+define(<~TUCA_SU~>,<~@su_bin@~>)dnl
+define(<~TUCA_XARGS~>,<~@xargs_bin@~>)dnl
+define(<~TUCA_PERL~>,<~@perl_bin@~>)dnl
+define(<~TUCA_GPG2~>,<~@gpg2_bin@~>)dnl
+define(<~TUCA_ZENITY~>,<~@zenity_bin@~>)dnl
+define(<~TUCA_BC~>,<~@bc_bin@~>)dnl
+define(<~TUCA_GS~>,<~@gs_bin@~>)dnl
+define(<~TUCA_M4~>,<~@m4_bin@~>)dnl
+define(<~TUCA_PANDOC~>,<~@pandoc_bin@~>)dnl
+define(<~TUCA_PYTHON3~>,<~@python3_bin@~>)dnl
 dnl
 define(<~TUCA_FILE_VAR~>,<~file~>)dnl
 define(<~TUCA_TEMP_VAR~>,<~filetmp~>)dnl

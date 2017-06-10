@@ -594,9 +594,10 @@ bc_bin
 zenity_bin
 gpg2_bin
 perl_bin
-convert_bin
+find_bin
 xargs_bin
 su_bin
+convert_bin
 xdg_open_bin
 make_bin
 UCAFILE
@@ -648,7 +649,21 @@ enable_option_checking
 host_alias
 target_alias
 PASSWDFILE
-UCAFILE'
+UCAFILE
+make_bin
+xdg_open_bin
+convert_bin
+su_bin
+xargs_bin
+find_bin
+perl_bin
+gpg2_bin
+zenity_bin
+bc_bin
+gs_bin
+m4_bin
+pandoc_bin
+python3_bin'
 
 
 # Initialize some variables set by options.
@@ -1270,6 +1285,21 @@ Some influential environment variables:
   PASSWDFILE  path to passwd file [SYSCONFDIR/passwd]
   UCAFILE     relative path from homedir to Thunar uca.xml file
               [.config/Thunar/uca.xml]
+  make_bin    path to make
+  xdg_open_bin
+              path to xdg-open
+  convert_bin path to convert
+  su_bin      path to su
+  xargs_bin   path to xargs
+  find_bin    path to find
+  perl_bin    path to perl
+  gpg2_bin    path to gpg2
+  zenity_bin  path to zenity
+  bc_bin      path to bc
+  gs_bin      path to gs
+  m4_bin      path to m4
+  pandoc_bin  path to pandoc
+  python3_bin path to python3
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -1752,30 +1782,41 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
+# REQUIRE_PROG([variable],[prog],[description])
+#
+# - search for [prog] with AC_PATH_PROG
+# - save found path to [variable]
+# - fail if [prog] was not found
+# - make [variable] precious with AC_ARG_VAR
+#
 
 
 
 
 
-# Checks for programs.
+
+# # Checks for programs.
+
 # Extract the first word of "make", so it can be a program name with args.
 set dummy make; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_make_bin+:} false; then :
+if ${ac_cv_path_make_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$make_bin"; then
-  ac_cv_prog_make_bin="$make_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $make_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_make_bin="$make_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_make_bin="yes"
+    ac_cv_path_make_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -1783,10 +1824,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_make_bin" && ac_cv_prog_make_bin="no"
+  ;;
+esac
 fi
-fi
-make_bin=$ac_cv_prog_make_bin
+make_bin=$ac_cv_path_make_bin
 if test -n "$make_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $make_bin" >&5
 $as_echo "$make_bin" >&6; }
@@ -1796,26 +1837,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$make_bin" != "yes" && as_fn_error $? "no make found" "$LINENO" 5
+test -n "$make_bin" || as_fn_error $? "no make (program) found" "$LINENO" 5
+
+
 
 # Extract the first word of "xdg-open", so it can be a program name with args.
 set dummy xdg-open; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_xdg_open_bin+:} false; then :
+if ${ac_cv_path_xdg_open_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$xdg_open_bin"; then
-  ac_cv_prog_xdg_open_bin="$xdg_open_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $xdg_open_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_xdg_open_bin="$xdg_open_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_xdg_open_bin="yes"
+    ac_cv_path_xdg_open_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -1823,10 +1868,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_xdg_open_bin" && ac_cv_prog_xdg_open_bin="no"
+  ;;
+esac
 fi
-fi
-xdg_open_bin=$ac_cv_prog_xdg_open_bin
+xdg_open_bin=$ac_cv_path_xdg_open_bin
 if test -n "$xdg_open_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xdg_open_bin" >&5
 $as_echo "$xdg_open_bin" >&6; }
@@ -1836,106 +1881,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$xdg_open_bin" != "yes" && as_fn_error $? "no xdg-open found" "$LINENO" 5
-
-# Extract the first word of "su", so it can be a program name with args.
-set dummy su; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_su_bin+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test -n "$su_bin"; then
-  ac_cv_prog_su_bin="$su_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_su_bin="yes"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  test -z "$ac_cv_prog_su_bin" && ac_cv_prog_su_bin="no"
-fi
-fi
-su_bin=$ac_cv_prog_su_bin
-if test -n "$su_bin"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $su_bin" >&5
-$as_echo "$su_bin" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
+test -n "$xdg_open_bin" || as_fn_error $? "no xdg-open (program) found" "$LINENO" 5
 
 
-test "$su_bin" != "yes" && as_fn_error $? "no su found" "$LINENO" 5
-
-# Extract the first word of "xargs", so it can be a program name with args.
-set dummy xargs; ac_word=$2
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-$as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_xargs_bin+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  if test -n "$xargs_bin"; then
-  ac_cv_prog_xargs_bin="$xargs_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_xargs_bin="yes"
-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  test -z "$ac_cv_prog_xargs_bin" && ac_cv_prog_xargs_bin="no"
-fi
-fi
-xargs_bin=$ac_cv_prog_xargs_bin
-if test -n "$xargs_bin"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xargs_bin" >&5
-$as_echo "$xargs_bin" >&6; }
-else
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-fi
-
-
-test "$xargs_bin" != "yes" && as_fn_error $? "no xargs found" "$LINENO" 5
 
 # Extract the first word of "convert", so it can be a program name with args.
 set dummy convert; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_convert_bin+:} false; then :
+if ${ac_cv_path_convert_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$convert_bin"; then
-  ac_cv_prog_convert_bin="$convert_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $convert_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_convert_bin="$convert_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_convert_bin="yes"
+    ac_cv_path_convert_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -1943,10 +1912,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_convert_bin" && ac_cv_prog_convert_bin="no"
+  ;;
+esac
 fi
-fi
-convert_bin=$ac_cv_prog_convert_bin
+convert_bin=$ac_cv_path_convert_bin
 if test -n "$convert_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $convert_bin" >&5
 $as_echo "$convert_bin" >&6; }
@@ -1956,26 +1925,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$convert_bin" != "yes" && as_fn_error $? "no convert/ImageMagick found" "$LINENO" 5
+test -n "$convert_bin" || as_fn_error $? "no convert (imagemagick) found" "$LINENO" 5
 
-# Extract the first word of "perl", so it can be a program name with args.
-set dummy perl; ac_word=$2
+
+
+# Extract the first word of "su", so it can be a program name with args.
+set dummy su; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_perl_bin+:} false; then :
+if ${ac_cv_path_su_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$perl_bin"; then
-  ac_cv_prog_perl_bin="$perl_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $su_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_su_bin="$su_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_perl_bin="yes"
+    ac_cv_path_su_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -1983,10 +1956,142 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_perl_bin" && ac_cv_prog_perl_bin="no"
+  ;;
+esac
 fi
+su_bin=$ac_cv_path_su_bin
+if test -n "$su_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $su_bin" >&5
+$as_echo "$su_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
 fi
-perl_bin=$ac_cv_prog_perl_bin
+
+
+test -n "$su_bin" || as_fn_error $? "no su (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "xargs", so it can be a program name with args.
+set dummy xargs; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_xargs_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $xargs_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_xargs_bin="$xargs_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_xargs_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+xargs_bin=$ac_cv_path_xargs_bin
+if test -n "$xargs_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $xargs_bin" >&5
+$as_echo "$xargs_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$xargs_bin" || as_fn_error $? "no xargs (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "find", so it can be a program name with args.
+set dummy find; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_find_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $find_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_find_bin="$find_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_find_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+find_bin=$ac_cv_path_find_bin
+if test -n "$find_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $find_bin" >&5
+$as_echo "$find_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$find_bin" || as_fn_error $? "no find (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "perl", so it can be a program name with args.
+set dummy perl; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_perl_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $perl_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_perl_bin="$perl_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_perl_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+perl_bin=$ac_cv_path_perl_bin
 if test -n "$perl_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $perl_bin" >&5
 $as_echo "$perl_bin" >&6; }
@@ -1996,26 +2101,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$perl_bin" != "yes" && as_fn_error $? "no Perl found" "$LINENO" 5
+test -n "$perl_bin" || as_fn_error $? "no perl (program) found" "$LINENO" 5
+
+
 
 # Extract the first word of "gpg2", so it can be a program name with args.
 set dummy gpg2; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_gpg2_bin+:} false; then :
+if ${ac_cv_path_gpg2_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$gpg2_bin"; then
-  ac_cv_prog_gpg2_bin="$gpg2_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $gpg2_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_gpg2_bin="$gpg2_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_gpg2_bin="yes"
+    ac_cv_path_gpg2_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2023,10 +2132,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_gpg2_bin" && ac_cv_prog_gpg2_bin="no"
+  ;;
+esac
 fi
-fi
-gpg2_bin=$ac_cv_prog_gpg2_bin
+gpg2_bin=$ac_cv_path_gpg2_bin
 if test -n "$gpg2_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $gpg2_bin" >&5
 $as_echo "$gpg2_bin" >&6; }
@@ -2036,26 +2145,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$gpg2_bin" != "yes" && as_fn_error $? "no gpg2 found" "$LINENO" 5
+test -n "$gpg2_bin" || as_fn_error $? "no gpg2 (gnupg) found" "$LINENO" 5
+
+
 
 # Extract the first word of "zenity", so it can be a program name with args.
 set dummy zenity; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_zenity_bin+:} false; then :
+if ${ac_cv_path_zenity_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$zenity_bin"; then
-  ac_cv_prog_zenity_bin="$zenity_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $zenity_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_zenity_bin="$zenity_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_zenity_bin="yes"
+    ac_cv_path_zenity_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2063,10 +2176,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_zenity_bin" && ac_cv_prog_zenity_bin="no"
+  ;;
+esac
 fi
-fi
-zenity_bin=$ac_cv_prog_zenity_bin
+zenity_bin=$ac_cv_path_zenity_bin
 if test -n "$zenity_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $zenity_bin" >&5
 $as_echo "$zenity_bin" >&6; }
@@ -2076,26 +2189,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$zenity_bin" != "yes" && as_fn_error $? "no zenity found" "$LINENO" 5
+test -n "$zenity_bin" || as_fn_error $? "no zenity (program) found" "$LINENO" 5
+
+
 
 # Extract the first word of "bc", so it can be a program name with args.
 set dummy bc; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_bc_bin+:} false; then :
+if ${ac_cv_path_bc_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$bc_bin"; then
-  ac_cv_prog_bc_bin="$bc_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $bc_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_bc_bin="$bc_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_bc_bin="yes"
+    ac_cv_path_bc_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2103,10 +2220,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_bc_bin" && ac_cv_prog_bc_bin="no"
+  ;;
+esac
 fi
-fi
-bc_bin=$ac_cv_prog_bc_bin
+bc_bin=$ac_cv_path_bc_bin
 if test -n "$bc_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $bc_bin" >&5
 $as_echo "$bc_bin" >&6; }
@@ -2116,26 +2233,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$bc_bin" != "yes" && as_fn_error $? "no bc found" "$LINENO" 5
+test -n "$bc_bin" || as_fn_error $? "no bc (program) found" "$LINENO" 5
+
+
 
 # Extract the first word of "gs", so it can be a program name with args.
 set dummy gs; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_gs_bin+:} false; then :
+if ${ac_cv_path_gs_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$gs_bin"; then
-  ac_cv_prog_gs_bin="$gs_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $gs_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_gs_bin="$gs_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_gs_bin="yes"
+    ac_cv_path_gs_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2143,10 +2264,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_gs_bin" && ac_cv_prog_gs_bin="no"
+  ;;
+esac
 fi
-fi
-gs_bin=$ac_cv_prog_gs_bin
+gs_bin=$ac_cv_path_gs_bin
 if test -n "$gs_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $gs_bin" >&5
 $as_echo "$gs_bin" >&6; }
@@ -2156,26 +2277,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$gs_bin" != "yes" && as_fn_error $? "no gs/ghostscript found" "$LINENO" 5
+test -n "$gs_bin" || as_fn_error $? "no gs (ghostscript) found" "$LINENO" 5
+
+
 
 # Extract the first word of "m4", so it can be a program name with args.
 set dummy m4; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_m4_bin+:} false; then :
+if ${ac_cv_path_m4_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$m4_bin"; then
-  ac_cv_prog_m4_bin="$m4_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $m4_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_m4_bin="$m4_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_m4_bin="yes"
+    ac_cv_path_m4_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2183,10 +2308,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_m4_bin" && ac_cv_prog_m4_bin="no"
+  ;;
+esac
 fi
-fi
-m4_bin=$ac_cv_prog_m4_bin
+m4_bin=$ac_cv_path_m4_bin
 if test -n "$m4_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $m4_bin" >&5
 $as_echo "$m4_bin" >&6; }
@@ -2196,26 +2321,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$m4_bin" != "yes" && as_fn_error $? "no m4 found" "$LINENO" 5
+test -n "$m4_bin" || as_fn_error $? "no m4 (m4sugar) found" "$LINENO" 5
+
+
 
 # Extract the first word of "pandoc", so it can be a program name with args.
 set dummy pandoc; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_pandoc_bin+:} false; then :
+if ${ac_cv_path_pandoc_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$pandoc_bin"; then
-  ac_cv_prog_pandoc_bin="$pandoc_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $pandoc_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_pandoc_bin="$pandoc_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_pandoc_bin="yes"
+    ac_cv_path_pandoc_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2223,10 +2352,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_pandoc_bin" && ac_cv_prog_pandoc_bin="no"
+  ;;
+esac
 fi
-fi
-pandoc_bin=$ac_cv_prog_pandoc_bin
+pandoc_bin=$ac_cv_path_pandoc_bin
 if test -n "$pandoc_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $pandoc_bin" >&5
 $as_echo "$pandoc_bin" >&6; }
@@ -2236,27 +2365,30 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$pandoc_bin" != "yes" && as_fn_error $? "no pandoc installation found" "$LINENO" 5
+test -n "$pandoc_bin" || as_fn_error $? "no pandoc (program) found" "$LINENO" 5
 
-# Checks for programs.
+
+
 # Extract the first word of "python3", so it can be a program name with args.
 set dummy python3; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 $as_echo_n "checking for $ac_word... " >&6; }
-if ${ac_cv_prog_python3_bin+:} false; then :
+if ${ac_cv_path_python3_bin+:} false; then :
   $as_echo_n "(cached) " >&6
 else
-  if test -n "$python3_bin"; then
-  ac_cv_prog_python3_bin="$python3_bin" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+  case $python3_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_python3_bin="$python3_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
 for as_dir in $PATH
 do
   IFS=$as_save_IFS
   test -z "$as_dir" && as_dir=.
     for ac_exec_ext in '' $ac_executable_extensions; do
   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_prog_python3_bin="yes"
+    ac_cv_path_python3_bin="$as_dir/$ac_word$ac_exec_ext"
     $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
@@ -2264,10 +2396,10 @@ done
   done
 IFS=$as_save_IFS
 
-  test -z "$ac_cv_prog_python3_bin" && ac_cv_prog_python3_bin="no"
+  ;;
+esac
 fi
-fi
-python3_bin=$ac_cv_prog_python3_bin
+python3_bin=$ac_cv_path_python3_bin
 if test -n "$python3_bin"; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: $python3_bin" >&5
 $as_echo "$python3_bin" >&6; }
@@ -2277,7 +2409,9 @@ $as_echo "no" >&6; }
 fi
 
 
-test "$python3_bin" != "yes" && as_fn_error $? "no python3 installation found" "$LINENO" 5
+test -n "$python3_bin" || as_fn_error $? "no python3 (program) found" "$LINENO" 5
+
+
 
 # Check for Python modules
 
@@ -2313,7 +2447,7 @@ $as_echo "no" >&6; }
 
 
 
-ac_config_files="$ac_config_files Makefile bin/uca-apply"
+ac_config_files="$ac_config_files Makefile bin/uca-apply m4/tuca.m4"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3022,6 +3156,7 @@ do
   case $ac_config_target in
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "bin/uca-apply") CONFIG_FILES="$CONFIG_FILES bin/uca-apply" ;;
+    "m4/tuca.m4") CONFIG_FILES="$CONFIG_FILES m4/tuca.m4" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

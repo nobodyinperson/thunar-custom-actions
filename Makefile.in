@@ -49,6 +49,22 @@ pdfdir:=@pdfdir@
 # ps documentation [DOCDIR]
 psdir:=@psdir@
 
+# binaries
+make_bin:=@make_bin@
+find_bin:=@find_bin@
+xdg_open_bin:=@xdg_open_bin@
+convert_bin:=@convert_bin@
+su_bin:=@su_bin@
+xargs_bin:=@xargs_bin@
+perl_bin:=@perl_bin@
+gpg2_bin:=@gpg2_bin@
+zenity_bin:=@zenity_bin@
+bc_bin:=@bc_bin@
+gs_bin:=@gs_bin@
+m4_bin:=@m4_bin@
+pandoc_bin:=@pandoc_bin@
+python3_bin:=@python3_bin@
+
 PACKAGE_VERSION := @PACKAGE_VERSION@
 PACKAGE_NAME    := @PACKAGE_NAME@
 PACKAGE_STRING  := @PACKAGE_STRING@
@@ -77,7 +93,7 @@ local_dirs = $(local_mandir) $(local_bindir) $(local_datarootdir)
 installed_files_file = installed_files.tmp
 
 # all markdown manpages
-MDMANPAGES = $(shell find $(local_mandir) -type f -iname '*.1.md')
+MDMANPAGES = $(shell $(find_bin) $(local_mandir) -type f -iname '*.1.md')
 # corresponding groff manpages
 GFMANPAGES = $(MDMANPAGES:.1.md=.1)
 
@@ -90,7 +106,8 @@ M4_INCL = m4
 # pandoc options for manpage creation
 PANDOCOPTS = -f markdown -t man --standalone
 
-IN_FILES = $(shell find $(local_dirs) -type f -iname '*.in')
+# no need to to do further replacement elsewhere
+# IN_FILES = $(shell $(find_bin) $(local_dirs) -type f -iname '*.in')
 IN_FILES_INSTANTIATED = $(IN_FILES:.in=)
 
 CONFIGURE_AC = configure.ac
@@ -98,20 +115,20 @@ CONFIGURE = configure
 
 # get information from changelog
 DEBIAN_CHANGELOG = debian/changelog
-DEBIAN_CHANGELOG_VERSION = $(shell perl -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*$$/$$1/g){print;exit}' $(DEBIAN_CHANGELOG))
+DEBIAN_CHANGELOG_VERSION = $(shell $(perl_bin) -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*$$/$$1/g){print;exit}' $(DEBIAN_CHANGELOG))
 
 # default target
 .PHONY: all
 all: $(IN_FILES_INSTANTIATED) $(UCA_XML_FILES) $(CONFIGURE) $(CONFIGURE_AC) $(GFMANPAGES)
 
 %: %.m4 $(wildcard $(M4_INCL)/*.m4)
-	m4 -I $(M4_INCL) $< > $@
+	$(m4_bin) -I $(M4_INCL) $< > $@
 
 # create rule to install a FILE into the TARGET_DIRECTORY
 # FILE can be a relative path from here
 # $(call install_rule,FILE,TARGET_DIRECTORY)
 define install_rule
-$$(eval _target = $$(abspath $$(addprefix $(2)/,$$(shell echo $(1) | perl -pe 's|^[^/]*/+||g'))))
+$$(eval _target = $$(abspath $$(addprefix $(2)/,$$(shell echo $(1) | $(perl_bin) -pe 's|^[^/]*/+||g'))))
 $$(_target): $(1) | $$(dir $$(_target))
 	cp -L --preserve=all $$< $$@
 	@echo $$@ >> $(installed_files_file)
@@ -122,9 +139,9 @@ endef
 find_opts = -not -type d -not -iname '*.in'
 
 # define the local content that is to install
-local_datarootdir_toinstall = $(shell find $(local_datarootdir) $(find_opts) -not -iname '*.m4')
+local_datarootdir_toinstall = $(shell $(find_bin) $(local_datarootdir) $(find_opts) -not -iname '*.m4')
 local_mandir_toinstall = $(GFMANPAGES)
-local_bindir_toinstall = $(shell find $(local_bindir) $(find_opts))
+local_bindir_toinstall = $(shell $(find_bin) $(local_bindir) $(find_opts))
 
 # set up install rules for all configure directories
 $(foreach configure_dir,$(configure_dirs),\
@@ -134,7 +151,7 @@ $(foreach configure_dir,$(configure_dirs),\
 # build the manpages
 # manpages:
 %.1: %.1.md $(DEBIAN_CHANGELOG)
-	pandoc $(PANDOCOPTS) -Vfooter='Version $(PACKAGE_VERSION)' -o $@ $<
+	$(pandoc_bin) $(PANDOCOPTS) -Vfooter='Version $(PACKAGE_VERSION)' -o $@ $<
 
 $(sort $(install_target_dirs)): % :
 	mkdir -p $@
@@ -144,11 +161,11 @@ $(CONFIGURE): $(CONFIGURE_AC)
 	-autoconf
 
 $(CONFIGURE_AC): $(DEBIAN_CHANGELOG)
-	perl -pi -e 's#^(\s*AC_INIT\([^,]*,\s*\[)([.0-9_a-zA-Z-]+)(\]\s*,.*\))#$${1}$(DEBIAN_CHANGELOG_VERSION)$${3}#g' $@
+	$(perl_bin) -pi -e 's#^(\s*AC_INIT\([^,]*,\s*\[)([.0-9_a-zA-Z-]+)(\]\s*,.*\))#$${1}$(DEBIAN_CHANGELOG_VERSION)$${3}#g' $@
 
 # substitute variables in a file
 $(IN_FILES_INSTANTIATED): % : %.in Makefile
-	perl -pe '$(foreach var,$(configure_vars),s#[@]$(var)[@]#$($(var))#g;)' < $< > $@
+	$(perl_bin) -pe '$(foreach var,$(configure_vars),s#[@]$(var)[@]#$($(var))#g;)' < $< > $@
 
 .PHONY: bin_executable
 bin_executable: $(local_bindir_toinstall)

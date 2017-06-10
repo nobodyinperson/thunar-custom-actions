@@ -43,7 +43,24 @@ dvidir:=@dvidir@
 # pdf documentation [DOCDIR]
 pdfdir:=@pdfdir@
 # ps documentation [DOCDIR]
-psdir:=@psdir@
+psdir:=${docdir}
+
+# programs
+make_bin:=@make_bin@
+xdg_open_bin:=@xdg_open_bin@
+find_bin:=@find_bin@
+convert_bin:=@convert_bin@
+su_bin:=@su_bin@
+xargs_bin:=@xargs_bin@
+perl_bin:=@perl_bin@
+gpg2_bin:=@gpg2_bin@
+zenity_bin:=@zenity_bin@
+bc_bin:=@bc_bin@
+gs_bin:=@gs_bin@
+m4_bin:=@m4_bin@
+pandoc_bin:=@pandoc_bin@
+python3_bin:=@python3_bin@
+
 # passwd file
 ifeq (@PASSWDFILE@,)
 passwdfile:=$(sysconfdir)/passwd
@@ -61,14 +78,14 @@ PACKAGE_VERSION := @PACKAGE_VERSION@
 PACKAGE_NAME    := @PACKAGE_NAME@
 PACKAGE_STRING  := @PACKAGE_STRING@
 
-ifeq ($(shell test -e $(passwdfile) && echo "yes" || echo "no"),no)
+ifeq ($(shell test -e "$(passwdfile)" && echo "yes" || echo "no"),no)
 $(error passwd-file "$(passwdfile)" does not exist)
 endif
 
 system_uca_files = $(wildcard $(datarootdir)/$(PACKAGE_NAME)/system-uca/*.xml)
 
-users = $(shell perl -F: -e 'print "$$F[0]\n" if ($$F[2]>=1000 and $$F[2] <= 9999)' < $(passwdfile))
-homedirs = $(shell perl -F: -e 'print "$$F[5]\n" if ($$F[2]>=1000 and $$F[2] <= 9999)' < $(passwdfile))
+users = $(shell $(perl_bin) -F: -e 'print "$$F[0]\n" if ($$F[2]>=1000 and $$F[2] <= 9999)' < $(passwdfile))
+homedirs = $(shell $(perl_bin) -F: -e 'print "$$F[5]\n" if ($$F[2]>=1000 and $$F[2] <= 9999)' < $(passwdfile))
 
 
 .PHONY: update remove
@@ -87,10 +104,10 @@ manip_cmd = cd && $(bindir)/uca-manip -a $(1) -f $(ucafile) -o $(ucafile) $(syst
 define root_manip_cmd
 update-all::
 	@echo "# Merging system-wide Thunar custom actions into user $(1)'s configuration"
-	su -c "$(call manip_cmd,merge)" - $(1)
+	$(su_bin) -c "$(call manip_cmd,merge)" - $(1)
 remove-all::
 	@echo "# Removing system-wide Thunar custom actions from user $(1)'s configuration"
-	su -c "$(call manip_cmd,remove)" - $(1)
+	$(su_bin) -c "$(call manip_cmd,remove)" - $(1)
 endef
 
 $(foreach user,$(users),$(eval $(call root_manip_cmd,$(user))))

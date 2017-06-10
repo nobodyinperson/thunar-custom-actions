@@ -6,56 +6,43 @@ AC_INIT([thunar-custom-actions], [0.0.11], [nobodyinperson@gmx.de])
 
 m4_include([m4/ax_python_module.m4])
 
+# REQUIRE_PROG([variable],[prog],[description])
+#
+# - search for [prog] with AC_PATH_PROG
+# - save found path to [variable]
+# - fail if [prog] was not found
+# - make [variable] precious with AC_ARG_VAR
+# 
+AC_DEFUN([REQUIRE_PROG],[
+AC_PATH_PROG([$2],[$1])
+[test -n "$]$2["] || AC_MSG_ERROR([no $1 ($3) found])
+AC_ARG_VAR([$2],[path to $1])
+])
 AC_ARG_VAR([PASSWDFILE],[path to passwd file [SYSCONFDIR/passwd]]) 
 AC_SUBST([PASSWDFILE])
 AC_ARG_VAR([UCAFILE],[relative path from homedir to Thunar uca.xml file
 [.config/Thunar/uca.xml]]) 
 AC_SUBST([UCAFILE])
 
-# Checks for programs.
-AC_CHECK_PROG([make_bin],[make],[yes],[no])
-test "$make_bin" != "yes" && AC_MSG_ERROR([no make found])
-
-AC_CHECK_PROG([xdg_open_bin],[xdg-open],[yes],[no])
-test "$xdg_open_bin" != "yes" && AC_MSG_ERROR([no xdg-open found])
-
-AC_CHECK_PROG([su_bin],[su],[yes],[no])
-test "$su_bin" != "yes" && AC_MSG_ERROR([no su found])
-
-AC_CHECK_PROG([xargs_bin],[xargs],[yes],[no])
-test "$xargs_bin" != "yes" && AC_MSG_ERROR([no xargs found])
-
-AC_CHECK_PROG([convert_bin],[convert],[yes],[no])
-test "$convert_bin" != "yes" && AC_MSG_ERROR([no convert/ImageMagick found])
-
-AC_CHECK_PROG([perl_bin],[perl],[yes],[no])
-test "$perl_bin" != "yes" && AC_MSG_ERROR([no Perl found])
-
-AC_CHECK_PROG([gpg2_bin],[gpg2],[yes],[no])
-test "$gpg2_bin" != "yes" && AC_MSG_ERROR([no gpg2 found])
-
-AC_CHECK_PROG([zenity_bin],[zenity],[yes],[no])
-test "$zenity_bin" != "yes" && AC_MSG_ERROR([no zenity found])
-
-AC_CHECK_PROG([bc_bin],[bc],[yes],[no])
-test "$bc_bin" != "yes" && AC_MSG_ERROR([no bc found])
-
-AC_CHECK_PROG([gs_bin],[gs],[yes],[no])
-test "$gs_bin" != "yes" && AC_MSG_ERROR([no gs/ghostscript found])
-
-AC_CHECK_PROG([m4_bin],[m4],[yes],[no])
-test "$m4_bin" != "yes" && AC_MSG_ERROR([no m4 found])
-
-AC_CHECK_PROG([pandoc_bin],[pandoc],[yes],[no])
-test "$pandoc_bin" != "yes" && AC_MSG_ERROR([no pandoc installation found])
-
-# Checks for programs.
-AC_CHECK_PROG([python3_bin],[python3],[yes],[no])
-test "$python3_bin" != "yes" && AC_MSG_ERROR([no python3 installation found])
+# # Checks for programs.
+REQUIRE_PROG([make],[make_bin],[program])
+REQUIRE_PROG([xdg-open],[xdg_open_bin],[program])
+REQUIRE_PROG([convert],[convert_bin],[imagemagick])
+REQUIRE_PROG([su],[su_bin],[program])
+REQUIRE_PROG([xargs],[xargs_bin],[program])
+REQUIRE_PROG([find],[find_bin],[program])
+REQUIRE_PROG([perl],[perl_bin],[program])
+REQUIRE_PROG([gpg2],[gpg2_bin],[gnupg])
+REQUIRE_PROG([zenity],[zenity_bin],[program])
+REQUIRE_PROG([bc],[bc_bin],[program])
+REQUIRE_PROG([gs],[gs_bin],[ghostscript])
+REQUIRE_PROG([m4],[m4_bin],[m4sugar])
+REQUIRE_PROG([pandoc],[pandoc_bin],[program])
+REQUIRE_PROG([python3],[python3_bin],[program])
 
 # Check for Python modules
 AX_PYTHON_MODULE(lxml,fatal,python3)
 
 
-AC_CONFIG_FILES([Makefile bin/uca-apply])
+AC_CONFIG_FILES([Makefile bin/uca-apply m4/tuca.m4])
 AC_OUTPUT
