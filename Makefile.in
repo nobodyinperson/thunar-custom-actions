@@ -1,4 +1,4 @@
-#!/usr/bin/make -f
+#!@make_bin@ -f
 
 ############################################################
 ### get all the ./configure arguments into this Makefile ###

@@ -1,4 +1,4 @@
-#!/usr/bin/make -f
+#!@make_bin@ -f
 
 # user executables [EPREFIX/bin]
 bindir:=@bindir@
