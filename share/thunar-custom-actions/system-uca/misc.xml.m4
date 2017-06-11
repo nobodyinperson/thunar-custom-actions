@@ -8,7 +8,7 @@ include(tuca.m4)dnl
 	<icon>emblem-symbolic-link</icon>
 	<name xml:lang="de">Verknüpfung erstellen</name>
 	<name xml:lang="en">Create link to this file</name>
-	<command>TUCA_INIT();TARGET="$(TUCA_ZENITY() --file-selection --save --filename TUCA_FIRST_FILE()) --title=\"$(eval_gettext 'Select link location')\"" || exit;ln -s TUCA_FIRST_FILE() "$TARGET" || TUCA_ZENITY() --error;</command>
+	<command>TUCA_INIT();TITLE="$(eval_gettext 'Select link location')";TARGET="$(TUCA_ZENITY() --file-selection --title="$TITLE" --save --filename TUCA_FIRST_FILE())" || exit;ln -s TUCA_FIRST_FILE() "$TARGET" || TUCA_ZENITY() --error;</command>
 	<description xml:lang="de">Eine symbolische Verknüpfung zu der  ausgewählten Datei erstellen.</description>
 	<description xml:lang="en">Create a symbolic link to the  selected file.</description>
 	<patterns>*</patterns>

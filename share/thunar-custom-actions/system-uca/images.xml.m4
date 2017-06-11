@@ -49,7 +49,7 @@ include(tuca.m4)dnl
 	<icon>window-restore-symbolic</icon>
 	<name xml:lang="de">Bilder verkleinern</name>
 	<name xml:lang="en">Shrink images</name>
-	<command>TUCA_INIT();SCALE=$(TUCA_ZENITY() --text="%%" --scale --value=50 --min-value=1 --max-value=99) || exit;TUCA_LOOP(TUCA_LOOP_PB_TEXT($(eval_gettext 'scale to $SCALE percent... $TUCA_FILE_BASE_VAR()'));TUCA_CONVERT() TUCA_FILE() -resize ${SCALE}%% TUCA_TEMP())</command>
+	<command>TUCA_INIT();SCALE=$(TUCA_ZENITY() --text="$(eval_gettext 'Scale to what percentage?')" --scale --value=50 --min-value=1 --max-value=99) || exit;TUCA_LOOP(TUCA_LOOP_PB_TEXT($(eval_gettext 'scale to $SCALE percent... $TUCA_FILE_BASE_VAR()'));TUCA_CONVERT() TUCA_FILE() -resize ${SCALE}%% TUCA_TEMP())</command>
 	<description xml:lang="de">Die ausgewählten Bilder werden auf einen gewählten Prozentsatz der ursprünglichen Größe skaliert.</description>
 	<description xml:lang="en">The selected images are scaled to a given percentage of the original size.</description>
 	<patterns>*</patterns>
