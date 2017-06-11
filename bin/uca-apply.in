@@ -1,80 +1,20 @@
 #!@make_bin@ -f
-
-# user executables [EPREFIX/bin]
-bindir:=@bindir@
-# system admin executables [EPREFIX/sbin]
-sbindir:=@sbindir@
-# program executables [EPREFIX/libexec]
-libexecdir:=@libexecdir@
-# read-only single-machine data [PREFIX/etc]
-sysconfdir:=@sysconfdir@
-# modifiable architecture-independent data [PREFIX/com]
-sharedstatedir:=@sharedstatedir@
-# modifiable single-machine data [PREFIX/var]
-localstatedir:=@localstatedir@
-# modifiable per-process data [LOCALSTATEDIR/run]
-runstatedir:=@runstatedir@
-# object code libraries [EPREFIX/lib]
-libdir:=@libdir@
-# C header files [PREFIX/include]
-includedir:=@includedir@
-# C header files for non-gcc [/usr/include]
-oldincludedir:=@oldincludedir@
-# read-only arch.-independent data root [PREFIX/share]
-datarootdir:=@datarootdir@
-# read-only architecture-independent data [DATAROOTDIR]
-datadir:=@datadir@
-# info documentation [DATAROOTDIR/info]
-infodir:=@infodir@
-# locale-dependent data [DATAROOTDIR/locale]
-localedir:=@localedir@
-# man documentation [DATAROOTDIR/man]
-mandir:=@mandir@
-# documentation root [DATAROOTDIR/doc/thunar-custom-actions]
-docdir:=@docdir@
-# html documentation [DOCDIR]
-htmldir:=@htmldir@
-# dvi documentation [DOCDIR]
-dvidir:=@dvidir@
-# pdf documentation [DOCDIR]
-pdfdir:=@pdfdir@
-# ps documentation [DOCDIR]
-psdir:=@docdir@
-
-# programs
-make_bin:=@make_bin@
-xdg_open_bin:=@xdg_open_bin@
-find_bin:=@find_bin@
-convert_bin:=@convert_bin@
-su_bin:=@su_bin@
-xargs_bin:=@xargs_bin@
-perl_bin:=@perl_bin@
-gpg2_bin:=@gpg2_bin@
-zenity_bin:=@zenity_bin@
-bc_bin:=@bc_bin@
-gs_bin:=@gs_bin@
-m4_bin:=@m4_bin@
-pandoc_bin:=@pandoc_bin@
-python3_bin:=@python3_bin@
+include $(DESTDIR)/@includedir@/@PACKAGE_NAME@/@makefile_include@
 
 # passwd file
-ifeq (@PASSWDFILE@,)
+ifeq ($(PASSWDFILE),)
 passwdfile:=$(sysconfdir)/passwd
 else
-passwdfile:=@PASSWDFILE@
+passwdfile:=$(PASSWDFILE)
 endif
 # uca file path
-ifeq (@UCAFILE@,)
+ifeq ($(UCAFILE),)
 ucafile:=.config/Thunar/uca.xml
 else
-ucafile:=@UCAFILE@
+ucafile:=$(UCAFILE)
 endif
 
-PACKAGE_VERSION := @PACKAGE_VERSION@
-PACKAGE_NAME    := @PACKAGE_NAME@
-PACKAGE_STRING  := @PACKAGE_STRING@
-
-ifeq ($(shell test -e "$(passwdfile)" && echo "yes" || echo "no"),no)
+ifeq ($(wildcard $(passwdfile)),)
 $(error passwd-file "$(passwdfile)" does not exist)
 endif
 

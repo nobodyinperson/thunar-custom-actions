@@ -26,6 +26,3 @@ config.status
 
 # instantiated template files
 Makefile
-bin/uca-apply
-m4/tuca.m4
-share/thunar-custom-actions/system-uca/*.xml

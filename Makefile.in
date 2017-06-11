@@ -1,110 +1,5 @@
 #!@make_bin@ -f
 
-############################################################
-### get all the ./configure arguments into this Makefile ###
-############################################################
-
-# install architecture-independent files in PREFIX [/usr/local]
-prefix:=@prefix@
-# install architecture-dependent files in EPREFIX [PREFIX]
-exec_prefix:=@exec_prefix@
-# user executables [EPREFIX/bin]
-bindir:=@bindir@
-# system admin executables [EPREFIX/sbin]
-sbindir:=@sbindir@
-# program executables [EPREFIX/libexec]
-libexecdir:=@libexecdir@
-# read-only single-machine data [PREFIX/etc]
-sysconfdir:=@sysconfdir@
-# modifiable architecture-independent data [PREFIX/com]
-sharedstatedir:=@sharedstatedir@
-# modifiable single-machine data [PREFIX/var]
-localstatedir:=@localstatedir@
-# modifiable per-process data [LOCALSTATEDIR/run]
-runstatedir:=@runstatedir@
-# object code libraries [EPREFIX/lib]
-libdir:=@libdir@
-# C header files [PREFIX/include]
-includedir:=@includedir@
-# C header files for non-gcc [/usr/include]
-oldincludedir:=@oldincludedir@
-# read-only arch.-independent data root [PREFIX/share]
-datarootdir:=@datarootdir@
-# read-only architecture-independent data [DATAROOTDIR]
-datadir:=@datadir@
-# info documentation [DATAROOTDIR/info]
-infodir:=@infodir@
-# locale-dependent data [DATAROOTDIR/locale]
-localedir:=@localedir@
-# man documentation [DATAROOTDIR/man]
-mandir:=@mandir@
-# documentation root [DATAROOTDIR/doc/thunar-custom-actions]
-docdir:=@docdir@
-# html documentation [DOCDIR]
-htmldir:=@htmldir@
-# dvi documentation [DOCDIR]
-dvidir:=@dvidir@
-# pdf documentation [DOCDIR]
-pdfdir:=@pdfdir@
-# ps documentation [DOCDIR]
-psdir:=@psdir@
-
-# binaries
-make_bin:=@make_bin@
-xdg_open_bin:=@xdg_open_bin@
-convert_bin:=@convert_bin@
-su_bin:=@su_bin@
-xargs_bin:=@xargs_bin@
-find_bin:=@find_bin@
-perl_bin:=@perl_bin@
-gpg2_bin:=@gpg2_bin@
-zenity_bin:=@zenity_bin@
-bc_bin:=@bc_bin@
-gs_bin:=@gs_bin@
-m4_bin:=@m4_bin@
-pandoc_bin:=@pandoc_bin@
-python3_bin:=@python3_bin@
-gettext_bin:=@gettext_bin@
-gettextsh_bin:=@gettextsh_bin@
-xgettext_bin:=@xgettext_bin@
-msgfmt_bin:=@msgfmt_bin@
-msgmerge_bin:=@msgmerge_bin@
-
-PACKAGE_VERSION := @PACKAGE_VERSION@
-PACKAGE_NAME    := @PACKAGE_NAME@
-PACKAGE_STRING  := @PACKAGE_STRING@
-
-configure_dirs = bindir sbindir libexecdir sysconfdir sharedstatedir \
-	localstatedir runstatedir libdir includedir oldincludedir datarootdir \
-	datadir infodir localedir mandir docdir htmldir dvidir pdfdir psdir
-configure_vars = $(configure_dirs) \
-	PACKAGE_VERSION PACKAGE_STRING PACKAGE_NAME PACKAGE_URL \
-	PASSWDFILE UCAFILE \
-	make_bin \
-	xdg_open_bin \
-	convert_bin \
-	su_bin \
-	xargs_bin \
-	find_bin \
-	perl_bin \
-	gpg2_bin \
-	zenity_bin \
-	bc_bin \
-	gs_bin \
-	m4_bin \
-	pandoc_bin \
-	python3_bin \
-	gettext_bin \
-	gettextsh_bin \
-	xgettext_bin \
-	msgfmt_bin \
-	msgmerge_bin
-
-$(foreach configure_dir,$(configure_dirs),\
-	$(eval $(configure_dir) := $(abspath $(DESTDIR)/$($(configure_dir)))))
-# $(foreach configure_dir,$(configure_dirs),\
-# 	$(info $(configure_dir) := $($(configure_dir))))
-
 #############################
 ### The local directories ###
 #############################
@@ -113,9 +8,25 @@ local_mandir = man
 local_bindir = bin
 local_datarootdir = share
 local_localedir = locale
+local_includedir = include
 
-local_dirs = $(local_mandir) $(local_bindir) $(local_datarootdir) \
-	$(local_localedir)
+############################################################
+### get all the ./configure arguments into this Makefile ###
+############################################################
+makefile_include:=@makefile_include@
+makefile_include_local_path:=$(local_includedir)/@PACKAGE_NAME@/$(makefile_include)
+include $(makefile_include_local_path)
+
+# install directory paths from configure
+configure_dirs = $(filter %dir,$(configure_vars))
+# executable paths from configure
+configure_bins = $(filter %_bin,$(configure_vars))
+# corresponding local directories
+local_dirs = $(foreach directory,$(configure_dirs),$(local_$(directory)))
+
+# merge DESTDIR from dpkg-buildpackage into paths
+$(foreach configure_dir,$(configure_dirs),\
+	$(eval $(configure_dir) := $(abspath $(DESTDIR)/$($(configure_dir)))))
 
 installed_files_file = installed_files.tmp
 
@@ -134,7 +45,7 @@ tuca_include_m4 = $(M4_INCL)/tuca.m4
 # pandoc options for manpage creation
 PANDOCOPTS = -f markdown -t man --standalone
 
-IN_FILES = $(shell $(find_bin) $(local_dirs) $(M4_INCL) -type f -iname '*.in')
+IN_FILES = $(shell $(find_bin) $(local_dirs) $(M4_INCL) -type f -iname '*.in' -not -name '$(notdir $(makefile_include_local_path))*')
 IN_FILES_INSTANTIATED = $(IN_FILES:.in=)
 
 CONFIGURE_AC = configure.ac
@@ -172,13 +83,14 @@ $$(eval install_target_dirs = $$(install_target_dirs) $$(dir $$(_target)))
 $$(eval install_targets = $$(install_targets) $$(_target))
 endef
 
-find_opts = -not -type d -not -iname '*.in'
+find_opts = -not -type d -not -iname '*.in' -not -iname '.gitignore'
 
 # define the local content that is to install
 local_datarootdir_toinstall = $(shell $(find_bin) $(local_datarootdir) $(find_opts) -not -iname '*.m4')
 local_mandir_toinstall = $(GFMANPAGES)
 local_localedir_toinstall = $(MOFILES)
 local_bindir_toinstall = $(shell $(find_bin) $(local_bindir) $(find_opts))
+local_includedir_toinstall = $(shell $(find_bin) $(local_includedir) $(find_opts))
 
 # set up install rules for all configure directories
 $(foreach configure_dir,$(configure_dirs),\
@@ -229,7 +141,7 @@ bin_executable: $(local_bindir_toinstall)
 .PHONY: $(install_targets)
 install: bin_executable $(sort $(install_targets)) 
 	-@sort -u $(installed_files_file) -o $(installed_files_file)
-	
+
 # remove a file/folder without asking
 # $(call remove,PATH)
 # This is only to display a newline after the command
@@ -238,24 +150,26 @@ rm -rf $(1)
 
 endef
 
-.PHONY: reset
-reset:
-	$(bindir)/uca-apply remove
-
 .PHONY: uninstall
-uninstall: reset
+uninstall:
 	$(foreach file,$(sort $(install_targets) $(shell cat $(installed_files_file))),$(call remove,$(file)))
 	rm -f $(installed_files_file)
 	@echo WARNING: There might still be some empty folders left. This should not be a problem.
 	
 .PHONY: clean
 clean:
-	rm -rf $(addprefix $(DEBIAN)/,files *.substvars *.debhelper $(PACKAGE_NAME) debhelper-build-stamp *.debhelper.log)
 	rm -f $(IN_FILES_INSTANTIATED)
 	rm -f $(UCA_XML_FILES)
 	rm -f $(GFMANPAGES)
 	rm -f $(installed_files_file)
 	rm -f $(only_uca_cmd_file)
 
+.PHONY: debclean
+debclean:
+	rm -rf $(addprefix $(DEBIAN)/,files *.substvars *.debhelper $(PACKAGE_NAME) debhelper-build-stamp *.debhelper.log)
 
+.PHONY: distclean
+distclean: clean debclean
+	rm -f $(makefile_include_local_path)
+	rm -f Makefile
 	
