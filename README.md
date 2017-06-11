@@ -54,7 +54,7 @@ I am testing `thunar-custom-actions` regularly on several different machines run
 `thunar-custom-actions` is best installed via the Debian package obtainable at the [releases page](https://github.com/nobodyinperson/thunar-custom-actions/releases). Download the `*.deb`-package and install it like so:
 
 ```bash
-dpkg -i thunar-custom-actions-*.deb
+sudo dpkg -i thunar-custom-actions-*.deb
 ```
 
 ### Apt repository (automatic updates)
