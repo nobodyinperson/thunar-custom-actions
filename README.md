@@ -40,9 +40,29 @@ There are currently actions for:
 Everything with a beautiful **progress bar** realized with `zenity`.
 Of course, I tried to make everything work regardless of ugly characters (e.g. whitespace) in the filename.
 
-![thunar-custom-actions-v0 0 8-ss1](https://user-images.githubusercontent.com/19148271/26882399-95e61d6a-4b9a-11e7-8ab3-de5eb34b3fb9.png)
+## Screenshots
 
-![thunar-custom-actions-v0 0 8-ss2](https://user-images.githubusercontent.com/19148271/26882400-967bb906-4b9a-11e7-999c-0142a802dd22.png)
+See some screenshots:
+
+### Rotating images
+
+![thunar-custom-actions-image-actions-context-menu](https://user-images.githubusercontent.com/19148271/27011809-1a44c120-4ec4-11e7-9c17-892adb147e85.png)
+
+![thunar-custom-actions-image-rotating-progressbar](https://user-images.githubusercontent.com/19148271/27011807-1a3fe768-4ec4-11e7-890e-c8c8f94b48d5.png)
+
+### Encrypting files
+
+![thunar-custom-actions-image-actions-context-menu-gpg-encrypt](https://user-images.githubusercontent.com/19148271/27011808-1a404c6c-4ec4-11e7-9a83-43c02271d6bd.png)
+
+![thunar-custom-actions-gpg-encrypt](https://user-images.githubusercontent.com/19148271/27011810-1a49c026-4ec4-11e7-9c29-2a2b22cd1efd.png)
+
+### Finding space-consuming elements in a folder
+
+![thunar-custom-actions-folder-find-big-elements-context-menu](https://user-images.githubusercontent.com/19148271/27011804-1a071d20-4ec4-11e7-9bfd-40e1b015061b.png)
+
+![thunar-custom-actions-folder-find-big-elements-progressbar](https://user-images.githubusercontent.com/19148271/27011805-1a28d1a4-4ec4-11e7-9873-51ed8338a526.png)
+
+![thunar-custom-actions-folder-find-big-elements-view](https://user-images.githubusercontent.com/19148271/27011806-1a3920f4-4ec4-11e7-856c-a6ce6746de17.png)
 
 ## Installation
 
@@ -54,7 +74,7 @@ I am testing `thunar-custom-actions` regularly on several different machines run
 `thunar-custom-actions` is best installed via the Debian package obtainable at the [releases page](https://github.com/nobodyinperson/thunar-custom-actions/releases). Download the `*.deb`-package and install it like so:
 
 ```bash
-sudo dpkg -i thunar-custom-actions-*.deb
+sudo dpkg -i thunar-custom-actions*.deb || sudo apt-get install -f -y
 ```
 
 ### Apt repository (automatic updates)
