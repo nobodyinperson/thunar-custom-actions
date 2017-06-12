@@ -52,7 +52,8 @@ CONFIGURE_AC = configure.ac
 CONFIGURE = configure
 
 # get information from changelog
-DEBIAN_CHANGELOG = debian/changelog
+DEBIAN = $(wildcard debian)
+DEBIAN_CHANGELOG = $(DEBIAN)/changelog
 DEBIAN_CHANGELOG_VERSION = $(shell $(perl_bin) -ne 'if(s/^$(PACKAGE_NAME)\s*\((.*?)\).*$$/$$1/g){print;exit}' $(DEBIAN_CHANGELOG))
 
 only_uca_cmd_file = $(local_localedir)/tmp_only_uca_commands.sh
@@ -158,11 +159,11 @@ uninstall:
 	
 .PHONY: clean
 clean:
-	rm -f $(IN_FILES_INSTANTIATED)
-	rm -f $(UCA_XML_FILES)
-	rm -f $(GFMANPAGES)
-	rm -f $(installed_files_file)
+	rm -f $(IN_FILES_INSTANTIATED) # instantiated files
+	rm -f $(UCA_XML_FILES) # instantiated uca xml files
 	rm -f $(only_uca_cmd_file)
+	rm -f $(GFMANPAGES) # manpages
+	rm -f $(MOFILES) $(POTFILE) # translations
 
 .PHONY: debclean
 debclean:
@@ -170,6 +171,8 @@ debclean:
 
 .PHONY: distclean
 distclean: clean debclean
-	rm -f $(makefile_include_local_path)
-	rm -f Makefile
+	rm -f $(makefile_include_local_path)*
+	rm -f config.status config.log # configure output
+	rm -rf auto*.cache/
+	rm -f Makefile # this Makefile itself
 	
