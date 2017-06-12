@@ -1,4 +1,5 @@
 dnl
+changecom(`/*',`*/')dnl
 changequote(`<~', `~>')dnl
 dnl
 dnl programs from ./configure
@@ -28,10 +29,14 @@ define(<~TUCA_FILE_VAR~>,<~file~>)dnl
 define(<~TUCA_TEMP_VAR~>,<~filetmp~>)dnl
 define(<~TUCA_FILE_BASE_VAR~>,<~filebase~>)dnl
 define(<~TUCA_OUT_VAR~>,<~fileout~>)dnl
+define(<~TUCA_IN_VAR~>,<~fileinput~>)dnl
+define(<~TUCA_FINAL_OUT_VAR~>,<~filefinalout~>)dnl
 define(<~TUCA_FILE~>,<~"$TUCA_FILE_VAR()"~>)dnl
 define(<~TUCA_FILE_BASE~>,<~"$TUCA_FILE_BASE_VAR()"~>)dnl
 define(<~TUCA_TEMP~>,<~"$TUCA_TEMP_VAR()"~>)dnl
 define(<~TUCA_OUT~>,<~"$TUCA_OUT_VAR()"~>)dnl
+define(<~TUCA_IN~>,<~"$TUCA_IN_VAR()"~>)dnl
+define(<~TUCA_FINAL_OUT~>,<~"$TUCA_FINAL_OUT_VAR()"~>)dnl
 dnl
 define(<~TUCA_ALL_FILES~>,<~%F~>)dnl
 define(<~TUCA_ALL_FILE_FOLDERS~>,<~%D~>)dnl
@@ -44,6 +49,7 @@ dnl
 dnl
 dnl TUCA_INIT()
 dnl - initialise gettext
+dnl
 define(<~TUCA_INIT~>,<~dnl
 set -e;dnl
 export TEXTDOMAIN='TUCA_PACKAGE_NAME()';dnl
@@ -51,38 +57,172 @@ export TEXTDOMAINDIR='TUCA_LOCALEDIR()';dnl
 . TUCA_GETTEXTSH()<~~>dnl
 ~>)dnl
 dnl
+dnl TUCA_TRANSLATE(text)
+dnl - output translated text
+dnl
+define(<~TUCA_TRANSLATE~>,<~dnl
+$(eval_gettext '<~$1~>')<~~>dnl
+~>)dnl
+dnl
+dnl TUCA_PROGRESSBAR(command,[title],[pulsing])
+dnl - show a progressbar with title to indicate current progress
+dnl - if $2 = pulsing, then just pulse, don't show percentage
+dnl
+define(<~TUCA_PROGRESSBAR~>,<~dnl
+(<~$1~>)dnl
+|dnl
+TUCA_ZENITY() --progress --auto-kill --auto-close<~~>dnl
+ifelse($2,,,<~ --title="$(echo $2)"~>)<~~>dnl
+ifelse($3,pulse,<~ --pulsate~>)<~~>dnl
+~>)dnl
+dnl
+dnl TUCA_PROGRESSBAR_TEXT(text)
+dnl - set the text shown on the progressbar
+dnl
+define(<~TUCA_PROGRESSBAR_TEXT~>,<~dnl
+echo '#'<~$1~>dnl
+~>)dnl
+dnl
+dnl TUCA_PROGRESSBAR_PERCENTAGE(percentage)
+dnl - set the progressbar percentage
+dnl
+define(<~TUCA_PROGRESSBAR_PERCENTAGE~>,<~dnl
+echo <~$1~>dnl
+~>)dnl
+dnl
+dnl TUCA_ERROR(text)
+dnl - show the user the error "text"
+dnl
+define(<~TUCA_ERROR~>,<~dnl
+TUCA_ZENITY() --error --text="$(echo $1)"<~~>dnl
+~>)dnl
+dnl
+dnl TUCA_WARNING(text)
+dnl - warn the user with "text"
+dnl
+define(<~TUCA_WARNING~>,<~dnl
+TUCA_ZENITY() --warning --text="$(echo $1)"<~~>dnl
+~>)dnl
+dnl
+dnl TUCA_PASSWORD()
+dnl - ask the user for a password
+dnl
+define(<~TUCA_PASSWORD~>,<~dnl
+TUCA_ZENITY() --password<~~>dnl
+~>)dnl
+dnl
+dnl
+dnl TUCA_CONFIRM(text)
+dnl - ask the user to do "text"
+dnl
+define(<~TUCA_CONFIRM~>,<~dnl
+TUCA_ZENITY() --question --text="$(echo $1)"<~~>dnl
+~>)dnl
+dnl
+dnl TUCA_GET_LOCAL_TMPFILE_NAME(file)
+dnl - search for a temporary filename that 
+dnl     - has the full basename of "file" in its basename
+dnl     - resides in the same directory as "file"
+dnl     - does not exist already
+dnl
+define(<~TUCA_GET_LOCAL_TMPFILE_NAME~>,<~dnl
+$(dnl
+f=$(echo $1);dnl
+while test -e "$f";do dnl
+f=$(dirname "$f")/.$(basename "$f").tmp;dnl
+done;dnl
+echo "$f")dnl
+~>)dnl
+dnl
 dnl TUCA_COLOR_SELECTION([html])
 dnl $1 = html returns hex color in HTML-style
+dnl
 define(<~TUCA_COLOR_SELECTION~>,<~dnl
 TUCA_ZENITY() --color-selection<~~>dnl
 ifelse($1,html,<~| TUCA_PERL() -ne '@tmp=m/\D+(\d+)\D+(\d+)\D+(\d+)/ or @tmp=(255,255,255);printf "<~#~>%%02X%%02X%%02X",@tmp'~>)<~~>dnl
 ~>)dnl
 dnl
+dnl TUCA_CREATE_FILE(command,input,outfile,[notmpfile])
+dnl - process "command" to create an "outfile" given "input"
+dnl - in "command": 
+dnl     - TUCA_OUT is output "outfile"
+dnl     - TUCA_IN is "input"
+dnl   file
+dnl - caches the result in a temporary file if input and output are equal unless
+dnl   "notmpfile" was specified
 dnl
-define(<~TUCA_LOOP_PB_TEXT~>,<~dnl
-echo "<~<~#~>~>"$1<~~>dnl
+define(<~TUCA_CREATE_FILE~>,<~dnl
+TUCA_IN_VAR()="$(echo $2)";dnl set input var
+TUCA_FINAL_OUT_VAR()="$(echo $3)";dnl set final output var
+ifelse($4,notmpfile,dnl
+dnl no tmpfile desired, output directly to final output file
+TUCA_OUT_VAR()=TUCA_FINAL_OUT();,dnl
+dnl tmpfile is wanted, so cache result to tmpfile if needed
+dnl input and output are equal, tempfile is needed
+if test TUCA_IN() = TUCA_FINAL_OUT();then dnl
+ TUCA_OUT_VAR()=TUCA_GET_LOCAL_TMPFILE_NAME(TUCA_FINAL_OUT());dnl  use tmpfile
+else dnl input and output differ, no tempfile needed
+ TUCA_OUT_VAR()=TUCA_FINAL_OUT();dnl
+fi;dnl
+)dnl
+dnl check if output file already exists
+dnl if output file already exists and input and output file are not the same,
+dnl then ask the user to confirm to overwrite
+dnl TODO: there is still this TUCA_FILE() here that should actually not be in 
+dnl       this macro.
+OVERWRITE=yes;dnl
+if test -e TUCA_FINAL_OUT() -a ! TUCA_IN() = TUCA_FINAL_OUT();then dnl
+ base=$(basename TUCA_FINAL_OUT());dnl
+ if ! (TUCA_CONFIRM(TUCA_TRANSLATE(overwrite $base?)));then dnl
+  OVERWRITE=no;dnl
+ fi;dnl
+fi;dnl
+dnl only run the command if user confirmed to overwrite
+if test "$OVERWRITE" = "yes";then dnl
+ ($1);dnl
+fi;dnl
+dnl if user TUCA_OUT  and final TUCA_FINAL_OUT differ, TUCA_OUT was obviously a 
+dnl temporary file. So copy it over to finish.
+ifelse($4,notmpfile,,dnl only if a tempfile is wanted at all
+if ! test TUCA_OUT() = TUCA_FINAL_OUT();then dnl
+ if cp TUCA_OUT() TUCA_FINAL_OUT();then dnl
+  rm TUCA_OUT();dnl
+ else dnl
+  TUCA_ERROR(TUCA_TRANSLATE(something went wrong copying the dnl
+file $TUCA_OUT_VAR() over to $TUCA_FINAL_OUT_VAR().));dnl
+ fi;dnl
+fi) dnl
 ~>)dnl
+dnl
+dnl TUCA_LOOP(command,[description],[outfile])
+dnl - loop over TUCA_ALL_FILES
+dnl - execute "command" on each file with TUCA_CREATE_FILE
+dnl - use TUCA_PROGRESSBAR_TEXT to show "description" followed by the current 
+dnl   file
+dnl - use TUCA_PROGRESSBAR_PERCENTAGE to show current progress
 dnl
 define(<~TUCA_LOOP~>,<~dnl
 AMOUNT=$(for TUCA_FILE_VAR() in TUCA_ALL_FILES();do echo TUCA_FILE();done | wc -l);dnl
 NR=0;dnl
 for TUCA_FILE_VAR() in TUCA_ALL_FILES();do dnl
- TUCA_FILE_BASE_VAR()="$(basename TUCA_FILE())";dnl
- NR=$(echo "$NR+1" | TUCA_BC());dnl
- TUCA_TEMP_VAR()="$(dirname TUCA_FILE())/.$(basename TUCA_FILE()).tmp";dnl
- dnl echo $1 | logger;dnl
- $1 2>/dev/null >/dev/null;dnl
- if test -z TUCA_OUT();then TUCA_OUT_VAR()=TUCA_FILE();fi;dnl
- cp TUCA_TEMP() TUCA_OUT();dnl
- echo $(echo "$NR*100/$AMOUNT" | TUCA_BC());dnl
- rm TUCA_TEMP();dnl
- unset TUCA_OUT_VAR();dnl
-done |dnl
-TUCA_ZENITY() --progress --auto-kill --auto-close;dnl
+dnl calculate current percentage
+ NR="$(echo "$NR+1" | TUCA_BC())";dnl
+ PERCENTAGE="$(echo "$NR*100/$AMOUNT" | TUCA_BC())";dnl
+dnl get 
+ TUCA_FILE_BASE_VAR()=$(basename TUCA_FILE());dnl current file's basename
+dnl update progressbar text
+ TUCA_PROGRESSBAR_TEXT($2 ... TUCA_FILE_BASE());dnl
+ dnl run command on TUCA_FILE, save to TUCA_FILE if "outfile" is unspecified
+ TUCA_CREATE_FILE($1,TUCA_FILE(),ifelse($3,,TUCA_FILE(),$3));dnl
+ dnl update progressbar percentage
+ TUCA_PROGRESSBAR_PERCENTAGE($PERCENTAGE);dnl
+done<~~>dnl
 ~>)dnl
 dnl
-define(<~TUCA_WAIT~>,<~dnl
-set -e;dnl
-$1 |dnl
-TUCA_ZENITY() --text="$2" --progress --auto-kill --auto-close --pulsate<~~>dnl
+dnl TUCA_CMD([use_tmpfile])
+dnl - do initialisation
+dnl
+define(<~TUCA_CMD~>,<~dnl
+TUCA_INIT();dnl
+<~$1~>dnl
 ~>)dnl

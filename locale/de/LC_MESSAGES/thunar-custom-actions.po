@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-11 09:36+0200\n"
-"PO-Revision-Date: 2017-06-11 09:28+0200\n"
+"POT-Creation-Date: 2017-06-13 10:28+0200\n"
+"PO-Revision-Date: 2017-06-13 10:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,20 +18,35 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
-#, sh-format
-msgid "Password?"
-msgstr "Passwort?"
-
 #: locale/tmp_only_uca_commands.sh:1
 #, sh-format
-msgid "encrypting... $filebase"
-msgstr "verschlüssele... $filebase"
+msgid "Encrypting"
+msgstr "Verschlüssele"
+
+#: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
+#: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
+#: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
+#: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
+#: locale/tmp_only_uca_commands.sh:10 locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "overwrite $base?"
+msgstr "$base überschreiben?"
+
+#: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
+#: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
+#: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
+#: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
+#: locale/tmp_only_uca_commands.sh:10 locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "something went wrong copying the file $fileout over to $filefinalout."
+msgstr "Etwas ist beim Kopieren der Datei $fileout nach $filefinalout schiefgegangen."
 
 #: locale/tmp_only_uca_commands.sh:2
 #, sh-format
-msgid "decrypting... $filebase"
-msgstr "entschlüssele... $filebase"
+msgid "Decrypting"
+msgstr "Entschlüssele"
 
 #: locale/tmp_only_uca_commands.sh:2
 #, sh-format
@@ -40,23 +55,23 @@ msgstr "Falsches Passwort für $filebase?"
 
 #: locale/tmp_only_uca_commands.sh:3
 #, sh-format
-msgid "rotating clockwise... $filebase"
-msgstr "drehe im Uhrzeigersinn... $filebase"
+msgid "Rotating clockwise"
+msgstr "Drehe im Uhrzeigersinn"
 
 #: locale/tmp_only_uca_commands.sh:4
 #, sh-format
-msgid "rotating anti-clockwise... $filebase"
-msgstr "drehe gegen den Uhrzeigersinn... $filebase"
+msgid "Rotating anti-clockwise"
+msgstr "Drehe gegen den Uhrzeigersinn"
 
 #: locale/tmp_only_uca_commands.sh:5
 #, sh-format
-msgid "converting to grayscale... $filebase"
-msgstr "konvertiere zu Graustufen... $filebase"
+msgid "Converting to grayscale"
+msgstr "Konvertiere zu Graustufen"
 
 #: locale/tmp_only_uca_commands.sh:6
 #, sh-format
-msgid "filling transparency with $COLOR... $filebase"
-msgstr "fülle Transparenz mit $COLOR... $filebase"
+msgid "Filling transparency with $COLOR"
+msgstr "Fülle Transparenz mit $COLOR"
 
 #: locale/tmp_only_uca_commands.sh:7
 #, sh-format
@@ -65,53 +80,79 @@ msgstr "Auf wie viel Prozent der Originalgröße skalieren?"
 
 #: locale/tmp_only_uca_commands.sh:7
 #, sh-format
-msgid "scale to $SCALE percent... $filebase"
-msgstr "skaliere auf $SCALE%... $filebase"
+msgid "Scale to $SCALE percent"
+msgstr "Skaliere auf $SCALE%"
 
 #: locale/tmp_only_uca_commands.sh:8
 #, sh-format
-msgid "Select link location"
-msgstr "Ort der Verknüpfung auswählen"
+msgid "The link name has to differ from the target file name."
+msgstr "Der Name des Links muss von der zu verlinkenden Datei abweichen."
 
 #: locale/tmp_only_uca_commands.sh:9
 #, sh-format
-msgid "determining file sizes..."
-msgstr "ermittle Dateigrößen..."
+msgid "Determining file sizes"
+msgstr "Ermittle Dateigrößen"
 
 #: locale/tmp_only_uca_commands.sh:9
 #, sh-format
-msgid "size"
+msgid "Size"
 msgstr "Größe"
 
 #: locale/tmp_only_uca_commands.sh:9
 #, sh-format
-msgid "name"
+msgid "Name"
 msgstr "Name"
 
 #: locale/tmp_only_uca_commands.sh:9
 #, sh-format
-msgid "big elements"
-msgstr "große Elemente"
+msgid "Big elements"
+msgstr "Große Elemente"
 
 #: locale/tmp_only_uca_commands.sh:9
 #, sh-format
-msgid "elements sorted by size"
+msgid "Elements sorted by size"
 msgstr "Elemente nach Größe sortiert"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "Double-click to open."
+msgstr "Doppelklick zum öffnen."
 
 #: locale/tmp_only_uca_commands.sh:10
 #, sh-format
-msgid "converting to PDF..."
-msgstr "konvertiere zu PDF..."
+msgid "Converting to PDF"
+msgstr "Konvertiere zu PDF"
 
 #: locale/tmp_only_uca_commands.sh:11
 #, sh-format
-msgid "concatenating PDFs..."
-msgstr "füge PDFs zusammen..."
+msgid "Concatenating PDFs"
+msgstr "Füge PDFs zusammen"
 
 #: locale/tmp_only_uca_commands.sh:12
 #, sh-format
-msgid "optimizing PDF... $filebase"
-msgstr "optimiere PDF... $filebase"
+msgid "Optimizing PDF"
+msgstr "Optimiere PDF"
+
+#~ msgid "select link location"
+#~ msgstr "Ort der Verknüpfung auswählen"
+
+#~ msgid "could not create link"
+#~ msgstr "konnte den Link nicht erstellen"
+
+#~ msgid "size"
+#~ msgstr "Größe"
+
+#~ msgid "name"
+#~ msgstr "Name"
+
+#~ msgid "That is not a good idea."
+#~ msgstr "Das ist keine gute Idee."
+
+#~ msgid "Password?"
+#~ msgstr "Passwort?"
+
+#~ msgid "rotating anti-clockwise... $filebase"
+#~ msgstr "drehe gegen den Uhrzeigersinn... $filebase"
 
 #~ msgid "Simbuto - a simple graphical budgeting tool"
 #~ msgstr "Simbuto - ein einfaches Werkzeug zur Kostenplanung"
@@ -162,8 +203,7 @@ msgstr "optimiere PDF... $filebase"
 #~ msgstr "Alle Signale entfernt"
 
 #~ msgid "Attempt to connect action '{}' to unregistered signal '{}'."
-#~ msgstr ""
-#~ "Versuch, die Aktion '{}' zu unregistriertem Signal '{}' zu verbinden."
+#~ msgstr "Versuch, die Aktion '{}' zu unregistriertem Signal '{}' zu verbinden."
 
 #~ msgid "Connected action '{}' to signal '{}'"
 #~ msgstr "Verbinde die Aktion '{}' zum Signal '{}'"
@@ -183,15 +223,11 @@ msgstr "optimiere PDF... $filebase"
 #~ msgid "Attempt to emit unregistered signal '{}'"
 #~ msgstr "Versuch, unregistriertes Signal '{}' zu emittieren"
 
-#~ msgid ""
-#~ "The current buffer is empty and no file is specified. No saving necessary."
-#~ msgstr ""
-#~ "Der Editor ist leer und keine Datei wurde angegeben. Speichern ist nicht "
-#~ "notwendig."
+#~ msgid "The current buffer is empty and no file is specified. No saving necessary."
+#~ msgstr "Der Editor ist leer und keine Datei wurde angegeben. Speichern ist nicht notwendig."
 
 #~ msgid "Nonexistant or no file specified. Saving necessary!"
-#~ msgstr ""
-#~ "Nichtexistente oder gar keine Datei angegeben. Speichern ist notwendig!"
+#~ msgstr "Nichtexistente oder gar keine Datei angegeben. Speichern ist notwendig!"
 
 #~ msgid "md5sum of file '{}' is '{}'"
 #~ msgstr "md5-Summe der Datei '{}' is '{}'"
@@ -304,13 +340,8 @@ msgstr "optimiere PDF... $filebase"
 #~ msgid "display ensemble"
 #~ msgstr "Ensemble anzeigen"
 
-#~ msgid ""
-#~ "[slower] Based on the given day and amount tolerances, run an ensemble "
-#~ "and display the 10% and 90% quantiles as darker shadow."
-#~ msgstr ""
-#~ "[langsamer] Auf Grundlage der Tages- und Betragstoleranzen wird ein "
-#~ "Ensemble gerechnet und das 10%- und 90%-Quantil als dunkerer Schatten "
-#~ "angezeigt."
+#~ msgid "[slower] Based on the given day and amount tolerances, run an ensemble and display the 10% and 90% quantiles as darker shadow."
+#~ msgstr "[langsamer] Auf Grundlage der Tages- und Betragstoleranzen wird ein Ensemble gerechnet und das 10%- und 90%-Quantil als dunkerer Schatten angezeigt."
 
 #~ msgid "end date"
 #~ msgstr "Enddatum"
@@ -345,18 +376,11 @@ msgstr "optimiere PDF... $filebase"
 #~ msgid "There was a problem updating the graph."
 #~ msgstr "Es gab ein Problem beim Aktualisieren des Graphen."
 
-#~ msgid ""
-#~ "[WARNING] There was a problem updating the graph. Please check the input!"
-#~ msgstr ""
-#~ "[WARNUNG] Es gab ein Problem beim Aktualisieren des Graphen. Bitte "
-#~ "Eingabe überprüfen!"
+#~ msgid "[WARNING] There was a problem updating the graph. Please check the input!"
+#~ msgstr "[WARNUNG] Es gab ein Problem beim Aktualisieren des Graphen. Bitte Eingabe überprüfen!"
 
-#~ msgid ""
-#~ "The gui is not running. Refusing to update the graph now! Remembering "
-#~ "this for gui start."
-#~ msgstr ""
-#~ "Die Gui läuft nicht. Verzichte auf Graphaktualisierung! Wird aber für den "
-#~ "Gui-Start gemerkt!"
+#~ msgid "The gui is not running. Refusing to update the graph now! Remembering this for gui start."
+#~ msgstr "Die Gui läuft nicht. Verzichte auf Graphaktualisierung! Wird aber für den Gui-Start gemerkt!"
 
 #~ msgid "Date region was changed."
 #~ msgstr "Datumsbereich wurde geändert."
@@ -371,9 +395,7 @@ msgstr "optimiere PDF... $filebase"
 #~ msgstr "Enddatum vor Startdatum ausgewählt"
 
 #~ msgid "You selected an end date in the past. The graph will not updated."
-#~ msgstr ""
-#~ "Es wurde ein Enddatum in der Vergangenheit ausgewählt. Der Graph wird "
-#~ "nicht aktualisiert."
+#~ msgstr "Es wurde ein Enddatum in der Vergangenheit ausgewählt. Der Graph wird nicht aktualisiert."
 
 #~ msgid "Please choose a file"
 #~ msgstr "Bitte eine Datei auswählen"
@@ -450,27 +472,14 @@ msgstr "optimiere PDF... $filebase"
 #~ msgid "Calculating md5sum of file '{}' didn't work!"
 #~ msgstr "Berechnen der md5-Summe für die Datei '{}' hat nicht funktioniert!"
 
-#~ msgid "R could not read from text"
-#~ msgstr "R konnte den Text nicht einlesen."
-
-#~ msgid ""
-#~ "Yeah, the amount gets a pretty format, but the system is not yet perfect. "
-#~ "Place the cursor after the comma and then type to add numbers after the "
-#~ "comma..."
-#~ msgstr ""
-#~ "Ja, der Betrag wird automatisch schön formatiert, aber so richtig perfekt "
-#~ "ist die Eingabe noch nicht. Zum Eingeben von Nachkommastellen, den Cursor "
-#~ "bitte hinter das Komma platzieren..."
+#~ msgid "Yeah, the amount gets a pretty format, but the system is not yet perfect. Place the cursor after the comma and then type to add numbers after the comma..."
+#~ msgstr "Ja, der Betrag wird automatisch schön formatiert, aber so richtig perfekt ist die Eingabe noch nicht. Zum Eingeben von Nachkommastellen, den Cursor bitte hinter das Komma platzieren..."
 
 #~ msgid "To prevent recursion I won't react to this."
 #~ msgstr "Um Rekursion zu verhindern, wird nicht darauf reagiert."
 
-#~ msgid ""
-#~ "Somehow a date was selected from an unknown calendar. This should not "
-#~ "have happened."
-#~ msgstr ""
-#~ "Irgendwie wurde ein Datum von einem unbekannten Kalender ausgewählt. Das "
-#~ "hätte nicht passieren sollen."
+#~ msgid "Somehow a date was selected from an unknown calendar. This should not have happened."
+#~ msgstr "Irgendwie wurde ein Datum von einem unbekannten Kalender ausgewählt. Das hätte nicht passieren sollen."
 
 #~ msgid "Date range"
 #~ msgstr "Datumsbereich"
@@ -566,16 +575,13 @@ msgstr "optimiere PDF... $filebase"
 #~ msgstr "untätig"
 
 #~ msgid "Request to stop logging on device {} - will terminate soon..."
-#~ msgstr ""
-#~ "Anfrage, die Datenaufzeichnung auf Gerät {} zu beenden - werde bald "
-#~ "anhalten..."
+#~ msgstr "Anfrage, die Datenaufzeichnung auf Gerät {} zu beenden - werde bald anhalten..."
 
 #~ msgid "Shutting down logging thread of device {}"
 #~ msgstr "Fahre Datenaufzeichnungs-Thread auf Gerät {} herunter"
 
 #~ msgid "logging thread for device {} was shut down properly."
-#~ msgstr ""
-#~ "Datenaufzeichnungsthread für Gerät {} wurde ordentlich heruntergefahren."
+#~ msgstr "Datenaufzeichnungsthread für Gerät {} wurde ordentlich heruntergefahren."
 
 #~ msgid "Starting data logging on device {}"
 #~ msgstr "Beginne Datenaufzeichnung auf Gerät {}"
@@ -623,25 +629,19 @@ msgstr "optimiere PDF... $filebase"
 #~ msgstr "gpio-dbus läuft nicht"
 
 #~ msgid "trying to start gpio-dbus via systemd's dbus interface..."
-#~ msgstr ""
-#~ "versuche, gpio-dbus über das DBus Interface von systemd zu starten..."
+#~ msgstr "versuche, gpio-dbus über das DBus Interface von systemd zu starten..."
 
 #~ msgid "instructed systemd via dbus to start gpio-dbus."
 #~ msgstr "systemd wurde über dbus angewiesen, gpio-dbus zu starten."
 
 #~ msgid "gpio-dbus was successfully started via systemd's dbus interface."
-#~ msgstr ""
-#~ "gpio-dbus erfolgreich über das DBus-Interface von systemd gestartet."
+#~ msgstr "gpio-dbus erfolgreich über das DBus-Interface von systemd gestartet."
 
 #~ msgid "gpio-dbus startup took too long via systemd, didn't work."
-#~ msgstr ""
-#~ "gpio-dbus über systemd zu starten, hat zu lange gedauert, nicht "
-#~ "funktioniert."
+#~ msgstr "gpio-dbus über systemd zu starten, hat zu lange gedauert, nicht funktioniert."
 
 #~ msgid "starting gpio-dbus via systemd's dbus interface didn't work."
-#~ msgstr ""
-#~ "gpio-dbus über das DBus Interface von systemd zu starten, hat nicht "
-#~ "funktioniert."
+#~ msgstr "gpio-dbus über das DBus Interface von systemd zu starten, hat nicht funktioniert."
 
 #~ msgid "starting gpio-dbus via 'at now'..."
 #~ msgstr "starte gpio-dbus über 'at now'..."
@@ -650,9 +650,7 @@ msgstr "optimiere PDF... $filebase"
 #~ msgstr "gpio-dbus erfolgreich über 'at now' gestartet."
 
 #~ msgid "gpio-dbus startup took too long via 'at now', didn't work."
-#~ msgstr ""
-#~ "gpio-dbus über 'at now' zu starten, hat zu lange gedauert, nicht "
-#~ "funktioniert."
+#~ msgstr "gpio-dbus über 'at now' zu starten, hat zu lange gedauert, nicht funktioniert."
 
 #~ msgid "no DEVNAME environment variable given. Nothing more to do."
 #~ msgstr "keine DEVNAME Umgebungsvariable. Nichts mehr zu tun."
@@ -661,8 +659,7 @@ msgstr "optimiere PDF... $filebase"
 #~ msgstr "DEVNAME Umgebungsvariable: {}"
 
 #~ msgid "DEVNAME environment variable '{}' is a non-existant file.  Aborting."
-#~ msgstr ""
-#~ "DEVNAME Umgebungsvariable '{}' ist keine existierende Datei. Abbruch."
+#~ msgstr "DEVNAME Umgebungsvariable '{}' ist keine existierende Datei. Abbruch."
 
 #, fuzzy
 #~ msgid "getting monitored_devices..."
