@@ -162,9 +162,14 @@ uca-apply update
 
 ## Troubleshooting
 
-#### There are no new actions after the installation!
+#### *Help, there are no new actions after the installation!*
 
 Close all `thunar` instances, run `thunar -q` from the terminal and then retry.
+
+#### *Help, I changed my system's language but the actions are still in the old language!*
+
+This is because Thunar drops all translations but the current locale from its custom actions configuration file.
+Close all Thunar windows, then run `uca-apply remove && uca-apply update && thunar -q` to re-add all translations. The next time Thunar is opened, it will again remove all translations but the (desired) current locale.
 
 ## How to contribute
 
