@@ -15,8 +15,8 @@ Writing your own custom actions for Thunar by hand can become frustrating pretty
 | Feature | Approach |
 |---------|----------|
 |ensure **all needed software is present**, e.g. on configuration migration or system reinstallation | `configure` or rather the `Depends:` section in the debian package |
-|ensure nonexistent files don't get **accedentally overwritten**|ask the user for **overwriting confirmation**|
-|ensure a broken or failing action command does not **accedentally delete files**|cache an action's output in a **temporary file** before copying it over to the final location|
+|ensure nonexistent files don't get **accidentally overwritten**|ask the user for **overwriting confirmation**|
+|ensure a broken or failing action command does not **accidentally delete files**|cache an action's output in a **temporary file** before copying it over to the final location|
 |indicate **progress on long-running actions**|where possible, display a **progressbar**|
 |be able to **interrupt an action**|the **Cancel** button on the **progressbar**|
 |warn if an **action failed**|show a **warning message**|
