@@ -44,6 +44,9 @@ REQUIRE_PROG([gettext.sh],[gettextsh_bin],[gettext for shell])
 REQUIRE_PROG([xgettext],[xgettext_bin],[program])
 REQUIRE_PROG([msgfmt],[msgfmt_bin],[program])
 REQUIRE_PROG([msgmerge],[msgmerge_bin],[program])
+REQUIRE_PROG([md5sum],[md5sum_bin],[program])
+REQUIRE_PROG([sha1sum],[sha1sum_bin],[program])
+REQUIRE_PROG([sha256sum],[sha256sum_bin],[program])
 
 # Check for Python modules
 AX_PYTHON_MODULE(lxml,fatal,python3)

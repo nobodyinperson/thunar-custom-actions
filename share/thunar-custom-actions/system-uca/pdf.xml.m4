@@ -59,12 +59,16 @@ include(tuca.m4)dnl
 	<command>TUCA_CMD(dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            TUCA_GS() -dBATCH -dNOPAUSE -q -dPDFSETTINGS=/screen dnl
-            -sDEVICE=pdfwrite -dDownsampleColorImages=true dnl
-            -dDownsampleGrayImages=true -dDownsampleMonoImages=true dnl
-            -dColorImageResolution=72 -dGrayImageResolution=72 dnl
-            -dMonoImageResolution=72 -sOutputFile=TUCA_OUT() TUCA_IN(),dnl cmd
-            TUCA_TRANSLATE(Optimizing PDF),dnl description
+            TUCA_CREATE_FILE(dnl
+                TUCA_GS() -dBATCH -dNOPAUSE -q -dPDFSETTINGS=/screen dnl
+                -sDEVICE=pdfwrite -dDownsampleColorImages=true dnl
+                -dDownsampleGrayImages=true -dDownsampleMonoImages=true dnl
+                -dColorImageResolution=72 -dGrayImageResolution=72 dnl
+                -dMonoImageResolution=72 -sOutputFile=TUCA_OUT() TUCA_IN(),dnl cmd
+                TUCA_FILE(),dnl input
+                TUCA_FILE(),dnl output
+                ),dnl
+            TUCA_TRANSLATE(Optimizing PDF),dnl loop description
             )dnl
         )dnl
     )</command>

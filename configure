@@ -588,6 +588,9 @@ ac_subst_vars='LTLIBOBJS
 LIBOBJS
 configure_vars
 makefile_include
+sha256sum_bin
+sha1sum_bin
+md5sum_bin
 msgmerge_bin
 msgfmt_bin
 xgettext_bin
@@ -675,7 +678,10 @@ gettext_bin
 gettextsh_bin
 xgettext_bin
 msgfmt_bin
-msgmerge_bin'
+msgmerge_bin
+md5sum_bin
+sha1sum_bin
+sha256sum_bin'
 
 
 # Initialize some variables set by options.
@@ -1320,6 +1326,10 @@ Some influential environment variables:
   msgfmt_bin  path to msgfmt
   msgmerge_bin
               path to msgmerge
+  md5sum_bin  path to md5sum
+  sha1sum_bin path to sha1sum
+  sha256sum_bin
+              path to sha256sum
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -2650,6 +2660,138 @@ fi
 
 
 test -n "$msgmerge_bin" || as_fn_error $? "no msgmerge (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "md5sum", so it can be a program name with args.
+set dummy md5sum; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_md5sum_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $md5sum_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_md5sum_bin="$md5sum_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_md5sum_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+md5sum_bin=$ac_cv_path_md5sum_bin
+if test -n "$md5sum_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $md5sum_bin" >&5
+$as_echo "$md5sum_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$md5sum_bin" || as_fn_error $? "no md5sum (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "sha1sum", so it can be a program name with args.
+set dummy sha1sum; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_sha1sum_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $sha1sum_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_sha1sum_bin="$sha1sum_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_sha1sum_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+sha1sum_bin=$ac_cv_path_sha1sum_bin
+if test -n "$sha1sum_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $sha1sum_bin" >&5
+$as_echo "$sha1sum_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$sha1sum_bin" || as_fn_error $? "no sha1sum (program) found" "$LINENO" 5
+
+
+
+# Extract the first word of "sha256sum", so it can be a program name with args.
+set dummy sha256sum; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_sha256sum_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $sha256sum_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_sha256sum_bin="$sha256sum_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_sha256sum_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+sha256sum_bin=$ac_cv_path_sha256sum_bin
+if test -n "$sha256sum_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $sha256sum_bin" >&5
+$as_echo "$sha256sum_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$sha256sum_bin" || as_fn_error $? "no sha256sum (program) found" "$LINENO" 5
 
 
 

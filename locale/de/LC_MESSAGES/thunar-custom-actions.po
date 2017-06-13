@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 10:28+0200\n"
-"PO-Revision-Date: 2017-06-13 10:31+0200\n"
+"POT-Creation-Date: 2017-06-13 12:22+0200\n"
+"PO-Revision-Date: 2017-06-13 12:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -27,8 +27,8 @@ msgstr "Verschlüssele"
 #: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
 #: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
 #: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
-#: locale/tmp_only_uca_commands.sh:10 locale/tmp_only_uca_commands.sh:11
-#: locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:11 locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:13
 #, sh-format
 msgid "overwrite $base?"
 msgstr "$base überschreiben?"
@@ -36,9 +36,8 @@ msgstr "$base überschreiben?"
 #: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
 #: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
 #: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
-#: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
-#: locale/tmp_only_uca_commands.sh:10 locale/tmp_only_uca_commands.sh:11
-#: locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:12 locale/tmp_only_uca_commands.sh:13
 #, sh-format
 msgid "something went wrong copying the file $fileout over to $filefinalout."
 msgstr "Etwas ist beim Kopieren der Datei $fileout nach $filefinalout schiefgegangen."
@@ -85,8 +84,18 @@ msgstr "Skaliere auf $SCALE%"
 
 #: locale/tmp_only_uca_commands.sh:8
 #, sh-format
+msgid "Select link location"
+msgstr "Ort der Verknüpfung auswählen"
+
+#: locale/tmp_only_uca_commands.sh:8
+#, sh-format
 msgid "The link name has to differ from the target file name."
 msgstr "Der Name des Links muss von der zu verlinkenden Datei abweichen."
+
+#: locale/tmp_only_uca_commands.sh:8
+#, sh-format
+msgid "Could not create link"
+msgstr "Konnte den Link nicht erstellen"
 
 #: locale/tmp_only_uca_commands.sh:9
 #, sh-format
@@ -98,7 +107,7 @@ msgstr "Ermittle Dateigrößen"
 msgid "Size"
 msgstr "Größe"
 
-#: locale/tmp_only_uca_commands.sh:9
+#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:10
 #, sh-format
 msgid "Name"
 msgstr "Name"
@@ -113,31 +122,50 @@ msgstr "Große Elemente"
 msgid "Elements sorted by size"
 msgstr "Elemente nach Größe sortiert"
 
-#: locale/tmp_only_uca_commands.sh:9
+#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:10
 #, sh-format
 msgid "Double-click to open."
 msgstr "Doppelklick zum öffnen."
 
 #: locale/tmp_only_uca_commands.sh:10
 #, sh-format
+msgid "Determining checksums"
+msgstr "Berechne Prüfsummen"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "MD5"
+msgstr "MD5"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "SHA1"
+msgstr "SHA1"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "SHA256"
+msgstr "SHA256"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "Checksums"
+msgstr "Prüfsummen"
+
+#: locale/tmp_only_uca_commands.sh:11
+#, sh-format
 msgid "Converting to PDF"
 msgstr "Konvertiere zu PDF"
 
-#: locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:12
 #, sh-format
 msgid "Concatenating PDFs"
 msgstr "Füge PDFs zusammen"
 
-#: locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:13
 #, sh-format
 msgid "Optimizing PDF"
 msgstr "Optimiere PDF"
-
-#~ msgid "select link location"
-#~ msgstr "Ort der Verknüpfung auswählen"
-
-#~ msgid "could not create link"
-#~ msgstr "konnte den Link nicht erstellen"
 
 #~ msgid "size"
 #~ msgstr "Größe"
@@ -507,9 +535,6 @@ msgstr "Optimiere PDF"
 
 #~ msgid "Device file '{}' does not exist."
 #~ msgstr "Gerätedatei '{}' existiert nicht."
-
-#~ msgid "Checksum error"
-#~ msgstr "Prüfsummenfehler"
 
 #~ msgid "(never mind if {}"
 #~ msgstr "(egal, wenn '{}'"

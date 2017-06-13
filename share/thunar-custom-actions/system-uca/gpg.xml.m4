@@ -12,9 +12,12 @@ include(tuca.m4)dnl
     PASSWORD=$(TUCA_PASSWORD()) || exit;dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            echo $PASSWORD | TUCA_GPG2() --batch --yes --passphrase-fd 0 --symmetric --armor -o TUCA_OUT() TUCA_IN(),dnl
-            TUCA_TRANSLATE(Encrypting),dnl
-            TUCA_IN().asc,dnl output name
+            TUCA_CREATE_FILE(dnl
+                echo $PASSWORD | TUCA_GPG2() --batch --yes --passphrase-fd 0 --symmetric --armor -o TUCA_OUT() TUCA_IN(),dnl
+                TUCA_FILE(),dnl input
+                TUCA_FILE().asc,dnl output
+                ),dnl
+            TUCA_TRANSLATE(Encrypting),dnl loop description
             )dnl
         )dnl
     )</command>
@@ -35,10 +38,13 @@ include(tuca.m4)dnl
     PASSWORD=$(TUCA_PASSWORD()) || exit;dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            echo $PASSWORD | TUCA_GPG2() --batch --yes --passphrase-fd 0 --decrypt -o TUCA_OUT() TUCA_IN() || FAIL=yes;dnl
-            if test -n "$FAIL";then TUCA_ERROR(TUCA_TRANSLATE(Wrong Password for $TUCA_FILE_BASE_VAR()?));exit;fi,dnl
-            TUCA_TRANSLATE(Decrypting),dnl
-            $(dirname TUCA_IN())/$(basename TUCA_IN() .asc),dnl output name
+            TUCA_CREATE_FILE(dnl
+                echo $PASSWORD | TUCA_GPG2() --batch --yes --passphrase-fd 0 --decrypt -o TUCA_OUT() TUCA_IN() || FAIL=yes;dnl
+                if test -n "$FAIL";then TUCA_ERROR(TUCA_TRANSLATE(Wrong Password for $TUCA_FILE_BASE_VAR()?));exit;fi,dnl
+                TUCA_FILE(),dnl input
+                $(dirname TUCA_FILE())/$(basename TUCA_FILE() .asc),dnl output name
+                ),dnl
+            TUCA_TRANSLATE(Decrypting),dnl loop description
             )dnl
         )dnl
     )</command>

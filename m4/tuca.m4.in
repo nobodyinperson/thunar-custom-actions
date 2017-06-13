@@ -19,6 +19,9 @@ define(<~TUCA_PANDOC~>,<~@pandoc_bin@~>)dnl
 define(<~TUCA_PYTHON3~>,<~@python3_bin@~>)dnl
 define(<~TUCA_GETTEXT~>,<~@gettext_bin@~>)dnl
 define(<~TUCA_GETTEXTSH~>,<~@gettextsh_bin@~>)dnl
+define(<~TUCA_MD5SUM~>,<~@md5sum_bin@~>)dnl
+define(<~TUCA_SHA1SUM~>,<~@sha1sum_bin@~>)dnl
+define(<~TUCA_SHA256SUM~>,<~@sha256sum_bin@~>)dnl
 dnl metadata from ./configure
 define(<~TUCA_PACKAGE_NAME~>,<~@PACKAGE_NAME@~>)dnl
 dnl paths from ./configure
@@ -194,9 +197,9 @@ file $TUCA_OUT_VAR() over to $TUCA_FINAL_OUT_VAR().));dnl
 fi) dnl
 ~>)dnl
 dnl
-dnl TUCA_LOOP(command,[description],[outfile])
+dnl TUCA_LOOP(command,[description])
 dnl - loop over TUCA_ALL_FILES
-dnl - execute "command" on each file with TUCA_CREATE_FILE
+dnl - execute "command" on each file 
 dnl - use TUCA_PROGRESSBAR_TEXT to show "description" followed by the current 
 dnl   file
 dnl - use TUCA_PROGRESSBAR_PERCENTAGE to show current progress
@@ -211,9 +214,9 @@ dnl calculate current percentage
 dnl get 
  TUCA_FILE_BASE_VAR()=$(basename TUCA_FILE());dnl current file's basename
 dnl update progressbar text
- TUCA_PROGRESSBAR_TEXT($2 ... TUCA_FILE_BASE());dnl
- dnl run command on TUCA_FILE, save to TUCA_FILE if "outfile" is unspecified
- TUCA_CREATE_FILE($1,TUCA_FILE(),ifelse($3,,TUCA_FILE(),$3));dnl
+ TUCA_PROGRESSBAR_TEXT($2 ... <~~>TUCA_FILE_BASE());dnl
+ dnl run command 
+ ($1);dnl
  dnl update progressbar percentage
  TUCA_PROGRESSBAR_PERCENTAGE($PERCENTAGE);dnl
 done<~~>dnl

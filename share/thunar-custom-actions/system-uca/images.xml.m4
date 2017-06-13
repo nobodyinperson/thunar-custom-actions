@@ -11,8 +11,12 @@ include(tuca.m4)dnl
 	<command>TUCA_CMD(dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            TUCA_CONVERT() -rotate 90 TUCA_IN() TUCA_OUT(),dnl
-            TUCA_TRANSLATE(Rotating clockwise),dnl
+            TUCA_CREATE_FILE(dnl
+                TUCA_CONVERT() -rotate 90 TUCA_IN() TUCA_OUT(),dnl
+                TUCA_FILE(),dnl input
+                TUCA_FILE(),dnl output
+                ),dnl
+            TUCA_TRANSLATE(Rotating clockwise),dnl loop description
             )dnl
         )dnl
     )</command>
@@ -28,12 +32,15 @@ include(tuca.m4)dnl
 	<command>TUCA_CMD(dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            TUCA_CONVERT() -rotate 270 TUCA_IN() TUCA_OUT(),dnl
+            TUCA_CREATE_FILE(dnl
+                TUCA_CONVERT() -rotate 270 TUCA_IN() TUCA_OUT(),dnl
+                TUCA_FILE(),dnl input
+                TUCA_FILE(),dnl output
+                ),dnl
             TUCA_TRANSLATE(Rotating anti-clockwise),dnl
             )dnl
         )dnl
-    )</command>
-	<description xml:lang="en">The selected images are turned anti-clockwise.</description>
+    )</command> <description xml:lang="en">The selected images are turned anti-clockwise.</description>
 	<description xml:lang="de">Die ausgewählten Bilder werden gegen den Uhrzeigersinn gedreht.</description>
 	<patterns>*</patterns>
 	<image-files/>
@@ -45,7 +52,11 @@ include(tuca.m4)dnl
 	<command>TUCA_CMD(dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            TUCA_CONVERT() TUCA_IN() -set colorspace Gray -separate -average TUCA_OUT(),dnl
+            TUCA_CREATE_FILE(dnl
+                TUCA_CONVERT() TUCA_IN() -set colorspace Gray -separate -average TUCA_OUT(),dnl
+                TUCA_FILE(),dnl input
+                TUCA_FILE(),dnl output
+                ),dnl
             TUCA_TRANSLATE(Converting to grayscale),dnl
             )dnl
         )dnl
@@ -64,7 +75,11 @@ include(tuca.m4)dnl
     COLOR=$(TUCA_COLOR_SELECTION()) || exit;dnl ask user for fill color
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            TUCA_CONVERT() TUCA_IN() -background "$COLOR" -alpha remove TUCA_OUT(),dnl
+            TUCA_CREATE_FILE(dnl
+                TUCA_CONVERT() TUCA_IN() -background "$COLOR" -alpha remove TUCA_OUT(),dnl
+                TUCA_FILE(),dnl input
+                TUCA_FILE(),dnl output
+                ),dnl
             TUCA_TRANSLATE(Filling transparency with $COLOR),dnl
             )dnl
         )dnl
@@ -82,7 +97,11 @@ include(tuca.m4)dnl
     SCALE=$(TUCA_ZENITY() --text="TUCA_TRANSLATE(Scale to what percentage?)" --scale --value=50 --min-value=1 --max-value=99) || exit;dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
-            TUCA_CONVERT() TUCA_IN() -resize ${SCALE}%% TUCA_OUT(),dnl
+            TUCA_CREATE_FILE(dnl
+                TUCA_CONVERT() TUCA_IN() -resize ${SCALE}%% TUCA_OUT(),dnl
+                TUCA_FILE(),dnl input
+                TUCA_FILE(),dnl output
+                ),dnl
             TUCA_TRANSLATE(Scale to $SCALE percent),dnl
             )dnl
         )dnl

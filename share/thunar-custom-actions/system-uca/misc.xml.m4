@@ -9,12 +9,12 @@ include(tuca.m4)dnl
 	<name xml:lang="de">Verknüpfung erstellen</name>
 	<name xml:lang="en">Create link to this file</name>
 	<command>TUCA_CMD(dnl
-        TARGET="$(TUCA_ZENITY() --file-selection --title="Select link location)" --save --filename TUCA_FIRST_FILE())" || exit;dnl
+        TARGET="$(TUCA_ZENITY() --file-selection --title="TUCA_TRANSLATE(Select link location)" --save --filename TUCA_FIRST_FILE())" || exit;dnl
         if test "$TARGET" = TUCA_FIRST_FILE();then dnl
         TUCA_ERROR(TUCA_TRANSLATE(The link name has to differ from the target file name.));exit;dnl
         fi;dnl
         TUCA_CREATE_FILE(dnl
-            ln -sf TUCA_IN() TUCA_OUT() || TUCA_ERROR(Could not create link)),dnl command
+            ln -sf TUCA_IN() TUCA_OUT() || TUCA_ERROR(TUCA_TRANSLATE(Could not create link)),dnl command
             TUCA_FIRST_FILE(),dnl input
             $TARGET,dnl output
            notmpfile,dnl no tempfile needed
@@ -57,6 +57,43 @@ include(tuca.m4)dnl
 	<description xml:lang="en">Give a sorted list of the biggest files and folders here.</description>
 	<patterns>*</patterns>
 	<directories/>
+</action>
+<action>
+	<icon>checkbox-checked-symbolic</icon>
+	<name xml:lang="de">Prüfsummen</name>
+	<name xml:lang="en">Checksums</name>
+	<command>TUCA_CMD(dnl
+    TMPFILE=$(mktemp);dnl
+    TUCA_PROGRESSBAR(dnl
+        TUCA_LOOP(dnl
+            basename TUCA_FILE() >> $TMPFILE;dnl
+            TUCA_MD5SUM()    TUCA_FILE() | cut -d' ' -f1 >> $TMPFILE;dnl
+            TUCA_SHA1SUM()   TUCA_FILE() | cut -d' ' -f1 >> $TMPFILE;dnl
+            TUCA_SHA256SUM() TUCA_FILE() | cut -d' ' -f1 >> $TMPFILE;dnl
+            ,dnl command
+            TUCA_TRANSLATE(Determining checksums),dnl loop description
+            ),dnl
+        TUCA_TRANSLATE(Determining checksums),dnl title
+        );dnl 
+    cat $TMPFILE | dnl
+        TUCA_ZENITY() --list dnl
+            --column="TUCA_TRANSLATE(Name)" dnl
+            --column="TUCA_TRANSLATE(MD5)" dnl
+            --column="TUCA_TRANSLATE(SHA1)" dnl
+            --column="TUCA_TRANSLATE(SHA256)" dnl
+            --title="TUCA_TRANSLATE(Checksums)" dnl
+            --text="TUCA_TRANSLATE(Checksums)\n<~~>TUCA_TRANSLATE(Double-click to open.)" dnl
+            --print-column 1 | dnl
+        TUCA_XARGS() -r --delimiter='\n' TUCA_XDG_OPEN();dnl
+    rm "$TMPFILE")</command>
+	<description xml:lang="de">Verschiedene Prüfsummen der ausgewählten Dateien anzeigen.</description>
+	<description xml:lang="en">Show different checksums of the selected files.</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 </actions>
 
