@@ -15,6 +15,7 @@ Writing your own custom actions for Thunar by hand can become frustrating pretty
 | Feature | Approach |
 |---------|----------|
 |ensure **all needed software is present**, e.g. on configuration migration or system reinstallation | `configure` or rather the `Depends:` section in the debian package |
+|ensure the actions work regardless of **ugly characters** in the filename (e.g. whitespace)|sensible **shell programming**|
 |ensure nonexistent files don't get **accidentally overwritten**|ask the user for **overwriting confirmation**|
 |ensure a broken or failing action command does not **accidentally delete files**|cache an action's output in a **temporary file** before copying it over to the final location|
 |indicate **progress on long-running actions**|where possible, display a **progressbar**|
@@ -38,9 +39,6 @@ There are currently actions for:
 - **finding big elements** in a folder
 - **creating symbolic links** to files
 - **showing checksums** (MD5,SHA1,SHA256) of files
- 
-Everything with a beautiful **progress bar** realized with `zenity`.
-Of course, I tried to make everything work regardless of ugly characters (e.g. whitespace) in the filename.
 
 ## Screenshots
 
