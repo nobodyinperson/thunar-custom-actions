@@ -2,6 +2,7 @@ thunar-custom-actions (0.0.15) UNRELEASED; urgency=medium
 
   * change /screen to /prepress in PDF file size shrinker
     (less aggressive compression)
+  * allow creating links to directories in link creation action
 
  -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 14 Jun 2017 09:49:50 +0200
 

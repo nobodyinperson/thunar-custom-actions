@@ -7,11 +7,11 @@ include(tuca.m4)dnl
 <action>
 	<icon>emblem-symbolic-link</icon>
 	<name xml:lang="de">Verknüpfung erstellen</name>
-	<name xml:lang="en">Create link to this file</name>
+	<name xml:lang="en">Create link targeted here</name>
 	<command>TUCA_CMD(dnl
         TARGET="$(TUCA_ZENITY() --file-selection --title="TUCA_TRANSLATE(Select link location)" --save --filename TUCA_FIRST_FILE())" || exit;dnl
         if test "$TARGET" = TUCA_FIRST_FILE();then dnl
-        TUCA_ERROR(TUCA_TRANSLATE(The link name has to differ from the target file name.));exit;dnl
+        TUCA_ERROR(TUCA_TRANSLATE(The link name has to differ from the target name.));exit;dnl
         fi;dnl
         TUCA_CREATE_FILE(dnl
             ln -sf TUCA_IN() TUCA_OUT() || TUCA_ERROR(TUCA_TRANSLATE(Could not create link)),dnl command
@@ -20,14 +20,15 @@ include(tuca.m4)dnl
            notmpfile,dnl no tempfile needed
             )dnl
         )</command>
-	<description xml:lang="de">Eine symbolische Verknüpfung zu der  ausgewählten Datei erstellen.</description>
-	<description xml:lang="en">Create a symbolic link to the  selected file.</description>
+	<description xml:lang="de">Eine symbolische Verknüpfung hierher erstellen.</description>
+	<description xml:lang="en">Create a symbolic link targeted here.</description>
 	<patterns>*</patterns>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
 	<text-files/>
 	<video-files/>
+	<directories/>
 </action>
 <action>
 	<icon>edit-find</icon>
