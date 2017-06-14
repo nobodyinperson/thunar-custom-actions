@@ -93,7 +93,11 @@ The action merging/removal process is designed to **NOT touch the actions that w
 
 ## Installation
 
-I am testing **thunar-custom-actions** regularly on several different machines running **Xubuntu 16.04 LTS**. But as soon as you got it installed properly, it should work regardless of the system used. If you encounter any problems installing or using **thunar-custom-actions**, feel free to open a [new Issue here on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/issues/new) and describe your problem.
+I am testing **thunar-custom-actions** regularly on several different machines running **Xubuntu 16.04 LTS**. Actually, as long as you get it `./configure`d without errors, it should work regardless of the system used. 
+
+**Disclaimer**: I am paying a lot of attention here to prevent data loss or data corruption when executing the Thunar custom actions provided by **thunar-custom-actions** (e.g. by caching in temporary files, asking for overwriting permission, catching errors, etc...). Nonetheless I **cannot guarantee** that there are no cases where something might go haywire. So please use the actions provided with responsibility and the fact in mind that a mere mortal created them. I suggest you **backup sensitive or important data** you care about before running a custom action from here on it.
+
+If you encounter any problems installing or using **thunar-custom-actions**, feel free to open a [new Issue here on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/issues/new) and describe your problem.
 
 <a name="debian-package"></a>
 ### Debian package
