@@ -60,7 +60,7 @@ include(tuca.m4)dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
             TUCA_CREATE_FILE(dnl
-                TUCA_GS() -dBATCH -dNOPAUSE -q -dPDFSETTINGS=/screen dnl
+                TUCA_GS() -dBATCH -dNOPAUSE -q -dPDFSETTINGS=/prepress dnl
                 -sDEVICE=pdfwrite -dDownsampleColorImages=true dnl
                 -dDownsampleGrayImages=true -dDownsampleMonoImages=true dnl
                 -dColorImageResolution=72 -dGrayImageResolution=72 dnl
