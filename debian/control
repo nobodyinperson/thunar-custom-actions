@@ -12,7 +12,7 @@ Package: thunar-custom-actions
 Architecture: all
 Depends: ${misc:Depends}, thunar, python3, python3-lxml, make, imagemagick,
     zenity, ghostscript, gnupg2, bc, xdg-utils, perl, findutils (>=4.6), 
-    coreutils (>=8.0)
+    coreutils (>=8.0), pinentry-gtk2, gnupg-agent
 Conflicts: thunar-custom-actions
 Replaces: thunar-custom-actions
 Description: system-wide thunar custom actions

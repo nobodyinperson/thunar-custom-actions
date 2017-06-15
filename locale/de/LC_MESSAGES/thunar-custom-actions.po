@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-14 22:57+0200\n"
-"PO-Revision-Date: 2017-06-14 22:59+0200\n"
+"POT-Creation-Date: 2017-06-15 11:09+0200\n"
+"PO-Revision-Date: 2017-06-15 11:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: locale/tmp_only_uca_commands.sh:1
+#: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
 #, sh-format
 msgid "Encrypting"
 msgstr "Verschlüssele"
@@ -27,8 +27,8 @@ msgstr "Verschlüssele"
 #: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
 #: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
 #: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
-#: locale/tmp_only_uca_commands.sh:11 locale/tmp_only_uca_commands.sh:12
-#: locale/tmp_only_uca_commands.sh:13
+#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:13 locale/tmp_only_uca_commands.sh:14
 #, sh-format
 msgid "overwrite $base?"
 msgstr "$base überschreiben?"
@@ -36,136 +36,151 @@ msgstr "$base überschreiben?"
 #: locale/tmp_only_uca_commands.sh:1 locale/tmp_only_uca_commands.sh:2
 #: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
 #: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
-#: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
 #: locale/tmp_only_uca_commands.sh:12 locale/tmp_only_uca_commands.sh:13
+#: locale/tmp_only_uca_commands.sh:14
 #, sh-format
 msgid "something went wrong copying the file $fileout over to $filefinalout."
 msgstr "Etwas ist beim Kopieren der Datei $fileout nach $filefinalout schiefgegangen."
 
 #: locale/tmp_only_uca_commands.sh:2
 #, sh-format
-msgid "Decrypting"
-msgstr "Entschlüssele"
+msgid "Public Key"
+msgstr "Öffentlicher Schlüssel"
 
-#: locale/tmp_only_uca_commands.sh:2
-#, sh-format
-msgid "Wrong Password for $filebase?"
-msgstr "Falsches Passwort für $filebase?"
-
-#: locale/tmp_only_uca_commands.sh:3
-#, sh-format
-msgid "Rotating clockwise"
-msgstr "Drehe im Uhrzeigersinn"
-
-#: locale/tmp_only_uca_commands.sh:4
-#, sh-format
-msgid "Rotating anti-clockwise"
-msgstr "Drehe gegen den Uhrzeigersinn"
-
-#: locale/tmp_only_uca_commands.sh:5
-#, sh-format
-msgid "Converting to grayscale"
-msgstr "Konvertiere zu Graustufen"
-
-#: locale/tmp_only_uca_commands.sh:6
-#, sh-format
-msgid "Filling transparency with $COLOR"
-msgstr "Fülle Transparenz mit $COLOR"
-
-#: locale/tmp_only_uca_commands.sh:7
-#, sh-format
-msgid "Scale to what percentage?"
-msgstr "Auf wie viel Prozent der Originalgröße skalieren?"
-
-#: locale/tmp_only_uca_commands.sh:7
-#, sh-format
-msgid "Scale to $SCALE percent"
-msgstr "Skaliere auf $SCALE%"
-
-#: locale/tmp_only_uca_commands.sh:8
-#, sh-format
-msgid "Select link location"
-msgstr "Ort der Verknüpfung auswählen"
-
-#: locale/tmp_only_uca_commands.sh:8
-#, sh-format
-msgid "The link name has to differ from the target name."
-msgstr "Der Name des Links muss von dem zu verlinkenden Ziel abweichen."
-
-#: locale/tmp_only_uca_commands.sh:8
-#, sh-format
-msgid "Could not create link"
-msgstr "Konnte den Link nicht erstellen"
-
-#: locale/tmp_only_uca_commands.sh:9
-#, sh-format
-msgid "Determining file sizes"
-msgstr "Ermittle Dateigrößen"
-
-#: locale/tmp_only_uca_commands.sh:9
-#, sh-format
-msgid "Size"
-msgstr "Größe"
-
-#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:2 locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "Name"
 msgstr "Name"
 
+#: locale/tmp_only_uca_commands.sh:2
+#, sh-format
+msgid "Email"
+msgstr "Email"
+
+#: locale/tmp_only_uca_commands.sh:3
+#, sh-format
+msgid "Decrypting"
+msgstr "Entschlüssele"
+
+#: locale/tmp_only_uca_commands.sh:3
+#, sh-format
+msgid "Could not decrypt $filebase. Wrong password?"
+msgstr "Konnte $filebase nicht entschlüsseln. Falsches Passwort?"
+
+#: locale/tmp_only_uca_commands.sh:4
+#, sh-format
+msgid "Rotating clockwise"
+msgstr "Drehe im Uhrzeigersinn"
+
+#: locale/tmp_only_uca_commands.sh:5
+#, sh-format
+msgid "Rotating anti-clockwise"
+msgstr "Drehe gegen den Uhrzeigersinn"
+
+#: locale/tmp_only_uca_commands.sh:6
+#, sh-format
+msgid "Converting to grayscale"
+msgstr "Konvertiere zu Graustufen"
+
+#: locale/tmp_only_uca_commands.sh:7
+#, sh-format
+msgid "Filling transparency with $COLOR"
+msgstr "Fülle Transparenz mit $COLOR"
+
+#: locale/tmp_only_uca_commands.sh:8
+#, sh-format
+msgid "Scale to what percentage?"
+msgstr "Auf wie viel Prozent der Originalgröße skalieren?"
+
+#: locale/tmp_only_uca_commands.sh:8
+#, sh-format
+msgid "Scale to $SCALE percent"
+msgstr "Skaliere auf $SCALE%"
+
 #: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "Select link location"
+msgstr "Ort der Verknüpfung auswählen"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "The link name has to differ from the target name."
+msgstr "Der Name des Links muss von dem zu verlinkenden Ziel abweichen."
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "Could not create link"
+msgstr "Konnte den Link nicht erstellen"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "Determining file sizes"
+msgstr "Ermittle Dateigrößen"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "Size"
+msgstr "Größe"
+
+#: locale/tmp_only_uca_commands.sh:10
 #, sh-format
 msgid "Big elements"
 msgstr "Große Elemente"
 
-#: locale/tmp_only_uca_commands.sh:9
+#: locale/tmp_only_uca_commands.sh:10
 #, sh-format
 msgid "Elements sorted by size"
 msgstr "Elemente nach Größe sortiert"
 
-#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:10 locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "Double-click to open."
 msgstr "Doppelklick zum öffnen."
 
-#: locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "Determining checksums"
 msgstr "Berechne Prüfsummen"
 
-#: locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "MD5"
 msgstr "MD5"
 
-#: locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "SHA1"
 msgstr "SHA1"
 
-#: locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "SHA256"
 msgstr "SHA256"
 
-#: locale/tmp_only_uca_commands.sh:10
+#: locale/tmp_only_uca_commands.sh:11
 #, sh-format
 msgid "Checksums"
 msgstr "Prüfsummen"
 
-#: locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:12
 #, sh-format
 msgid "Converting to PDF"
 msgstr "Konvertiere zu PDF"
 
-#: locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:13
 #, sh-format
 msgid "Concatenating PDFs"
 msgstr "Füge PDFs zusammen"
 
-#: locale/tmp_only_uca_commands.sh:13
+#: locale/tmp_only_uca_commands.sh:14
 #, sh-format
 msgid "Optimizing PDF"
 msgstr "Optimiere PDF"
+
+#~ msgid "Wrong Password for $filebase?"
+#~ msgstr "Falsches Passwort für $filebase?"
 
 #~ msgid "size"
 #~ msgstr "Größe"

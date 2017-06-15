@@ -9,14 +9,15 @@ NAME
 SYNOPSIS
 ========
 
-usage: uca-apply [ update | remove ]
+usage: uca-apply [update|remove][-all]
 
 update: merges system-wide Thunar custom actions into the user's configuration
 
 remove: removes the system-wide Thunar custom actions from the user's
 configuration
 
-When executed as root or with sudo, do this for every (human) user.
+\*-all: when this suffix is appended, do this for every user. This might require
+root privileges.
 
 AUTHOR
 ======

@@ -1,10 +1,15 @@
-thunar-custom-actions (0.0.15) UNRELEASED; urgency=medium
+thunar-custom-actions (0.0.15) unstable; urgency=medium
 
   * change /screen to /prepress in PDF file size shrinker
     (less aggressive compression)
   * allow creating links to directories in link creation action
+  * add asymmetric gpg en/decryption
+  * minor drawback: decrypting multiple symetrically encrypted files now
+    prompts for the password on every file. This was necessary to easily
+    integrate asymmetrical encryption. Now both can be mixed on decrypting
+    action.
 
- -- Yann Büchau <nobodyinperson@gmx.de>  Wed, 14 Jun 2017 09:49:50 +0200
+ -- Yann Büchau <nobodyinperson@gmx.de>  Thu, 15 Jun 2017 11:19:34 +0200
 
 thunar-custom-actions (0.0.14) unstable; urgency=medium
 

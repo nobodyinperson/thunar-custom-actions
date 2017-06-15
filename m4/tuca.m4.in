@@ -22,11 +22,15 @@ define(<~TUCA_GETTEXTSH~>,<~@gettextsh_bin@~>)dnl
 define(<~TUCA_MD5SUM~>,<~@md5sum_bin@~>)dnl
 define(<~TUCA_SHA1SUM~>,<~@sha1sum_bin@~>)dnl
 define(<~TUCA_SHA256SUM~>,<~@sha256sum_bin@~>)dnl
+define(<~TUCA_PINENTRY_GTK_2~>,<~@pinentry_gtk_2_bin@~>)dnl
+define(<~TUCA_GPG2K_PARSER~>,<~@bindir@/parse-gpg2-k~>)
+define(<~TUCA_GPG_AGENT~>,<~@gpg_agent_bin@~>)
 dnl metadata from ./configure
 define(<~TUCA_PACKAGE_NAME~>,<~@PACKAGE_NAME@~>)dnl
 dnl paths from ./configure
 define(<~TUCA_LOCALEDIR~>,<~@localedir@~>)dnl
 define(<~TUCA_DATAROOTDIR~>,<~@datarootdir@~>)dnl
+define(<~TUCA_BINDIR~>,<~@bindir@~>)dnl
 dnl
 define(<~TUCA_FILE_VAR~>,<~file~>)dnl
 define(<~TUCA_TEMP_VAR~>,<~filetmp~>)dnl
@@ -107,11 +111,12 @@ define(<~TUCA_WARNING~>,<~dnl
 TUCA_ZENITY() --warning --text="$(echo $1)"<~~>dnl
 ~>)dnl
 dnl
-dnl TUCA_PASSWORD()
-dnl - ask the user for a password
+dnl TUCA_PASSWORD([title])
+dnl - ask the user for a password, optionally setting window "title"
 dnl
 define(<~TUCA_PASSWORD~>,<~dnl
 TUCA_ZENITY() --password<~~>dnl
+ifelse($2,,,<~ --title="$(echo $2)"~>)<~~>dnl
 ~>)dnl
 dnl
 dnl
