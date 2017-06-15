@@ -1,0 +1,9 @@
+#!@perl_bin@
+use warnings;
+use strict;
+my ($pubkey,$tmp,$name,$email);
+while(<>){ # read from STDIN
+    $pubkey = $tmp if(($tmp) = m#^pub\s*[^/]*/([a-z0-9]+)\s*#ig);
+    ($name,$email) = m#^uid\s*(?:\[[^\]]*\])?\s*(.*)\s*<([^>]*)>#ig;
+    print join("\n",$pubkey,$name,$email),"\n" if($pubkey and $name and $email);
+};
