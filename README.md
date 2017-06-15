@@ -35,9 +35,9 @@ There are currently actions for:
 - **converting** images to an A4 multi-page **PDF** document
 - **concatenating** PDF documents into one
 - **shrinking** PDF file sizes
-- **de/encrypting** arbitrary files with GPG
+- **de/encrypting** arbitrary files with GPG (both symmetrically and asymmetrically)
 - **finding big elements** in a folder
-- **creating symbolic links** to files
+- **creating symbolic links** to files and folders
 - **showing checksums** (MD5,SHA1,SHA256) of files
 
 ## Screenshots
@@ -52,9 +52,19 @@ See some screenshots:
 
 ### Encrypting files
 
+#### Symmetrically (with password)
+
 ![thunar-custom-actions-image-actions-context-menu-gpg-encrypt](https://user-images.githubusercontent.com/19148271/27011808-1a404c6c-4ec4-11e7-9a83-43c02271d6bd.png)
 
 ![thunar-custom-actions-gpg-encrypt](https://user-images.githubusercontent.com/19148271/27011810-1a49c026-4ec4-11e7-9c29-2a2b22cd1efd.png)
+
+#### Aymmetrically (with public key)
+
+![thunar-custom-actions-asym-gpg-encryption-context-menu](https://user-images.githubusercontent.com/19148271/27179093-654ddeca-51cd-11e7-95ac-94532143e988.png)
+
+You then have to specify the recipient's public key from a list generated from a parsed output of `gpg2 --list-public-keys`:
+
+![thunar-custom-actions-asym-gpg-encryption-key-selection](https://user-images.githubusercontent.com/19148271/27179092-654bff56-51cd-11e7-80ef-95025174fb79.png)
 
 ### Finding space-consuming elements in a folder
 
@@ -167,6 +177,15 @@ uca-apply update
 #### *Help, there are no new actions after the installation!*
 
 Close all `thunar` instances, run `thunar -q` from the terminal and then retry.
+
+#### *Help, I clicked on an action but nothing happens!*
+
+Okay, this should theoretically not happen. This probably means that either I didn't cover a special case in the code or that a software requirement is missing on your machine. To get more information on your problem:
+
+- start `thunar` from the command-line
+- repeat the steps to produce your problem
+- save the output from the terminal
+- open a [new Issue here on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/issues/new) and paste it there so I can help you.
 
 #### *Help, I changed my system's language but the actions are still in the old language!*
 
