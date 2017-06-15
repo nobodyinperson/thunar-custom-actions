@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.16) UNRELEASED; urgency=medium
+
+  * add text to public key selection dialog
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Thu, 15 Jun 2017 12:25:02 +0200
+
 thunar-custom-actions (0.0.15) unstable; urgency=medium
 
   * change /screen to /prepress in PDF file size shrinker

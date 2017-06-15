@@ -39,7 +39,10 @@ include(tuca.m4)dnl
         TUCA_ZENITY() --list --print-column=1 dnl
         --column="TUCA_TRANSLATE(Public Key)" dnl
         --column="TUCA_TRANSLATE(Name)" dnl
-        --column="TUCA_TRANSLATE(Email)")";dnl
+        --column="TUCA_TRANSLATE(Email)"dnl
+        --text="TUCA_TRANSLATE(Select a recipient key from the list below.)"dnl
+        --title="TUCA_TRANSLATE(Recipient key)"dnl
+        )";dnl
     TUCA_GPG_AGENT() --pinentry-program="TUCA_PINENTRY_GTK_2()";dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 11:09+0200\n"
-"PO-Revision-Date: 2017-06-15 11:09+0200\n"
+"POT-Creation-Date: 2017-06-15 12:24+0200\n"
+"PO-Revision-Date: 2017-06-15 12:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -58,6 +58,16 @@ msgstr "Name"
 #, sh-format
 msgid "Email"
 msgstr "Email"
+
+#: locale/tmp_only_uca_commands.sh:2
+#, sh-format
+msgid "Select a recipient key from the list below."
+msgstr "Bitte den öffentlichen Schlüssel des Empfängers auswählen."
+
+#: locale/tmp_only_uca_commands.sh:2
+#, sh-format
+msgid "Recipient key"
+msgstr "öffentlicher Schlüssel des Empfängers"
 
 #: locale/tmp_only_uca_commands.sh:3
 #, sh-format
