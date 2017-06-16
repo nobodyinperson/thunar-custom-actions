@@ -172,6 +172,7 @@ make install
 uca-apply update
 ```
 
+<a name="troubleshooting"></a>
 ## Troubleshooting
 
 #### *Help, there are no new actions after the installation!*
