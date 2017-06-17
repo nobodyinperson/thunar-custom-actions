@@ -112,7 +112,13 @@ If you encounter any problems installing or using **thunar-custom-actions**, fee
 <a name="debian-package"></a>
 ### Debian package
 
-**thunar-custom-actions** is best installed via the Debian package obtainable at the [releases page](https://github.com/nobodyinperson/thunar-custom-actions/releases). Download the `*.deb`-package and install it like so:
+On Debian-based systems, **thunar-custom-actions** is best installed or updated via the Debian package.
+A Debian package is obtainable either:
+
+- via Download from the [releases page on GitHub](https://github.com/nobodyinperson/thunar-custom-actions/releases) or
+- by creating it directly from the repository with `dpkg-buildpackage -us -uc` (You might need to `sudo apt-get install dpkg-dev` before.)
+
+Then install the `*.deb`-package like so:
 
 ```bash
 sudo dpkg -i thunar-custom-actions*.deb || sudo apt-get install -f -y
@@ -141,6 +147,8 @@ cd thunar-custom-actions
 make
 make install
 ```
+
+Errors when running `./configure` are most likely connected to requirements not being installed. It will tell you what's missing.
 
 To merge the actions provided by **thunar-custom-actions** into your Thunar configuration, run:
 
@@ -177,7 +185,9 @@ uca-apply update
 
 #### *Help, there are no new actions after the installation!*
 
-Close all `thunar` instances, run `thunar -q` from the terminal and then retry.
+If you installed it [manually](https://github.com/nobodyinperson/thunar-custom-actions/blob/master/README.md#manual-install), make sure that you did a `uca-apply update` afterwards to actually merge the actions provided by **thunar-custom-actions** into your Thunar configuration.
+
+You may also close all `thunar` instances, run `thunar -q` from the terminal and then re-check if there are still not actions.
 
 #### *Help, I clicked on an action but nothing happens!*
 
