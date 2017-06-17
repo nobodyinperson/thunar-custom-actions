@@ -205,5 +205,5 @@ Close all Thunar windows, then run `uca-apply remove && uca-apply update && thun
 
 ## How to contribute
 
-See the instructions in `CONTRIBUTING.md`.
+See the instructions in [CONTRIBUTING.md](https://github.com/nobodyinperson/thunar-custom-actions/blob/master/CONTRIBUTING.md).
 
