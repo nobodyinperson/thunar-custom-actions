@@ -1,11 +1,11 @@
-thunar-custom-actions (0.0.16) UNRELEASED; urgency=medium
+thunar-custom-actions (0.0.16) unstable; urgency=medium
 
   * add text to public key selection dialog
   * stop asymmetric GPG encryption action if no keys are available
   * start gpg-agent if needed
   * ask user for output pdf orientation on "convert to PDF"-action
 
- -- Yann Büchau <nobodyinperson@gmx.de>  Thu, 15 Jun 2017 12:25:02 +0200
+ -- Yann Büchau <nobodyinperson@gmx.de>  Sat, 17 Jun 2017 19:56:32 +0200
 
 thunar-custom-actions (0.0.15) unstable; urgency=medium
 
