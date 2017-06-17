@@ -50,6 +50,10 @@ See some screenshots:
 
 ![thunar-custom-actions-image-rotating-progressbar](https://user-images.githubusercontent.com/19148271/27011807-1a3fe768-4ec4-11e7-890e-c8c8f94b48d5.png)
 
+### Converting images to PDF
+
+![thunar-custom-actions-choose-pdf-orientation](https://user-images.githubusercontent.com/19148271/27255107-6dc82fda-5397-11e7-8b0a-2364b1f528da.png)
+
 ### Encrypting files
 
 #### Symmetrically (with password)
