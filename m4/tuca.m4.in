@@ -54,6 +54,14 @@ define(<~TUCA_FIRST_FILE~>,<~%f~>)dnl
 define(<~TUCA_FIRST_FILE_FOLDER~>,<~%d~>)dnl
 define(<~TUCA_FIRST_FILENAME~>,<~%n~>)dnl
 dnl
+dnl TUCA_SUBSHELL(COMMAND)
+dnl - execute a command in a subshell
+dnl
+define(<~TUCA_SUBSHELL~>,<~dnl
+(dnl
+<~$1~>dnl
+)dnl
+~>)dnl
 dnl
 dnl TUCA_INIT()
 dnl - initialise gettext
@@ -77,7 +85,7 @@ dnl - show a progressbar with title to indicate current progress
 dnl - if $2 = pulsing, then just pulse, don't show percentage
 dnl
 define(<~TUCA_PROGRESSBAR~>,<~dnl
-(<~$1~>)dnl
+TUCA_SUBSHELL($1)dnl
 |dnl
 TUCA_ZENITY() --progress --auto-kill --auto-close<~~>dnl
 ifelse($2,,,<~ --title="$(echo $2)"~>)<~~>dnl
@@ -188,7 +196,7 @@ if test -e TUCA_FINAL_OUT() -a ! TUCA_IN() = TUCA_FINAL_OUT();then dnl
 fi;dnl
 dnl only run the command if user confirmed to overwrite
 if test "$OVERWRITE" = "yes";then dnl
- ($1);dnl
+ TUCA_SUBSHELL($1);dnl
 fi;dnl
 dnl if user TUCA_OUT  and final TUCA_FINAL_OUT differ, TUCA_OUT was obviously a 
 dnl temporary file. So copy it over to finish.
@@ -222,7 +230,7 @@ dnl get
 dnl update progressbar text
  TUCA_PROGRESSBAR_TEXT($2 ... <~~>TUCA_FILE_BASE());dnl
  dnl run command 
- ($1);dnl
+ TUCA_SUBSHELL($1);dnl
  dnl update progressbar percentage
  TUCA_PROGRESSBAR_PERCENTAGE($PERCENTAGE);dnl
 done<~~>dnl
@@ -232,8 +240,10 @@ dnl TUCA_CMD([use_tmpfile])
 dnl - do initialisation
 dnl
 define(<~TUCA_CMD~>,<~dnl
+TUCA_SUBSHELL(dnl
 TUCA_INIT();dnl
 <~$1~>dnl
+)dnl
 ~>)dnl
 dnl
 dnl TUCA_GPG_INIT()
