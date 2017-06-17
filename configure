@@ -588,6 +588,7 @@ ac_subst_vars='LTLIBOBJS
 LIBOBJS
 configure_vars
 makefile_include
+gpg_connect_agent_bin
 gpg_agent_bin
 pinentry_gtk_2_bin
 sha256sum_bin
@@ -685,7 +686,8 @@ md5sum_bin
 sha1sum_bin
 sha256sum_bin
 pinentry_gtk_2_bin
-gpg_agent_bin'
+gpg_agent_bin
+gpg_connect_agent_bin'
 
 
 # Initialize some variables set by options.
@@ -1338,6 +1340,8 @@ Some influential environment variables:
               path to pinentry-gtk-2
   gpg_agent_bin
               path to gpg-agent
+  gpg_connect_agent_bin
+              path to gpg-connect-agent
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -2888,6 +2892,50 @@ fi
 
 
 test -n "$gpg_agent_bin" || as_fn_error $? "no gpg-agent (gnupg agent) found" "$LINENO" 5
+
+
+
+# Extract the first word of "gpg-connect-agent", so it can be a program name with args.
+set dummy gpg-connect-agent; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_gpg_connect_agent_bin+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $gpg_connect_agent_bin in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_gpg_connect_agent_bin="$gpg_connect_agent_bin" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_gpg_connect_agent_bin="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac
+fi
+gpg_connect_agent_bin=$ac_cv_path_gpg_connect_agent_bin
+if test -n "$gpg_connect_agent_bin"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $gpg_connect_agent_bin" >&5
+$as_echo "$gpg_connect_agent_bin" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+test -n "$gpg_connect_agent_bin" || as_fn_error $? "no gpg-connect-agent (gnupg agent control) found" "$LINENO" 5
 
 
 

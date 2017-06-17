@@ -9,6 +9,7 @@ include(tuca.m4)dnl
 	<name xml:lang="de">Symmetrisch verschlüsseln mit GPG</name>
 	<name xml:lang="en">Encrypt symmetrically with GPG</name>
 	<command>TUCA_CMD(dnl
+    TUCA_GPG_INIT();dnl initialise gpg
     PASSWORD=$(TUCA_PASSWORD(TUCA_TRANSLATE(File password))) || exit;dnl
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
@@ -35,6 +36,11 @@ include(tuca.m4)dnl
 	<name xml:lang="de">Asymmetrisch verschlüsseln mit GPG</name>
 	<name xml:lang="en">Encrypt asymmetrically with GPG</name>
 	<command>TUCA_CMD(dnl
+    TUCA_GPG_INIT();dnl initialise gpg
+    if test -z "$(TUCA_GPG2() --list-public-keys | TUCA_GPG2K_PARSER())";then dnl test for public keys
+        TUCA_ERROR(TUCA_TRANSLATE(Your local keyring does not contain any public keys.));dnl
+        exit;dnl
+    fi;dnl
     RECIPIENT_KEY="$(TUCA_GPG2() --list-public-keys | TUCA_GPG2K_PARSER() |dnl 
         TUCA_ZENITY() --list --print-column=1 dnl
         --column="TUCA_TRANSLATE(Public Key)" dnl
@@ -43,7 +49,8 @@ include(tuca.m4)dnl
         --text="TUCA_TRANSLATE(Select a recipient key from the list below.)"dnl
         --title="TUCA_TRANSLATE(Recipient key)"dnl
         )";dnl
-    TUCA_GPG_AGENT() --pinentry-program="TUCA_PINENTRY_GTK_2()";dnl
+    TUCA_GPG_CONNECT_AGENT() /bye;dnl start the gpg-agent
+    TUCA_GPG_AGENT() --pinentry-program="TUCA_PINENTRY_GTK_2()";dnl tell gpg-agent to use pinentry-gtk-2
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
             TUCA_CREATE_FILE(dnl
@@ -71,12 +78,12 @@ include(tuca.m4)dnl
 	<name xml:lang="de">Entschlüsseln mit GPG</name>
 	<name xml:lang="en">Decrypt with GPG</name>
 	<command>TUCA_CMD(dnl
-    TUCA_GPG_AGENT() --pinentry-program="TUCA_PINENTRY_GTK_2()";dnl
+    TUCA_GPG_INIT();dnl initialise gpg
     TUCA_PROGRESSBAR(dnl
         TUCA_LOOP(dnl
             TUCA_CREATE_FILE(dnl
                 TUCA_GPG2() --batch --yes --decrypt -o TUCA_OUT() TUCA_IN() || dnl
-                TUCA_ERROR(TUCA_TRANSLATE(Could not decrypt $TUCA_FILE_BASE_VAR(). Wrong password?));dnl
+                TUCA_ERROR(TUCA_TRANSLATE(Could not decrypt $TUCA_FILE_BASE_VAR().) TUCA_TRANSLATE(Wrong password or no appropriate private key available?));dnl
                 ,dnl command
                 TUCA_FILE(),dnl input
                 $(dirname TUCA_FILE())/$(basename TUCA_FILE() | TUCA_PERL() -pe 's#\.\w+<~$~>##g'),dnl output name

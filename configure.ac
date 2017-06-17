@@ -49,6 +49,7 @@ REQUIRE_PROG([sha1sum],[sha1sum_bin],[program])
 REQUIRE_PROG([sha256sum],[sha256sum_bin],[program])
 REQUIRE_PROG([pinentry-gtk-2],[pinentry_gtk_2_bin],[graphical password dialog])
 REQUIRE_PROG([gpg-agent],[gpg_agent_bin],[gnupg agent])
+REQUIRE_PROG([gpg-connect-agent],[gpg_connect_agent_bin],[gnupg agent control])
 
 # Check for Python modules
 AX_PYTHON_MODULE(lxml,fatal,python3)

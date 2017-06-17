@@ -25,6 +25,7 @@ define(<~TUCA_SHA256SUM~>,<~@sha256sum_bin@~>)dnl
 define(<~TUCA_PINENTRY_GTK_2~>,<~@pinentry_gtk_2_bin@~>)dnl
 define(<~TUCA_GPG2K_PARSER~>,<~@bindir@/parse-gpg2-k~>)
 define(<~TUCA_GPG_AGENT~>,<~@gpg_agent_bin@~>)
+define(<~TUCA_GPG_CONNECT_AGENT~>,<~@gpg_connect_agent_bin@~>)
 dnl metadata from ./configure
 define(<~TUCA_PACKAGE_NAME~>,<~@PACKAGE_NAME@~>)dnl
 dnl paths from ./configure
@@ -233,4 +234,19 @@ dnl
 define(<~TUCA_CMD~>,<~dnl
 TUCA_INIT();dnl
 <~$1~>dnl
+~>)dnl
+dnl
+dnl TUCA_GPG_INIT()
+dnl - make sure gpg is usable by initialising some things
+dnl
+define(<~TUCA_GPG_INIT~>,<~dnl
+if ! TUCA_GPG_AGENT();then dnl check if agent is not running
+    TUCA_PROGRESSBAR(dnl
+        TUCA_PROGRESSBAR_TEXT(TUCA_TRANSLATE(Initialising gnupg...));dnl show text
+        TUCA_GPG2() --list-public-keys;dnl make sure a ~/.gnupg directory exists
+        TUCA_GPG_CONNECT_AGENT() /bye;dnl start the gpg-agent
+        TUCA_GPG_AGENT() --pinentry-program="TUCA_PINENTRY_GTK_2()" dnl tell gpg-agent to use pinentry-gtk-2
+        pulse,dnl let the progressbar only pulse
+        );dnl
+fi<~~>dnl
 ~>)dnl
