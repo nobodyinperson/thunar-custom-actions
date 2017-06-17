@@ -22,14 +22,20 @@ include(tuca.m4)dnl
             --column="TUCA_TRANSLATE(Orientation)" dnl
             --text="TUCA_TRANSLATE(Choose an orientation for the PDF.)" dnl
             --title="TUCA_TRANSLATE(PDF orientation)")"; dnl
+        if test $? -ne 0;then dnl
+            exit;dnl user aborted
+        fi;dnl
         A4_PORTRAIT_WIDTH=1654;dnl
         A4_PORTRAIT_HEIGHT=2338;dnl
         if test "$ORIENTATION" = "TUCA_TRANSLATE(Portrait)";then dnl
             WIDTH=$A4_PORTRAIT_WIDTH;dnl
             HEIGHT=$A4_PORTRAIT_HEIGHT;dnl
-        else dnl
+        elif test "$ORIENTATION" = "TUCA_TRANSLATE(Landscape)";then dnl
             WIDTH=$A4_PORTRAIT_HEIGHT;dnl
             HEIGHT=$A4_PORTRAIT_WIDTH;dnl
+        else dnl
+            TUCA_ERROR(TUCA_TRANSLATE(Strange orientation $ORIENTATION selected.) TUCA_TRANSLATE(If you see this message<~,~> please contact the developer on https://github.com/nobodyinperson/thunar-custom-actions.));dnl
+            exit 1;dnl
         fi; dnl
         TUCA_PROGRESSBAR(dnl
             TUCA_PROGRESSBAR_TEXT(TUCA_TRANSLATE(Converting to PDF)...);dnl
