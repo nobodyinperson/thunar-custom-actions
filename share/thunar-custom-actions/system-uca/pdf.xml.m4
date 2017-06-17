@@ -6,18 +6,40 @@ include(tuca.m4)dnl
 <actions>
 <action>
 	<icon>application-pdf</icon>
-	<name xml:lang="de">zu PDF konvertieren</name>
-	<name xml:lang="en">Convert to PDF</name>
+	<name xml:lang="de">zu einem PDF konvertieren</name>
+	<name xml:lang="en">Convert to a single PDF</name>
 	<command>TUCA_CMD(dnl
+        ORIENTATION="$(dnl
+            (dnl
+            echo TRUE;dnl
+            echo TUCA_TRANSLATE(Portrait);dnl
+            echo FALSE;dnl
+            echo TUCA_TRANSLATE(Landscape);dnl
+            ) | TUCA_ZENITY() --list dnl
+            --print-column=2 dnl
+            --radiolist dnl
+            --column="" dnl
+            --column="TUCA_TRANSLATE(Orientation)" dnl
+            --text="TUCA_TRANSLATE(Choose an orientation for the PDF.)" dnl
+            --title="TUCA_TRANSLATE(PDF orientation)")"; dnl
+        A4_PORTRAIT_WIDTH=1654;dnl
+        A4_PORTRAIT_HEIGHT=2338;dnl
+        if test "$ORIENTATION" = "TUCA_TRANSLATE(Portrait)";then dnl
+            WIDTH=$A4_PORTRAIT_WIDTH;dnl
+            HEIGHT=$A4_PORTRAIT_HEIGHT;dnl
+        else dnl
+            WIDTH=$A4_PORTRAIT_HEIGHT;dnl
+            HEIGHT=$A4_PORTRAIT_WIDTH;dnl
+        fi; dnl
         TUCA_PROGRESSBAR(dnl
             TUCA_PROGRESSBAR_TEXT(TUCA_TRANSLATE(Converting to PDF)...);dnl
             TUCA_CREATE_FILE(dnl
                 dnl Caution: this command does not use TUCA_IN, but
                 dnl TUCA_ALL_FILES directly. This is difficult because storing
                 dnl multiple filenames with spaces in one variable is tricky
-                TUCA_CONVERT() TUCA_ALL_FILES() -gravity Center -background white -resize 1654x2338 -extent 1654x2338 -units PixelsPerInch -density 200x200 TUCA_OUT(),dnl
+                TUCA_CONVERT() TUCA_ALL_FILES() -gravity Center -background white -resize ${WIDTH}x${HEIGHT} -extent ${WIDTH}x${HEIGHT} -units PixelsPerInch -density 200x200 TUCA_OUT(),dnl
                 TUCA_ALL_FILES(),dnl input (actually not used as TUCA_IN)
-                TUCA_FIRST_FILE().pdf,dnl output
+                $(dirname TUCA_FIRST_FILE())/$(basename TUCA_FIRST_FILE() | TUCA_PERL() -pe 's#\.\w+<~$~>##g')_$ORIENTATION.pdf,dnl output name
                 ),dnl
             TUCA_TRANSLATE(Converting to PDF),dnl progressbar title
             pulse,dnl let the progressbar just pulse

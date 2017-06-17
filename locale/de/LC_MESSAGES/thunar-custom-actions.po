@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 16:26+0200\n"
-"PO-Revision-Date: 2017-06-17 16:22+0200\n"
+"POT-Creation-Date: 2017-06-17 19:32+0200\n"
+"PO-Revision-Date: 2017-06-17 19:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -47,14 +47,12 @@ msgstr "$base überschreiben?"
 #: locale/tmp_only_uca_commands.sh:14
 #, sh-format
 msgid "something went wrong copying the file $fileout over to $filefinalout."
-msgstr ""
-"Etwas ist beim Kopieren der Datei $fileout nach $filefinalout schiefgegangen."
+msgstr "Etwas ist beim Kopieren der Datei $fileout nach $filefinalout schiefgegangen."
 
 #: locale/tmp_only_uca_commands.sh:2
 #, sh-format
 msgid "Your local keyring does not contain any public keys."
-msgstr ""
-"Es befinden sich keine öffentlichen Schlüssel im lokalen Schlüsselbund."
+msgstr "Es befinden sich keine öffentlichen Schlüssel im lokalen Schlüsselbund."
 
 #: locale/tmp_only_uca_commands.sh:2
 #, sh-format
@@ -194,6 +192,31 @@ msgstr "Prüfsummen"
 
 #: locale/tmp_only_uca_commands.sh:12
 #, sh-format
+msgid "Portrait"
+msgstr "Hochformat"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "Landscape"
+msgstr "Querformat"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "Orientation"
+msgstr "Ausrichtung"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "Choose an orientation for the PDF."
+msgstr "Die Ausrichtung des PDFs auswählen."
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "PDF orientation"
+msgstr "PDF Ausrichtung"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
 msgid "Converting to PDF"
 msgstr "Konvertiere zu PDF"
 
@@ -274,8 +297,7 @@ msgstr "Optimiere PDF"
 #~ msgstr "Alle Signale entfernt"
 
 #~ msgid "Attempt to connect action '{}' to unregistered signal '{}'."
-#~ msgstr ""
-#~ "Versuch, die Aktion '{}' zu unregistriertem Signal '{}' zu verbinden."
+#~ msgstr "Versuch, die Aktion '{}' zu unregistriertem Signal '{}' zu verbinden."
 
 #~ msgid "Connected action '{}' to signal '{}'"
 #~ msgstr "Verbinde die Aktion '{}' zum Signal '{}'"
@@ -295,15 +317,11 @@ msgstr "Optimiere PDF"
 #~ msgid "Attempt to emit unregistered signal '{}'"
 #~ msgstr "Versuch, unregistriertes Signal '{}' zu emittieren"
 
-#~ msgid ""
-#~ "The current buffer is empty and no file is specified. No saving necessary."
-#~ msgstr ""
-#~ "Der Editor ist leer und keine Datei wurde angegeben. Speichern ist nicht "
-#~ "notwendig."
+#~ msgid "The current buffer is empty and no file is specified. No saving necessary."
+#~ msgstr "Der Editor ist leer und keine Datei wurde angegeben. Speichern ist nicht notwendig."
 
 #~ msgid "Nonexistant or no file specified. Saving necessary!"
-#~ msgstr ""
-#~ "Nichtexistente oder gar keine Datei angegeben. Speichern ist notwendig!"
+#~ msgstr "Nichtexistente oder gar keine Datei angegeben. Speichern ist notwendig!"
 
 #~ msgid "md5sum of file '{}' is '{}'"
 #~ msgstr "md5-Summe der Datei '{}' is '{}'"
@@ -416,13 +434,8 @@ msgstr "Optimiere PDF"
 #~ msgid "display ensemble"
 #~ msgstr "Ensemble anzeigen"
 
-#~ msgid ""
-#~ "[slower] Based on the given day and amount tolerances, run an ensemble "
-#~ "and display the 10% and 90% quantiles as darker shadow."
-#~ msgstr ""
-#~ "[langsamer] Auf Grundlage der Tages- und Betragstoleranzen wird ein "
-#~ "Ensemble gerechnet und das 10%- und 90%-Quantil als dunkerer Schatten "
-#~ "angezeigt."
+#~ msgid "[slower] Based on the given day and amount tolerances, run an ensemble and display the 10% and 90% quantiles as darker shadow."
+#~ msgstr "[langsamer] Auf Grundlage der Tages- und Betragstoleranzen wird ein Ensemble gerechnet und das 10%- und 90%-Quantil als dunkerer Schatten angezeigt."
 
 #~ msgid "end date"
 #~ msgstr "Enddatum"
@@ -457,18 +470,11 @@ msgstr "Optimiere PDF"
 #~ msgid "There was a problem updating the graph."
 #~ msgstr "Es gab ein Problem beim Aktualisieren des Graphen."
 
-#~ msgid ""
-#~ "[WARNING] There was a problem updating the graph. Please check the input!"
-#~ msgstr ""
-#~ "[WARNUNG] Es gab ein Problem beim Aktualisieren des Graphen. Bitte "
-#~ "Eingabe überprüfen!"
+#~ msgid "[WARNING] There was a problem updating the graph. Please check the input!"
+#~ msgstr "[WARNUNG] Es gab ein Problem beim Aktualisieren des Graphen. Bitte Eingabe überprüfen!"
 
-#~ msgid ""
-#~ "The gui is not running. Refusing to update the graph now! Remembering "
-#~ "this for gui start."
-#~ msgstr ""
-#~ "Die Gui läuft nicht. Verzichte auf Graphaktualisierung! Wird aber für den "
-#~ "Gui-Start gemerkt!"
+#~ msgid "The gui is not running. Refusing to update the graph now! Remembering this for gui start."
+#~ msgstr "Die Gui läuft nicht. Verzichte auf Graphaktualisierung! Wird aber für den Gui-Start gemerkt!"
 
 #~ msgid "Date region was changed."
 #~ msgstr "Datumsbereich wurde geändert."
@@ -483,9 +489,7 @@ msgstr "Optimiere PDF"
 #~ msgstr "Enddatum vor Startdatum ausgewählt"
 
 #~ msgid "You selected an end date in the past. The graph will not updated."
-#~ msgstr ""
-#~ "Es wurde ein Enddatum in der Vergangenheit ausgewählt. Der Graph wird "
-#~ "nicht aktualisiert."
+#~ msgstr "Es wurde ein Enddatum in der Vergangenheit ausgewählt. Der Graph wird nicht aktualisiert."
 
 #~ msgid "Please choose a file"
 #~ msgstr "Bitte eine Datei auswählen"
@@ -562,24 +566,14 @@ msgstr "Optimiere PDF"
 #~ msgid "Calculating md5sum of file '{}' didn't work!"
 #~ msgstr "Berechnen der md5-Summe für die Datei '{}' hat nicht funktioniert!"
 
-#~ msgid ""
-#~ "Yeah, the amount gets a pretty format, but the system is not yet perfect. "
-#~ "Place the cursor after the comma and then type to add numbers after the "
-#~ "comma..."
-#~ msgstr ""
-#~ "Ja, der Betrag wird automatisch schön formatiert, aber so richtig perfekt "
-#~ "ist die Eingabe noch nicht. Zum Eingeben von Nachkommastellen, den Cursor "
-#~ "bitte hinter das Komma platzieren..."
+#~ msgid "Yeah, the amount gets a pretty format, but the system is not yet perfect. Place the cursor after the comma and then type to add numbers after the comma..."
+#~ msgstr "Ja, der Betrag wird automatisch schön formatiert, aber so richtig perfekt ist die Eingabe noch nicht. Zum Eingeben von Nachkommastellen, den Cursor bitte hinter das Komma platzieren..."
 
 #~ msgid "To prevent recursion I won't react to this."
 #~ msgstr "Um Rekursion zu verhindern, wird nicht darauf reagiert."
 
-#~ msgid ""
-#~ "Somehow a date was selected from an unknown calendar. This should not "
-#~ "have happened."
-#~ msgstr ""
-#~ "Irgendwie wurde ein Datum von einem unbekannten Kalender ausgewählt. Das "
-#~ "hätte nicht passieren sollen."
+#~ msgid "Somehow a date was selected from an unknown calendar. This should not have happened."
+#~ msgstr "Irgendwie wurde ein Datum von einem unbekannten Kalender ausgewählt. Das hätte nicht passieren sollen."
 
 #~ msgid "Date range"
 #~ msgstr "Datumsbereich"
@@ -672,16 +666,13 @@ msgstr "Optimiere PDF"
 #~ msgstr "untätig"
 
 #~ msgid "Request to stop logging on device {} - will terminate soon..."
-#~ msgstr ""
-#~ "Anfrage, die Datenaufzeichnung auf Gerät {} zu beenden - werde bald "
-#~ "anhalten..."
+#~ msgstr "Anfrage, die Datenaufzeichnung auf Gerät {} zu beenden - werde bald anhalten..."
 
 #~ msgid "Shutting down logging thread of device {}"
 #~ msgstr "Fahre Datenaufzeichnungs-Thread auf Gerät {} herunter"
 
 #~ msgid "logging thread for device {} was shut down properly."
-#~ msgstr ""
-#~ "Datenaufzeichnungsthread für Gerät {} wurde ordentlich heruntergefahren."
+#~ msgstr "Datenaufzeichnungsthread für Gerät {} wurde ordentlich heruntergefahren."
 
 #~ msgid "Starting data logging on device {}"
 #~ msgstr "Beginne Datenaufzeichnung auf Gerät {}"
@@ -729,25 +720,19 @@ msgstr "Optimiere PDF"
 #~ msgstr "gpio-dbus läuft nicht"
 
 #~ msgid "trying to start gpio-dbus via systemd's dbus interface..."
-#~ msgstr ""
-#~ "versuche, gpio-dbus über das DBus Interface von systemd zu starten..."
+#~ msgstr "versuche, gpio-dbus über das DBus Interface von systemd zu starten..."
 
 #~ msgid "instructed systemd via dbus to start gpio-dbus."
 #~ msgstr "systemd wurde über dbus angewiesen, gpio-dbus zu starten."
 
 #~ msgid "gpio-dbus was successfully started via systemd's dbus interface."
-#~ msgstr ""
-#~ "gpio-dbus erfolgreich über das DBus-Interface von systemd gestartet."
+#~ msgstr "gpio-dbus erfolgreich über das DBus-Interface von systemd gestartet."
 
 #~ msgid "gpio-dbus startup took too long via systemd, didn't work."
-#~ msgstr ""
-#~ "gpio-dbus über systemd zu starten, hat zu lange gedauert, nicht "
-#~ "funktioniert."
+#~ msgstr "gpio-dbus über systemd zu starten, hat zu lange gedauert, nicht funktioniert."
 
 #~ msgid "starting gpio-dbus via systemd's dbus interface didn't work."
-#~ msgstr ""
-#~ "gpio-dbus über das DBus Interface von systemd zu starten, hat nicht "
-#~ "funktioniert."
+#~ msgstr "gpio-dbus über das DBus Interface von systemd zu starten, hat nicht funktioniert."
 
 #~ msgid "starting gpio-dbus via 'at now'..."
 #~ msgstr "starte gpio-dbus über 'at now'..."
@@ -756,9 +741,7 @@ msgstr "Optimiere PDF"
 #~ msgstr "gpio-dbus erfolgreich über 'at now' gestartet."
 
 #~ msgid "gpio-dbus startup took too long via 'at now', didn't work."
-#~ msgstr ""
-#~ "gpio-dbus über 'at now' zu starten, hat zu lange gedauert, nicht "
-#~ "funktioniert."
+#~ msgstr "gpio-dbus über 'at now' zu starten, hat zu lange gedauert, nicht funktioniert."
 
 #~ msgid "no DEVNAME environment variable given. Nothing more to do."
 #~ msgstr "keine DEVNAME Umgebungsvariable. Nichts mehr zu tun."
@@ -767,8 +750,7 @@ msgstr "Optimiere PDF"
 #~ msgstr "DEVNAME Umgebungsvariable: {}"
 
 #~ msgid "DEVNAME environment variable '{}' is a non-existant file.  Aborting."
-#~ msgstr ""
-#~ "DEVNAME Umgebungsvariable '{}' ist keine existierende Datei. Abbruch."
+#~ msgstr "DEVNAME Umgebungsvariable '{}' ist keine existierende Datei. Abbruch."
 
 #, fuzzy
 #~ msgid "getting monitored_devices..."
