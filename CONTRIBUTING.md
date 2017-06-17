@@ -2,6 +2,10 @@
 
 Contributions are very welcome.
 
+## Opening new Issues on GitHub
+
+If you encounter any problems with **thunar-custom-actions**, please read the [Troubleshooting section in the README.md](https://github.com/nobodyinperson/thunar-custom-actions/blob/master/README.md#troubleshooting) before opening a new Issue on GitHub.
+
 ## Translations
 
 This project uses **gettext** for localisation. The translation catalogues (`*.po`-files) can be found under the `locale` directory structured in the usual way. You may use the awesome translation program [poedit](https://github.com/vslavik/poedit) to edit them.
