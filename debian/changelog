@@ -1,6 +1,7 @@
 thunar-custom-actions (0.0.17) UNRELEASED; urgency=medium
 
   * fix GH #12: now abort conversion to pdf if user clicked Cancel
+  * fix GH #13: require findutils (>=4.0)
 
  -- Yann Büchau <nobodyinperson@gmx.de>  Sat, 17 Jun 2017 21:45:38 +0200
 
