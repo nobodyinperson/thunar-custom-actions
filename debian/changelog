@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.18) UNRELEASED; urgency=medium
+
+  * add image format conversion action
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Sun, 18 Jun 2017 14:53:36 +0200
+
 thunar-custom-actions (0.0.17) unstable; urgency=medium
 
   * fix GH #12: now abort conversion to pdf if user clicked Cancel

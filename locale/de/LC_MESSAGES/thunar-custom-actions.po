@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 21:49+0200\n"
-"PO-Revision-Date: 2017-06-17 21:50+0200\n"
+"POT-Creation-Date: 2017-06-18 15:17+0200\n"
+"PO-Revision-Date: 2017-06-18 15:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -33,8 +33,9 @@ msgstr "Verschlüssele"
 #: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
 #: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
 #: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
-#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:10
 #: locale/tmp_only_uca_commands.sh:13 locale/tmp_only_uca_commands.sh:14
+#: locale/tmp_only_uca_commands.sh:15
 #, sh-format
 msgid "overwrite $base?"
 msgstr "$base überschreiben?"
@@ -43,8 +44,8 @@ msgstr "$base überschreiben?"
 #: locale/tmp_only_uca_commands.sh:3 locale/tmp_only_uca_commands.sh:4
 #: locale/tmp_only_uca_commands.sh:5 locale/tmp_only_uca_commands.sh:6
 #: locale/tmp_only_uca_commands.sh:7 locale/tmp_only_uca_commands.sh:8
-#: locale/tmp_only_uca_commands.sh:12 locale/tmp_only_uca_commands.sh:13
-#: locale/tmp_only_uca_commands.sh:14
+#: locale/tmp_only_uca_commands.sh:9 locale/tmp_only_uca_commands.sh:13
+#: locale/tmp_only_uca_commands.sh:14 locale/tmp_only_uca_commands.sh:15
 #, sh-format
 msgid "something went wrong copying the file $fileout over to $filefinalout."
 msgstr ""
@@ -61,8 +62,8 @@ msgstr ""
 msgid "Public Key"
 msgstr "Öffentlicher Schlüssel"
 
-#: locale/tmp_only_uca_commands.sh:2 locale/tmp_only_uca_commands.sh:10
-#: locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:2 locale/tmp_only_uca_commands.sh:11
+#: locale/tmp_only_uca_commands.sh:12
 #, sh-format
 msgid "Name"
 msgstr "Name"
@@ -109,120 +110,20 @@ msgstr "Drehe gegen den Uhrzeigersinn"
 
 #: locale/tmp_only_uca_commands.sh:6
 #, sh-format
-msgid "Converting to grayscale"
-msgstr "Konvertiere zu Graustufen"
+msgid "Format"
+msgstr "Format"
 
-#: locale/tmp_only_uca_commands.sh:7
+#: locale/tmp_only_uca_commands.sh:6
 #, sh-format
-msgid "Filling transparency with $COLOR"
-msgstr "Fülle Transparenz mit $COLOR"
+msgid "Description"
+msgstr "Beschreibung"
 
-#: locale/tmp_only_uca_commands.sh:8
+#: locale/tmp_only_uca_commands.sh:6
 #, sh-format
-msgid "Scale to what percentage?"
-msgstr "Auf wie viel Prozent der Originalgröße skalieren?"
+msgid "No format selected."
+msgstr "Kein Format angegeben."
 
-#: locale/tmp_only_uca_commands.sh:8
-#, sh-format
-msgid "Scale to $SCALE percent"
-msgstr "Skaliere auf $SCALE%"
-
-#: locale/tmp_only_uca_commands.sh:9
-#, sh-format
-msgid "Select link location"
-msgstr "Ort der Verknüpfung auswählen"
-
-#: locale/tmp_only_uca_commands.sh:9
-#, sh-format
-msgid "The link name has to differ from the target name."
-msgstr "Der Name des Links muss von dem zu verlinkenden Ziel abweichen."
-
-#: locale/tmp_only_uca_commands.sh:9
-#, sh-format
-msgid "Could not create link"
-msgstr "Konnte den Link nicht erstellen"
-
-#: locale/tmp_only_uca_commands.sh:10
-#, sh-format
-msgid "Determining file sizes"
-msgstr "Ermittle Dateigrößen"
-
-#: locale/tmp_only_uca_commands.sh:10
-#, sh-format
-msgid "Size"
-msgstr "Größe"
-
-#: locale/tmp_only_uca_commands.sh:10
-#, sh-format
-msgid "Big elements"
-msgstr "Große Elemente"
-
-#: locale/tmp_only_uca_commands.sh:10
-#, sh-format
-msgid "Elements sorted by size"
-msgstr "Elemente nach Größe sortiert"
-
-#: locale/tmp_only_uca_commands.sh:10 locale/tmp_only_uca_commands.sh:11
-#, sh-format
-msgid "Double-click to open."
-msgstr "Doppelklick zum öffnen."
-
-#: locale/tmp_only_uca_commands.sh:11
-#, sh-format
-msgid "Determining checksums"
-msgstr "Berechne Prüfsummen"
-
-#: locale/tmp_only_uca_commands.sh:11
-#, sh-format
-msgid "MD5"
-msgstr "MD5"
-
-#: locale/tmp_only_uca_commands.sh:11
-#, sh-format
-msgid "SHA1"
-msgstr "SHA1"
-
-#: locale/tmp_only_uca_commands.sh:11
-#, sh-format
-msgid "SHA256"
-msgstr "SHA256"
-
-#: locale/tmp_only_uca_commands.sh:11
-#, sh-format
-msgid "Checksums"
-msgstr "Prüfsummen"
-
-#: locale/tmp_only_uca_commands.sh:12
-#, sh-format
-msgid "Portrait"
-msgstr "Hochformat"
-
-#: locale/tmp_only_uca_commands.sh:12
-#, sh-format
-msgid "Landscape"
-msgstr "Querformat"
-
-#: locale/tmp_only_uca_commands.sh:12
-#, sh-format
-msgid "Orientation"
-msgstr "Ausrichtung"
-
-#: locale/tmp_only_uca_commands.sh:12
-#, sh-format
-msgid "Choose an orientation for the PDF."
-msgstr "Die Ausrichtung des PDFs auswählen."
-
-#: locale/tmp_only_uca_commands.sh:12
-#, sh-format
-msgid "PDF orientation"
-msgstr "PDF Ausrichtung"
-
-#: locale/tmp_only_uca_commands.sh:12
-#, sh-format
-msgid "Strange orientation $ORIENTATION selected."
-msgstr "Seltsame Ausrichtung $ORIENTATION ausgewählt."
-
-#: locale/tmp_only_uca_commands.sh:12
+#: locale/tmp_only_uca_commands.sh:6 locale/tmp_only_uca_commands.sh:13
 #, sh-format
 msgid ""
 "If you see this message, please contact the developer on https://github.com/"
@@ -231,20 +132,149 @@ msgstr ""
 "Wenn diese Meldung angezeigt wird, bitte den Entwickler auf https://github."
 "com/nobodyinperson/thunar-custom-actions kontaktieren."
 
+#: locale/tmp_only_uca_commands.sh:6
+#, sh-format
+msgid "Converting to $FORMAT"
+msgstr "Konvertiere zu $FORMAT"
+
+#: locale/tmp_only_uca_commands.sh:6
+#, sh-format
+msgid "Could not convert $fileinput to $FORMAT: $CONVERT_OUTPUT"
+msgstr "Konnte $fileinput nicht zu $FORMAT konvertieren: $CONVERT_OUTPUT"
+
+#: locale/tmp_only_uca_commands.sh:7
+#, sh-format
+msgid "Converting to grayscale"
+msgstr "Konvertiere zu Graustufen"
+
+#: locale/tmp_only_uca_commands.sh:8
+#, sh-format
+msgid "Filling transparency with $COLOR"
+msgstr "Fülle Transparenz mit $COLOR"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "Scale to what percentage?"
+msgstr "Auf wie viel Prozent der Originalgröße skalieren?"
+
+#: locale/tmp_only_uca_commands.sh:9
+#, sh-format
+msgid "Scale to $SCALE percent"
+msgstr "Skaliere auf $SCALE%"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "Select link location"
+msgstr "Ort der Verknüpfung auswählen"
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "The link name has to differ from the target name."
+msgstr "Der Name des Links muss von dem zu verlinkenden Ziel abweichen."
+
+#: locale/tmp_only_uca_commands.sh:10
+#, sh-format
+msgid "Could not create link"
+msgstr "Konnte den Link nicht erstellen"
+
+#: locale/tmp_only_uca_commands.sh:11
+#, sh-format
+msgid "Determining file sizes"
+msgstr "Ermittle Dateigrößen"
+
+#: locale/tmp_only_uca_commands.sh:11
+#, sh-format
+msgid "Size"
+msgstr "Größe"
+
+#: locale/tmp_only_uca_commands.sh:11
+#, sh-format
+msgid "Big elements"
+msgstr "Große Elemente"
+
+#: locale/tmp_only_uca_commands.sh:11
+#, sh-format
+msgid "Elements sorted by size"
+msgstr "Elemente nach Größe sortiert"
+
+#: locale/tmp_only_uca_commands.sh:11 locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "Double-click to open."
+msgstr "Doppelklick zum öffnen."
+
 #: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "Determining checksums"
+msgstr "Berechne Prüfsummen"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "MD5"
+msgstr "MD5"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "SHA1"
+msgstr "SHA1"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "SHA256"
+msgstr "SHA256"
+
+#: locale/tmp_only_uca_commands.sh:12
+#, sh-format
+msgid "Checksums"
+msgstr "Prüfsummen"
+
+#: locale/tmp_only_uca_commands.sh:13
+#, sh-format
+msgid "Portrait"
+msgstr "Hochformat"
+
+#: locale/tmp_only_uca_commands.sh:13
+#, sh-format
+msgid "Landscape"
+msgstr "Querformat"
+
+#: locale/tmp_only_uca_commands.sh:13
+#, sh-format
+msgid "Orientation"
+msgstr "Ausrichtung"
+
+#: locale/tmp_only_uca_commands.sh:13
+#, sh-format
+msgid "Choose an orientation for the PDF."
+msgstr "Die Ausrichtung des PDFs auswählen."
+
+#: locale/tmp_only_uca_commands.sh:13
+#, sh-format
+msgid "PDF orientation"
+msgstr "PDF Ausrichtung"
+
+#: locale/tmp_only_uca_commands.sh:13
+#, sh-format
+msgid "Strange orientation $ORIENTATION selected."
+msgstr "Seltsame Ausrichtung $ORIENTATION ausgewählt."
+
+#: locale/tmp_only_uca_commands.sh:13
 #, sh-format
 msgid "Converting to PDF"
 msgstr "Konvertiere zu PDF"
 
-#: locale/tmp_only_uca_commands.sh:13
+#: locale/tmp_only_uca_commands.sh:14
 #, sh-format
 msgid "Concatenating PDFs"
 msgstr "Füge PDFs zusammen"
 
-#: locale/tmp_only_uca_commands.sh:14
+#: locale/tmp_only_uca_commands.sh:15
 #, sh-format
 msgid "Optimizing PDF"
 msgstr "Optimiere PDF"
+
+#, fuzzy
+#~ msgid "Convert output: $CONVERT_OUTPUT"
+#~ msgstr "Konnte $fileinput nicht zu $FORMAT konvertieren: $CONVERT_OUTPUT"
 
 #~ msgid "Wrong Password for $filebase?"
 #~ msgstr "Falsches Passwort für $filebase?"

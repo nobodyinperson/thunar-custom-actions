@@ -106,6 +106,13 @@ define(<~TUCA_PROGRESSBAR_PERCENTAGE~>,<~dnl
 echo <~$1~>dnl
 ~>)dnl
 dnl
+dnl TUCA_INFO(text)
+dnl - show the user the info "text"
+dnl
+define(<~TUCA_INFO~>,<~dnl
+TUCA_ZENITY() --info --text="$(echo $1)"<~~>dnl
+~>)dnl
+dnl
 dnl TUCA_ERROR(text)
 dnl - show the user the error "text"
 dnl

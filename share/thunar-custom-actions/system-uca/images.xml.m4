@@ -27,7 +27,7 @@ include(tuca.m4)dnl
 </action>
 <action>
 	<icon>edit-undo</icon>
-	<name xml:lang="de">gegen den Uhrzeigersinn drehen</name>
+	<name xml:lang="de">Gegen den Uhrzeigersinn drehen</name>
 	<name xml:lang="en">Turn anti-clockwise</name>
 	<command>TUCA_CMD(dnl
     TUCA_PROGRESSBAR(dnl
@@ -42,6 +42,45 @@ include(tuca.m4)dnl
         )dnl
     )</command> <description xml:lang="en">The selected images are turned anti-clockwise.</description>
 	<description xml:lang="de">Die ausgewählten Bilder werden gegen den Uhrzeigersinn gedreht.</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>insert-image</icon>
+	<name xml:lang="de">In anderes Format umwandeln</name>
+	<name xml:lang="en">Convert to other format</name>
+	<command>TUCA_CMD(dnl
+    FORMAT=$(dnl
+        TUCA_CONVERT() -list format | dnl
+        TUCA_PERL() -ane '($f,$m,$c,$d)=m/^\s*(\S*?)\**\s*(\S*)\s*([r-][w-][+-])\s*(.*)$/g;if($c=~m/^.w.$/){print join "\n",$f,$d,""}' | dnl
+        TUCA_ZENITY() --list dnl
+            --print-column=1 dnl
+            --column="TUCA_TRANSLATE(Format)" dnl
+            --column="TUCA_TRANSLATE(Description)" dnl
+        );dnl
+    if test $? -ne 0;then dnl
+        exit;dnl user aborted
+    fi;dnl
+    FORMAT=$(echo $FORMAT | TUCA_PERL() -ne 'print lc');dnl lower-case format
+    if test -z "$FORMAT";then dnl
+        TUCA_ERROR(TUCA_TRANSLATE(No format selected.) TUCA_TRANSLATE(If you see this message<~,~> please contact the developer on https://github.com/nobodyinperson/thunar-custom-actions.));dnl
+        exit 1;dnl
+    fi; dnl
+    TUCA_PROGRESSBAR(dnl
+        TUCA_LOOP(dnl
+            TUCA_CREATE_FILE(dnl
+                CONVERT_OUTPUT=$(TUCA_CONVERT() TUCA_IN() TUCA_OUT() 2>&amp;1;) || dnl
+                    TUCA_ERROR(TUCA_TRANSLATE(Could not convert $TUCA_IN_VAR() to $FORMAT: $CONVERT_OUTPUT));dnl
+                ,dnl end of command
+                TUCA_FILE(),dnl input
+                $(dirname TUCA_FILE())/$(basename TUCA_FILE() | TUCA_PERL() -pe 's#\.\w+<~$~>##g').${FORMAT},dnl output name
+                ),dnl
+            TUCA_TRANSLATE(Converting to $FORMAT),dnl loop description
+            )dnl
+        )dnl
+    )</command>
+	<description xml:lang="en">The selected images are converted to a specified format.</description>
+	<description xml:lang="de">Die ausgewählten Bilder werden in ein angegebenes Format umgewandelt.</description>
 	<patterns>*</patterns>
 	<image-files/>
 </action>
