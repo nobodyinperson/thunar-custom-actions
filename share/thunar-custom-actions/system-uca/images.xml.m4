@@ -57,6 +57,8 @@ include(tuca.m4)dnl
             --print-column=1 dnl
             --column="TUCA_TRANSLATE(Format)" dnl
             --column="TUCA_TRANSLATE(Description)" dnl
+            --text="TUCA_TRANSLATE(Select format:)" dnl
+            --title="TUCA_TRANSLATE(Format)" dnl
         );dnl
     if test $? -ne 0;then dnl
         exit;dnl user aborted
@@ -81,8 +83,9 @@ include(tuca.m4)dnl
     )</command>
 	<description xml:lang="en">The selected images are converted to a specified format.</description>
 	<description xml:lang="de">Die ausgewählten Bilder werden in ein angegebenes Format umgewandelt.</description>
-	<patterns>*</patterns>
+	<patterns>*.pdf;*.PDF;*</patterns>
 	<image-files/>
+	<other-files/>
 </action>
 <action>
 	<icon>applications-graphics-symbolic</icon>
