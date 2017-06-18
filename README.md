@@ -33,6 +33,7 @@ There are currently actions for:
 - **grayscaling** images
 - **filling transparent areas** in images with a given color
 - **converting** images to an A4 multi-page **PDF** document
+- **converting** images to arbitrary formats
 - **concatenating** PDF documents into one
 - **shrinking** PDF file sizes
 - **de/encrypting** arbitrary files with GPG (both symmetrically and asymmetrically)
@@ -53,6 +54,12 @@ See some screenshots:
 ### Converting images to PDF
 
 ![thunar-custom-actions-choose-pdf-orientation](https://user-images.githubusercontent.com/19148271/27255107-6dc82fda-5397-11e7-8b0a-2364b1f528da.png)
+
+### Converting images to arbitrary formats
+
+![thunar-custom-actions-convert-format-context-menu-english](https://user-images.githubusercontent.com/19148271/27261299-c54197ca-5440-11e7-8f68-1400121caa41.png)
+
+![thunar-custom-actions-choose-format-english](https://user-images.githubusercontent.com/19148271/27261296-c51790ec-5440-11e7-818b-6be989a0cf3b.png)
 
 ### Encrypting files
 
@@ -191,7 +198,7 @@ uca-apply update
 
 If you installed it [manually](https://github.com/nobodyinperson/thunar-custom-actions/blob/master/README.md#manual-install), make sure that you did a `uca-apply update` afterwards to actually merge the actions provided by **thunar-custom-actions** into your Thunar configuration.
 
-You may also close all `thunar` instances, run `thunar -q` from the terminal and then re-check if there are still not actions.
+You may also close all `thunar` instances, run `thunar -q` from the terminal and then re-check if there are still no actions.
 
 #### *Help, I clicked on an action but nothing happens!*
 
