@@ -1,6 +1,8 @@
 thunar-custom-actions (0.0.18) UNRELEASED; urgency=medium
 
   * add image format conversion action
+  * remove useless radiobuttons from PDF conversion action which prevented
+    easy orientation selection via (double-)click
 
  -- Yann Büchau <nobodyinperson@gmx.de>  Sun, 18 Jun 2017 14:53:36 +0200
 

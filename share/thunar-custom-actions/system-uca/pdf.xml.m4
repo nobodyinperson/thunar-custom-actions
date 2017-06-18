@@ -11,14 +11,9 @@ include(tuca.m4)dnl
 	<command>TUCA_CMD(dnl
         ORIENTATION="$(dnl
             (dnl
-            echo TRUE;dnl
             echo TUCA_TRANSLATE(Portrait);dnl
-            echo FALSE;dnl
             echo TUCA_TRANSLATE(Landscape);dnl
             ) | TUCA_ZENITY() --list dnl
-            --print-column=2 dnl
-            --radiolist dnl
-            --column="" dnl
             --column="TUCA_TRANSLATE(Orientation)" dnl
             --text="TUCA_TRANSLATE(Choose an orientation for the PDF.)" dnl
             --title="TUCA_TRANSLATE(PDF orientation)")"; dnl
