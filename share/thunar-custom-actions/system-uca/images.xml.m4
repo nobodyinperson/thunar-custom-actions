@@ -83,9 +83,8 @@ include(tuca.m4)dnl
     )</command>
 	<description xml:lang="en">The selected images are converted to a specified format.</description>
 	<description xml:lang="de">Die ausgewählten Bilder werden in ein angegebenes Format umgewandelt.</description>
-	<patterns>*.pdf;*.PDF;*</patterns>
+	<patterns>*</patterns>
 	<image-files/>
-	<other-files/>
 </action>
 <action>
 	<icon>applications-graphics-symbolic</icon>

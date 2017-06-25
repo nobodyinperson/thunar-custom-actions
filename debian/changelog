@@ -1,3 +1,9 @@
+thunar-custom-actions (0.0.19) UNRELEASED; urgency=medium
+
+  * fix file association for 'convert to other format'
+
+ -- Yann Büchau <nobodyinperson@gmx.de>  Sun, 25 Jun 2017 10:01:01 +0200
+
 thunar-custom-actions (0.0.18) unstable; urgency=medium
 
   * add image format conversion action
