@@ -1,0 +1,3 @@
+[submodule "m4/m4-utils"]
+	path = m4/m4-utils
+	url = https://gitlab.com/nobodyinperson/m4-utils

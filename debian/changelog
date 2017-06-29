@@ -1,6 +1,7 @@
 thunar-custom-actions (0.0.19) UNRELEASED; urgency=medium
 
   * fix file association for 'convert to other format'
+  * outsource m4 macros to separate repo
 
  -- Yann Büchau <nobodyinperson@gmx.de>  Sun, 25 Jun 2017 10:01:01 +0200
 
