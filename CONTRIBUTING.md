@@ -1,3 +1,9 @@
+> # This project has moved to [Gitlab.com](https://gitlab.com/nobodyinperson/thunar-custom-actions)
+> 
+> The GitHub repository here is not up-to date.
+> Please refer to [the repository on Gitlab.com](https://gitlab.com/nobodyinperson/thunar-custom-actions) for 
+> Issues, Releases and the up-to-date repository code.
+
 # How to contribute to thunar-custom-actions
 
 Contributions are very welcome.
